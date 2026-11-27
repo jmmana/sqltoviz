@@ -72,7 +72,7 @@ def safe_extract(archive: Path, target: Path) -> list[str]:
     return extracted
 
 
-def acquire(name: str, spec: dict, root: Path, trust_on_first_use: bool = False) -> dict:
+def acquire(name: str, spec: dict, root: Path, trust_on_first_use: bool = False, extract: bool = True) -> dict:
     """Download+verify+extract one source under ``root/<namespace>/``."""
     ns_dir = Path(root) / spec["namespace"]
     archive = ns_dir / "_downloads" / spec["filename"]
@@ -89,11 +89,13 @@ def acquire(name: str, spec: dict, root: Path, trust_on_first_use: bool = False)
     if pinned is not None and digest != pinned:
         archive.unlink()
         raise AcquisitionError(f"{name}: sha256 {digest} != pinned {pinned}")
-    out_dir = ns_dir / spec["extract_root"]
-    files = safe_extract(archive, out_dir)
-    for nested in spec.get("nested_archives", []):
-        inner = out_dir / nested
-        files += safe_extract(inner, inner.parent)
+    files = []
+    if extract:
+        out_dir = ns_dir / spec["extract_root"]
+        files = safe_extract(archive, out_dir)
+        for nested in spec.get("nested_archives", []):
+            inner = out_dir / nested
+            files += safe_extract(inner, inner.parent)
     return {"source": name, "namespace": spec["namespace"], "license": spec["license"],
             "sha256": digest, "size": size, "n_files": len(files), "pinned": pinned is not None}
 
@@ -105,13 +107,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--manifest", default=str(Path(__file__).parent.parent / "manifests" / "sources.json"))
     ap.add_argument("--root", default="data")
     ap.add_argument("--trust-on-first-use", action="store_true")
+    ap.add_argument("--no-extract", action="store_true", help="download and verify only")
     ns = ap.parse_args(argv)
     manifest = load_manifest(Path(ns.manifest))
     lock = []
     for s in ns.sources:
         if s not in manifest:
             raise SystemExit(f"unknown source {s}")
-        lock.append(acquire(s, manifest[s], Path(ns.root), ns.trust_on_first_use))
+        lock.append(acquire(s, manifest[s], Path(ns.root), ns.trust_on_first_use, not ns.no_extract))
     print(json.dumps(lock, indent=2))
     return 0
 

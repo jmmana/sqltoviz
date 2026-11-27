@@ -72,9 +72,16 @@ def test_idempotent_second_run(tmp_path):
     assert r1 == r2
 
 
+def test_no_extract_verifies_only(tmp_path):
+    src = tmp_path / "src.zip"
+    sha = make_zip(src, {"a": b"1"})
+    r = A.acquire("t", spec_for(src, sha), tmp_path / "data", extract=False)
+    assert r["n_files"] == 0 and not (tmp_path / "data/ns/out").exists()
+
+
 def test_real_manifest_is_wellformed():
     m = A.load_manifest(Path(__file__).parent.parent / "manifests" / "sources.json")
     for name, s in m.items():
         assert s["namespace"] == "cc-by-sa-4.0", name
         assert s["sha256"] is None or len(s["sha256"]) == 64
-    assert m["spider"]["sha256"] and m["bird_dev"]["sha256"]
+    assert all(s["sha256"] for s in m.values())

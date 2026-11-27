@@ -30,8 +30,8 @@
       "url": "https://bird-bench.oss-cn-beijing.aliyuncs.com/train.zip",
       "filename": "bird_train.zip",
       "size": 8919543554,
-      "sha256": null,
-      "note": "8.9 GB; sha256 not yet pinned (upstream publishes only a multipart ETag). Pin on Kaggle with --trust-on-first-use, then commit the value.",
+      "sha256": "66e9e3115b59559554013aa3b124156249f30437a6b4e4f96de3d2dfb5ae8cbc",
+      "note": "8.9 GB. sha256 pinned from a full download on 2026-11-27 (upstream only publishes a multipart ETag). Extraction needs ~tens of GB of disk; use --no-extract to verify only.",
       "extract_root": "bird_train",
       "nested_archives": []
     }
