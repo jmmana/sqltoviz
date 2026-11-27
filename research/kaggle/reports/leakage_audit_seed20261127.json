@@ -1,0 +1,98 @@
+{
+ "n": 20000,
+ "n_schemas": 300,
+ "structural_ceiling_accuracy": 0.6,
+ "uniform_chance": 0.1,
+ "views": {
+  "sql_features16": {
+   "accuracy": 0.5703,
+   "macro_f1": 0.5700280485407886,
+   "within_shape": {
+    "cat_quant": {
+     "accuracy": 0.3253333333333333,
+     "chance": 0.3333333333333333,
+     "n": 6000
+    },
+    "time_quant": {
+     "accuracy": 0.48225,
+     "chance": 0.5,
+     "n": 4000
+    },
+    "two_nom_quant": {
+     "accuracy": 0.48725,
+     "chance": 0.5,
+     "n": 4000
+    }
+   }
+  },
+  "sql_token_bag": {
+   "accuracy": 0.5885,
+   "macro_f1": 0.5860157079841176,
+   "within_shape": {
+    "cat_quant": {
+     "accuracy": 0.333,
+     "chance": 0.3333333333333333,
+     "n": 6000
+    },
+    "time_quant": {
+     "accuracy": 0.49075,
+     "chance": 0.5,
+     "n": 4000
+    },
+    "two_nom_quant": {
+     "accuracy": 0.50725,
+     "chance": 0.5,
+     "n": 4000
+    }
+   }
+  },
+  "names_only": {
+   "accuracy": 0.50895,
+   "macro_f1": 0.5041296126680332,
+   "within_shape": {
+    "cat_quant": {
+     "accuracy": 0.3385,
+     "chance": 0.3333333333333333,
+     "n": 6000
+    },
+    "time_quant": {
+     "accuracy": 0.4965,
+     "chance": 0.5,
+     "n": 4000
+    },
+    "two_nom_quant": {
+     "accuracy": 0.50275,
+     "chance": 0.5,
+     "n": 4000
+    }
+   }
+  },
+  "data_features16_global": {
+   "accuracy": 0.8516,
+   "macro_f1": 0.8495449093866263,
+   "within_shape": {
+    "cat_quant": {
+     "accuracy": 0.8573333333333333,
+     "chance": 0.3333333333333333,
+     "n": 6000
+    },
+    "time_quant": {
+     "accuracy": 0.472,
+     "chance": 0.5,
+     "n": 4000
+    },
+    "two_nom_quant": {
+     "accuracy": 1.0,
+     "chance": 0.5,
+     "n": 4000
+    }
+   }
+  }
+ },
+ "generator": "sqltoviz_data.synthgen",
+ "seed": 20261127,
+ "n_per_class": 2000,
+ "dataset_sha256": "a6fffdcc4da6f936799a8af723308d40fd6d6c7bb07cd3238bc32fdb5d22384b",
+ "license_namespace": "apache-2.0",
+ "audit_seconds": 12.1
+}
