@@ -146,3 +146,34 @@ def run_meta(extra: dict | None = None) -> dict:
                                  "BAR_MAX_ROWS": R.BAR_MAX_ROWS, "SCATTER_MIN_ROWS": R.SCATTER_MIN_ROWS}}
     meta.update(extra or {})
     return meta
+
+
+ABLATION_GROUPS = {
+    "sql_clauses": ["join_count", "subquery_cte_count", "has_group_by", "group_expression_count", "has_order_by", "has_limit",
+                    "normalized_limit", "has_having", "has_distinct"],
+    "sql_semantic": ["ascending_temporal_order", "has_temporal_function", "has_window", "aggregate_count", "calculated_projection_ratio"],
+    "sql_size": ["log_token_count", "parenthesis_depth"],
+    "data_size": ["log_row_count", "single_row", "small_rows", "large_rows"],
+    "data_types": ["column_count", "temporal_count", "quantitative_count", "nominal_count", "identifier_count", "quantitative_ratio", "nominal_ratio"],
+    "data_cardinality": ["non_null_density", "max_nominal_relative_cardinality", "min_nominal_cardinality", "crossed_structure", "mean_nominal_entropy"],
+}
+
+
+def ablate(Xtr, ytr, Xte, yte, seed: int = 0) -> dict:
+    """Leave-one-group-out ablation of the 32 table features (hybrid random forest). Reports macro-F1 and delta vs full."""
+    assert sorted(n for g in ABLATION_GROUPS.values() for n in g) == sorted(R.T), "ablation groups must partition the 32 features"
+    labels = [c for c in CLASSES if c in set(yte)]
+
+    def f1(cols):
+        m = make_rf(seed).fit(Xtr[:, cols], ytr)
+        pred = [CLASSES[k] for k in _proba_full(m, Xte[:, cols]).argmax(1)]
+        return float(f1_score(yte, pred, labels=labels, average="macro", zero_division=0))
+
+    allc = list(range(32))
+    full = f1(allc)
+    out = {"full": full, "groups": {}}
+    for g, names in ABLATION_GROUPS.items():
+        drop = {R.T[n] for n in names}
+        v = f1([c for c in allc if c not in drop])
+        out["groups"][g] = {"macro_f1_without": v, "delta_vs_full": v - full, "n_features": len(names)}
+    return out

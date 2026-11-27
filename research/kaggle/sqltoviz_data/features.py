@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import re
 from collections import Counter
 from datetime import datetime, timezone
@@ -19,7 +20,7 @@ import numpy as np
 
 CONTRACT_VERSION = "SqlVizSpec-v1.0.0"
 CONTRACT_SHA256 = "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864"
-CONTRACT_PATH = Path(__file__).resolve().parents[3] / "spec" / "sqlvizspec-v1-features.json"
+CONTRACT_PATH = Path(os.environ.get("SQLTOVIZ_CONTRACT") or Path(__file__).resolve().parents[3] / "spec" / "sqlvizspec-v1-features.json")
 SAFE_INT = 2 ** 53 - 1
 MAX_COLUMNS, MAX_ROWS = 128, 100_000
 
