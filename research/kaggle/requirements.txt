@@ -11,3 +11,4 @@ scipy>=1.13
 onnx>=1.16
 onnxruntime>=1.18
 skl2onnx>=1.17
+openpyxl>=3.1
