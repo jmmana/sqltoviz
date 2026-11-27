@@ -69,8 +69,28 @@ def crossref_lookup(title, author=None, avoid_doi_prefix=None):
     return None
 
 
+_ACC = {"\u0306": "u", "\u0327": "c", "\u0301": "'", "\u0300": "`", "\u0302": "^", "\u0308": '"', "\u0303": "~", "\u030c": "v", "\u0304": "=", "\u030a": "r"}
+
+
+def latex_accents(text):
+    """Non-ASCII letters -> LaTeX accent commands (plain-TeX bibliographies cannot print them reliably)."""
+    import unicodedata
+    out, chars = [], list(unicodedata.normalize("NFD", text))
+    i = 0
+    while i < len(chars):
+        c = chars[i]
+        if i + 1 < len(chars) and chars[i + 1] in _ACC:
+            cmd = _ACC[chars[i + 1]]
+            out.append("{\\%s{%s}}" % (cmd, c) if cmd.isalpha() else "{\\%s%s}" % (cmd, c))
+            i += 2
+        else:
+            out.append(c)
+            i += 1
+    return "".join(out)
+
+
 def bibtex(key, r):
-    esc = lambda s: s.replace("&", r"\&").replace("%", r"\%").replace("_", r"\_")
+    esc = lambda s: latex_accents(s).replace("&", r"\&").replace("%", r"\%").replace("_", r"\_")
     au = " and ".join(r["authors"])
     if r["source"] == "arxiv":
         return (f"@misc{{{key},\n  title = {{{esc(r['title'])}}},\n  author = {{{esc(au)}}},\n  year = {{{r['year']}}},\n"
