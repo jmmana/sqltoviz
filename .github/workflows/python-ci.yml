@@ -1,10 +1,10 @@
 name: Python SDK CI
 on:
   pull_request:
-    paths: ['packages/python/**', '.github/workflows/python-ci.yml']
+    paths: ['packages/python/**', 'parity/**', 'spec/**', '.github/workflows/python-ci.yml']
   push:
     branches: [development, main]
-    paths: ['packages/python/**', '.github/workflows/python-ci.yml']
+    paths: ['packages/python/**', 'parity/**', 'spec/**', '.github/workflows/python-ci.yml']
 permissions:
   contents: read
 jobs:
@@ -21,7 +21,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
-      - run: python -m pip install build twine
+      - run: python -m pip install build twine numpy onnxruntime
+      - run: python ../../spec/generate_bindings.py --check
       - run: python -m unittest discover -s tests
       - run: python -m build
       - run: python -m twine check dist/*
@@ -30,3 +31,5 @@ jobs:
           /tmp/sqltoviz-smoke/bin/pip install dist/*.whl
           cd /tmp
           /tmp/sqltoviz-smoke/bin/python -c "from sqltoviz import recommend; assert recommend('SELECT 1',[{'x':1}])['chartType']=='kpi'"
+          /tmp/sqltoviz-smoke/bin/pip install onnxruntime numpy
+          /tmp/sqltoviz-smoke/bin/python -c "from sqltoviz import Engine; r=Engine.default().recommend('SELECT SUM(x) AS s FROM t',['s'],[[3.0]]); assert r['final_class']=='kpi' and r['model_status']=='experimental'"

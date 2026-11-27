@@ -46,7 +46,7 @@ def _onehot(cls):
 def rule_predict(t: np.ndarray, c: np.ndarray) -> str:
     v = _view(t, c)
     nonneg = bool(len(v["q_cols"]) and (v["q_cols"][:, COL["negative_ratio"]] == 0).all())
-    n_rows = 10 ** v["log_rows"] - 1
+    n_rows = int(round(10 ** v["log_rows"] - 1))      # integer row count recovered from float32 log10(1+N)
     if v["N_single"] == 1 and v["M"] <= 3 and v["quant"] >= 1:
         return "kpi"
     if v["M"] >= 6:
@@ -55,7 +55,7 @@ def rule_predict(t: np.ndarray, c: np.ndarray) -> str:
         return "heatmap" if v["minK"] >= HEATMAP_MIN_K else "stacked_bar"
     if v["M"] == 2 and v["temp"] == 1 and v["quant"] == 1:
         return "area" if nonneg else "line"
-    if v["quant"] >= 2 and v["nom"] == 0 and v["temp"] == 0 and n_rows >= SCATTER_MIN_ROWS - 0.5:
+    if v["quant"] >= 2 and v["nom"] == 0 and v["temp"] == 0 and n_rows >= SCATTER_MIN_ROWS:
         return "scatter"
     if v["M"] == 2 and v["nom"] == 1 and v["quant"] == 1:
         zero_all = bool(len(v["q_cols"]) and (v["q_cols"][:, COL["zero_ratio"]] == 1).all())
@@ -63,7 +63,7 @@ def rule_predict(t: np.ndarray, c: np.ndarray) -> str:
             return "donut"
         if len(v["n_cols"]) and v["n_cols"][0, COL["mean_string_length"]] >= LONG_LABEL:
             return "horizontal_bar"
-        return "bar" if n_rows <= BAR_MAX_ROWS + 0.5 else "table"
+        return "bar" if n_rows <= BAR_MAX_ROWS else "table"
     return "table"
 
 
@@ -77,7 +77,7 @@ def eligible(t: np.ndarray, c: np.ndarray) -> dict:
     qn = v["q_cols"]
     nonneg = bool(len(qn) and (qn[:, COL["negative_ratio"]] == 0).all())
     positive_total = bool(len(qn) and (qn[:, COL["zero_ratio"]] < 1).any())
-    n_rows = 10 ** v["log_rows"] - 1
+    n_rows = int(round(10 ** v["log_rows"] - 1))
     cat_measure = v["nom"] >= 1 and v["quant"] >= 1 and n_rows >= 2
     ok = {
         "kpi": v["N_single"] == 1 and v["quant"] >= 1 and v["M"] <= 3,

@@ -57,8 +57,8 @@ class Tok:
         return f"{self.kind}:{self.text}"
 
 
-_WORD = re.compile(r"[A-Za-z_][A-Za-z0-9_$]*")
-_NUM = re.compile(r"(?:\d+\.\d*|\.\d+|\d+)(?:[eE][+-]?\d+)?")
+_WORD = re.compile(r"[A-Za-z_][A-Za-z0-9_$]*", re.ASCII)
+_NUM = re.compile(r"(?:[0-9]+\.[0-9]*|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?", re.ASCII)
 
 
 def lex(sql: str) -> list:
@@ -105,7 +105,7 @@ def lex(sql: str) -> list:
                 i = m.end()
                 continue
             m = _NUM.match(sql, i)
-            if m and (c.isdigit() or (c == "." and i + 1 < n and sql[i + 1].isdigit())):
+            if m and (c in "0123456789" or (c == "." and i + 1 < n and sql[i + 1] in "0123456789")):
                 toks.append(Tok("number", m.group(), m.group(), depth))
                 i = m.end()
                 continue
@@ -233,8 +233,8 @@ def _tokseq(ts):
 
 
 # ------------------------------------------------------------------ type resolution
-_ISO_DATE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
-_RFC3339 = re.compile(r"^(\d{4})-(\d{2})-(\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(\.\d+)?([Zz]|[+-]\d{2}:\d{2})$")
+_ISO_DATE = re.compile(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})\Z", re.ASCII)
+_RFC3339 = re.compile(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})[Tt]([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})\Z", re.ASCII)
 
 
 def parse_temporal(v):
@@ -287,8 +287,15 @@ def _check_cell(v):
             raise FeatureError("integer outside safe range")
         return
     if isinstance(v, float):
+        if math.isfinite(v) and v.is_integer() and abs(v) > SAFE_INT:       # JSON cannot tell 1e20 from 100000000000000000000
+            raise FeatureError("integer outside safe range")
         return
     raise FeatureError(f"unsupported cell type {type(v).__name__}")
+
+
+def _is_int(v):
+    """Integer-valued number (JSON does not distinguish 1 from 1.0): bool excluded."""
+    return not isinstance(v, bool) and (isinstance(v, int) or (isinstance(v, float) and math.isfinite(v) and v.is_integer()))
 
 
 def _is_num(v):
@@ -309,7 +316,7 @@ def resolve_type(name: str, values: list, explicit: str | None) -> str:
             "nominal": True,
             "quantitative": all(_is_num(v) for v in nonmissing),
             "temporal": all(parse_temporal(v) is not None for v in nonmissing),
-            "identifier": all(isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool)) for v in nonmissing),
+            "identifier": all(isinstance(v, str) or _is_int(v) for v in nonmissing),
         }[explicit]
         if not ok:
             raise FeatureError(f"explicit type {explicit!r} incompatible with column {name!r}")
@@ -318,7 +325,7 @@ def resolve_type(name: str, values: list, explicit: str | None) -> str:
         return "nominal"
     ln = _ascii_lower(name)
     if (ln in ("id", "uuid") or ln.endswith("_id")) and all(
-            isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool)) for v in nonmissing):
+            isinstance(v, str) or _is_int(v) for v in nonmissing):
         return "identifier"
     if all(parse_temporal(v) is not None for v in nonmissing):
         return "temporal"
@@ -397,7 +404,7 @@ def sql_features(sql: str, cols: list) -> list:
             t = toks[i]
             if t.depth == d0 and _kw(t, "LIMIT", "TOP"):
                 nxt = toks[i + 1] if i + 1 < n else None
-                if nxt is not None and nxt.kind == "number" and nxt.text.isdigit():
+                if nxt is not None and nxt.kind == "number" and all(ch in "0123456789" for ch in nxt.text):
                     f[8] = min(int(nxt.text), 1000) / 1000.0
                 break
         # ascending temporal order (first outer ORDER BY term)
@@ -443,7 +450,7 @@ def _asc_temporal(term, cols):
     if len(t) != 1:
         return False
     tok = t[0]
-    if tok.kind == "number" and tok.text.isdigit():
+    if tok.kind == "number" and all(ch in "0123456789" for ch in tok.text):
         k = int(tok.text) - 1
         cand = [k] if 0 <= k < len(cols) else []
     else:
@@ -493,7 +500,7 @@ def _group_flags(toks, cols):
         if toks[i].depth == d0 and _kw(toks[i], "GROUP") and _kw(toks[i + 1], "BY"):
             for item in _split_commas(toks, i + 2, _clause_end(toks, i + 2)):
                 cand = set()
-                if len(item) == 1 and item[0].kind == "number" and item[0].text.isdigit():
+                if len(item) == 1 and item[0].kind == "number" and all(ch in "0123456789" for ch in item[0].text):
                     k = int(item[0].text) - 1
                     if 0 <= k < len(cols):
                         cand.add(k)
@@ -527,7 +534,7 @@ def _entropy_norm(c):
     if c.K <= 1:
         return 0.0
     cnt = Counter(c.keys)
-    h = -sum((v / c.n) * math.log(v / c.n) for v in cnt.values())
+    h = -_sum((v / c.n) * math.log(v / c.n) for v in cnt.values())
     return h / math.log(c.K)
 
 
@@ -553,8 +560,16 @@ def global_features(cols: list, N: int) -> list:
         if len(set(pairs)) == N and N == nom[0].K * nom[1].K:
             crossed = 1.0
     f[14] = crossed
-    f[15] = sum(_entropy_norm(c) for c in nom) / len(nom) if nom else 0.0
+    f[15] = _sum(_entropy_norm(c) for c in nom) / len(nom) if nom else 0.0
     return f
+
+
+def _sum(values):
+    """Left-to-right binary64 accumulation (explicit: Python >= 3.12's sum() is compensated, other runtimes' are not)."""
+    acc = 0.0
+    for v in values:
+        acc += v
+    return acc
 
 
 def _quantile7(sorted_x, p):
@@ -587,15 +602,15 @@ def column_features(cols: list, N: int, table: list, sql_toks) -> list:
         x = c.num
         if c.type == "quantitative" and c.n > 0:
             n = c.n
-            mu = sum(x) / n
-            var = sum((v - mu) ** 2 for v in x) / n
+            mu = _sum(x) / n
+            var = _sum((v - mu) * (v - mu) for v in x) / n
             sigma = math.sqrt(var)
             f[12] = sigma / (abs(mu) + 1e-8)
-            if n >= 2 and var > 0:
-                m3 = sum((v - mu) ** 3 for v in x) / n
-                m4 = sum((v - mu) ** 4 for v in x) / n
-                f[13] = m3 / (sigma ** 3 + 1e-8)
-                f[14] = m4 / (sigma ** 4 + 1e-8) - 3
+            if n >= 2 and max(x) != min(x):          # exact constant test: independent of summation rounding
+                m3 = _sum((v - mu) * (v - mu) * (v - mu) for v in x) / n
+                m4 = _sum(((v - mu) * (v - mu)) * ((v - mu) * (v - mu)) for v in x) / n
+                f[13] = m3 / (sigma * sigma * sigma + 1e-8)
+                f[14] = m4 / ((sigma * sigma) * (sigma * sigma) + 1e-8) - 3
             f[15] = sum(1 for v in x if v < 0) / n
             f[16] = sum(1 for v in x if v == 0) / n
             f[19] = (max(x) - min(x)) / (abs(mu) + 1e-8)
@@ -607,8 +622,8 @@ def column_features(cols: list, N: int, table: list, sql_toks) -> list:
             f[17] = sum(1 for a, b in zip(x, x[1:]) if b >= a) / (c.n - 1)
         if c.type == "temporal" and c.n >= 3:
             d = [b - a for a, b in zip(x, x[1:])]
-            md = sum(d) / len(d)
-            f[18] = (sum((v - md) ** 2 for v in d) / len(d)) / (abs(md) ** 2 + 1e-8)
+            md = _sum(d) / len(d)
+            f[18] = (_sum((v - md) * (v - md) for v in d) / len(d)) / (md * md + 1e-8)
         f[22], f[23], f[24] = table[3], table[6], table[10]
         f[25], f[26], f[27] = table[16], table[21], table[22]
         out.append(f)
