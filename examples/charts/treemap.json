@@ -1,0 +1,41 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT region,category,SUM(amount) AS value FROM sales GROUP BY region,category;",
+  "rows": [
+    {
+      "region": "N",
+      "category": "A",
+      "value": 50
+    },
+    {
+      "region": "N",
+      "category": "B",
+      "value": 20
+    },
+    {
+      "region": "S",
+      "category": "C",
+      "value": 20
+    },
+    {
+      "region": "S",
+      "category": "D",
+      "value": 10
+    }
+  ],
+  "metadata": {
+    "hierarchy": [
+      "region",
+      "category"
+    ],
+    "additive": true,
+    "disjoint": true
+  },
+  "expected": {
+    "chartType": "treemap"
+  },
+  "explanation": {
+    "en": "Validated hierarchy",
+    "es": "Jerarquía validada"
+  }
+}

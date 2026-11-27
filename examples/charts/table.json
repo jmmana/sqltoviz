@@ -1,0 +1,29 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT id,category,amount FROM sales ORDER BY id;",
+  "rows": [
+    {
+      "id": 1,
+      "category": "A",
+      "amount": 40
+    },
+    {
+      "id": 2,
+      "category": "B",
+      "amount": 65
+    },
+    {
+      "id": 3,
+      "category": "C",
+      "amount": 30
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "table"
+  },
+  "explanation": {
+    "en": "Detail or fallback",
+    "es": "Detalle o respaldo"
+  }
+}

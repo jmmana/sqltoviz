@@ -1,0 +1,30 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,SUM(amount) AS value FROM sales GROUP BY category;",
+  "rows": [
+    {
+      "category": "A",
+      "value": 40
+    },
+    {
+      "category": "B",
+      "value": 65
+    },
+    {
+      "category": "C",
+      "value": 30
+    },
+    {
+      "category": "D",
+      "value": 50
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "bar"
+  },
+  "explanation": {
+    "en": "Categorical comparison",
+    "es": "Comparación categórica"
+  }
+}

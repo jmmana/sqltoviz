@@ -1,0 +1,37 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,segment,SUM(amount) AS value FROM sales GROUP BY category,segment;",
+  "rows": [
+    {
+      "category": "A",
+      "segment": "X",
+      "value": 40
+    },
+    {
+      "category": "A",
+      "segment": "Y",
+      "value": 25
+    },
+    {
+      "category": "B",
+      "segment": "X",
+      "value": 65
+    },
+    {
+      "category": "B",
+      "segment": "Y",
+      "value": 45
+    }
+  ],
+  "metadata": {
+    "additive": true,
+    "disjoint": true
+  },
+  "expected": {
+    "chartType": "stacked_bar"
+  },
+  "explanation": {
+    "en": "Additive disjoint segments",
+    "es": "Segmentos aditivos disjuntos"
+  }
+}

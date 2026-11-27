@@ -1,0 +1,57 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT month,segment,SUM(amount) AS value FROM sales GROUP BY month,segment ORDER BY month;",
+  "rows": [
+    {
+      "month": "2026-01",
+      "value": 20,
+      "segment": "X"
+    },
+    {
+      "month": "2026-01",
+      "segment": "Y",
+      "value": 10
+    },
+    {
+      "month": "2026-02",
+      "value": 35,
+      "segment": "X"
+    },
+    {
+      "month": "2026-02",
+      "segment": "Y",
+      "value": 15
+    },
+    {
+      "month": "2026-03",
+      "value": 28,
+      "segment": "X"
+    },
+    {
+      "month": "2026-03",
+      "segment": "Y",
+      "value": 20
+    },
+    {
+      "month": "2026-04",
+      "value": 55,
+      "segment": "X"
+    },
+    {
+      "month": "2026-04",
+      "segment": "Y",
+      "value": 25
+    }
+  ],
+  "metadata": {
+    "additive": true,
+    "disjoint": true
+  },
+  "expected": {
+    "chartType": "stacked_area"
+  },
+  "explanation": {
+    "en": "Aligned additive series",
+    "es": "Series aditivas alineadas"
+  }
+}

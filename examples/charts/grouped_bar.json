@@ -1,0 +1,34 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,segment,AVG(amount) AS value FROM sales GROUP BY category,segment;",
+  "rows": [
+    {
+      "category": "A",
+      "segment": "X",
+      "value": 40
+    },
+    {
+      "category": "A",
+      "segment": "Y",
+      "value": 25
+    },
+    {
+      "category": "B",
+      "segment": "X",
+      "value": 65
+    },
+    {
+      "category": "B",
+      "segment": "Y",
+      "value": 45
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "grouped_bar"
+  },
+  "explanation": {
+    "en": "Compare averages without stacking",
+    "es": "Comparar promedios sin apilar"
+  }
+}

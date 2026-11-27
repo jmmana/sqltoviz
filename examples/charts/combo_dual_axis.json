@@ -1,0 +1,40 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT month,SUM(amount) AS revenue,COUNT(*) AS orders FROM sales GROUP BY month ORDER BY month;",
+  "rows": [
+    {
+      "month": "2026-01",
+      "revenue": 2000,
+      "orders": 20
+    },
+    {
+      "month": "2026-02",
+      "revenue": 3500,
+      "orders": 25
+    },
+    {
+      "month": "2026-03",
+      "revenue": 2800,
+      "orders": 22
+    },
+    {
+      "month": "2026-04",
+      "revenue": 5500,
+      "orders": 32
+    }
+  ],
+  "metadata": {
+    "units": {
+      "revenue": "USD",
+      "orders": "count"
+    },
+    "dualAxisAllowed": true
+  },
+  "expected": {
+    "chartType": "combo_dual_axis"
+  },
+  "explanation": {
+    "en": "Two explicit units and scales",
+    "es": "Dos unidades y escalas explícitas"
+  }
+}
