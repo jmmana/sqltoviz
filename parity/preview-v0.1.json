@@ -1,0 +1,465 @@
+{
+  "scope": "deterministic-preview-only",
+  "tolerance": 0.000001,
+  "charts": [
+    {
+      "id": "scalar",
+      "sql": "SELECT 1",
+      "rows": [
+        {
+          "v": 1
+        }
+      ],
+      "chart": "kpi",
+      "y": "v"
+    },
+    {
+      "id": "zero",
+      "sql": "SELECT 0",
+      "rows": [
+        {
+          "v": 0
+        }
+      ],
+      "chart": "kpi",
+      "y": "v"
+    },
+    {
+      "id": "negative",
+      "sql": "SELECT -3",
+      "rows": [
+        {
+          "v": -3
+        }
+      ],
+      "chart": "kpi",
+      "y": "v"
+    },
+    {
+      "id": "bar",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "A",
+          "v": 2
+        },
+        {
+          "a": "B",
+          "v": 3
+        }
+      ],
+      "chart": "bar",
+      "x": "a",
+      "y": "v"
+    },
+    {
+      "id": "duplicates",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "A",
+          "v": 2
+        },
+        {
+          "a": "A",
+          "v": 3
+        }
+      ],
+      "chart": "table"
+    },
+    {
+      "id": "line",
+      "sql": "SELECT d,v",
+      "rows": [
+        {
+          "d": "2026-01-01",
+          "v": 1
+        },
+        {
+          "d": "2026-01-02",
+          "v": 2
+        },
+        {
+          "d": "2026-01-03",
+          "v": 3
+        },
+        {
+          "d": "2026-01-04",
+          "v": 4
+        }
+      ],
+      "chart": "line",
+      "x": "d",
+      "y": "v"
+    },
+    {
+      "id": "unordered_dates",
+      "sql": "SELECT d,v",
+      "rows": [
+        {
+          "d": "2026-01-04",
+          "v": 4
+        },
+        {
+          "d": "2026-01-01",
+          "v": 1
+        },
+        {
+          "d": "2026-01-03",
+          "v": 3
+        },
+        {
+          "d": "2026-01-02",
+          "v": 2
+        }
+      ],
+      "chart": "bar",
+      "x": "d",
+      "y": "v"
+    },
+    {
+      "id": "invalid_dates",
+      "sql": "SELECT d,v",
+      "rows": [
+        {
+          "d": "2026-02-30",
+          "v": 30
+        },
+        {
+          "d": "2026-02-31",
+          "v": 31
+        },
+        {
+          "d": "2026-02-32",
+          "v": 32
+        },
+        {
+          "d": "2026-02-33",
+          "v": 33
+        }
+      ],
+      "chart": "bar",
+      "x": "d",
+      "y": "v"
+    },
+    {
+      "id": "horizontal",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "C0",
+          "v": 0
+        },
+        {
+          "a": "C1",
+          "v": 1
+        },
+        {
+          "a": "C2",
+          "v": 2
+        },
+        {
+          "a": "C3",
+          "v": 3
+        },
+        {
+          "a": "C4",
+          "v": 4
+        },
+        {
+          "a": "C5",
+          "v": 5
+        },
+        {
+          "a": "C6",
+          "v": 6
+        },
+        {
+          "a": "C7",
+          "v": 7
+        },
+        {
+          "a": "C8",
+          "v": 8
+        },
+        {
+          "a": "C9",
+          "v": 9
+        },
+        {
+          "a": "C10",
+          "v": 10
+        },
+        {
+          "a": "C11",
+          "v": 11
+        },
+        {
+          "a": "C12",
+          "v": 12
+        }
+      ],
+      "chart": "horizontal_bar",
+      "x": "a",
+      "y": "v"
+    },
+    {
+      "id": "two_numbers",
+      "sql": "SELECT a,b",
+      "rows": [
+        {
+          "a": 1,
+          "b": 2
+        },
+        {
+          "a": 2,
+          "b": 3
+        }
+      ],
+      "chart": "table"
+    },
+    {
+      "id": "null",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "A",
+          "v": null
+        },
+        {
+          "a": "B",
+          "v": 3
+        }
+      ],
+      "chart": "table"
+    },
+    {
+      "id": "bool",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "A",
+          "v": true
+        },
+        {
+          "a": "B",
+          "v": false
+        }
+      ],
+      "chart": "table"
+    },
+    {
+      "id": "unicode",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "Bogotá",
+          "v": 1
+        },
+        {
+          "a": "日本",
+          "v": 2
+        }
+      ],
+      "chart": "bar",
+      "x": "a",
+      "y": "v"
+    },
+    {
+      "id": "empty_label",
+      "sql": "SELECT a,v",
+      "rows": [
+        {
+          "a": "",
+          "v": 1
+        },
+        {
+          "a": "B",
+          "v": 2
+        }
+      ],
+      "chart": "table"
+    },
+    {
+      "id": "three_columns",
+      "sql": "SELECT a,b,v",
+      "rows": [
+        {
+          "a": "A",
+          "b": "B",
+          "v": 2
+        }
+      ],
+      "chart": "table"
+    }
+  ],
+  "statistics": {
+    "mad": [
+      {
+        "values": [
+          1,
+          2,
+          3,
+          4,
+          100
+        ],
+        "status": "ok",
+        "indices": [
+          4
+        ]
+      },
+      {
+        "values": [
+          1,
+          1,
+          1,
+          100
+        ],
+        "status": "zero_mad",
+        "indices": []
+      },
+      {
+        "values": [
+          null,
+          1
+        ],
+        "status": "insufficient_samples",
+        "indices": []
+      }
+    ],
+    "temporal": [
+      {
+        "values": [
+          0,
+          10,
+          null,
+          20,
+          10
+        ],
+        "statuses": [
+          "zero_baseline",
+          "missing",
+          "missing",
+          "ok"
+        ],
+        "changes": [
+          null,
+          null,
+          null,
+          -0.5
+        ]
+      },
+      {
+        "values": [
+          -10,
+          -5
+        ],
+        "statuses": [
+          "ok"
+        ],
+        "changes": [
+          0.5
+        ]
+      }
+    ],
+    "pareto": [
+      {
+        "values": [
+          20,
+          80,
+          0
+        ],
+        "additive": true,
+        "status": "ok",
+        "indices": [
+          1
+        ]
+      },
+      {
+        "values": [
+          1,
+          -2
+        ],
+        "additive": true,
+        "status": "invalid_weights",
+        "indices": []
+      },
+      {
+        "values": [
+          1,
+          2
+        ],
+        "additive": false,
+        "status": "unknown_additivity",
+        "indices": []
+      },
+      {
+        "values": [
+          0,
+          0
+        ],
+        "additive": true,
+        "status": "zero_total",
+        "indices": []
+      }
+    ],
+    "pearson": [
+      {
+        "xs": [
+          1,
+          2,
+          null,
+          3
+        ],
+        "ys": [
+          3,
+          2,
+          8,
+          1
+        ],
+        "status": "ok",
+        "r": -1
+      },
+      {
+        "xs": [
+          1,
+          1,
+          1
+        ],
+        "ys": [
+          1,
+          2,
+          3
+        ],
+        "status": "constant_column",
+        "r": null
+      },
+      {
+        "xs": [
+          1,
+          2
+        ],
+        "ys": [
+          1,
+          2
+        ],
+        "status": "insufficient_samples",
+        "r": null
+      },
+      {
+        "xs": [
+          -1e+308,
+          0,
+          1e+308
+        ],
+        "ys": [
+          -1e+308,
+          0,
+          1e+308
+        ],
+        "status": "ok",
+        "r": 1
+      }
+    ]
+  }
+}
