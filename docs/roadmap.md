@@ -11,4 +11,22 @@
 - [E08 — Research and arXiv](https://github.com/jmmana/sqltoviz/issues/9)
 - [E09 — Release and launch](https://github.com/jmmana/sqltoviz/issues/10)
 
-Release gates: independently annotated held-out evaluation; 250 golden parity cases; three SDK smoke tests; live browser demo; measured latency and published limitations.
+## Acceptance gates / Criterios de aceptación
+
+| Scope / Alcance | Evidence / Evidencia |
+| --- | --- |
+| Foundation / Fundación | [Architecture decisions](architecture.md), versioned contracts and repository policies |
+| SDKs and charts / SDK y gráficos | Reproducible feature tests, input edge cases, explicit chart coverage and package install tests |
+| Browser / Navegador | Responsive functional controls, bilingual public copy and a successful live Pages smoke test |
+| Alpha / Alfa | [Release runbook](alpha-release.md), CI at the candidate commit, package ownership verification, model distribution metadata when included, and successful clean installs from each registry after release |
+| Scientific claims / Afirmaciones científicas | Independently annotated held-out evaluation, at least 250 golden parity cases, latency measurement and stated limitations |
+
+Verify each issue against its own acceptance criteria. Record the PR, test run,
+commit, and live endpoint or package version when relevant. Keep release
+evidence tied to the exact commit. Scientific claims require the independent
+evaluation even when the experimental preview already runs.
+
+Verifica cada issue con sus propios criterios. Registra el PR, la ejecución de
+pruebas, el commit y, cuando aplique, la URL publicada o la versión del paquete.
+Conserva la evidencia vinculada al commit probado. Las afirmaciones científicas
+requieren evaluación independiente aunque la vista previa experimental funcione.
