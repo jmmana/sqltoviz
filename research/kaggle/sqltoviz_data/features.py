@@ -534,7 +534,7 @@ def _entropy_norm(c):
     if c.K <= 1:
         return 0.0
     cnt = Counter(c.keys)
-    h = -sum((v / c.n) * math.log(v / c.n) for v in cnt.values())
+    h = -_sum((v / c.n) * math.log(v / c.n) for v in cnt.values())
     return h / math.log(c.K)
 
 
@@ -560,8 +560,16 @@ def global_features(cols: list, N: int) -> list:
         if len(set(pairs)) == N and N == nom[0].K * nom[1].K:
             crossed = 1.0
     f[14] = crossed
-    f[15] = sum(_entropy_norm(c) for c in nom) / len(nom) if nom else 0.0
+    f[15] = _sum(_entropy_norm(c) for c in nom) / len(nom) if nom else 0.0
     return f
+
+
+def _sum(values):
+    """Left-to-right binary64 accumulation (explicit: Python >= 3.12's sum() is compensated, other runtimes' are not)."""
+    acc = 0.0
+    for v in values:
+        acc += v
+    return acc
 
 
 def _quantile7(sorted_x, p):
@@ -594,15 +602,15 @@ def column_features(cols: list, N: int, table: list, sql_toks) -> list:
         x = c.num
         if c.type == "quantitative" and c.n > 0:
             n = c.n
-            mu = sum(x) / n
-            var = sum((v - mu) ** 2 for v in x) / n
+            mu = _sum(x) / n
+            var = _sum((v - mu) * (v - mu) for v in x) / n
             sigma = math.sqrt(var)
             f[12] = sigma / (abs(mu) + 1e-8)
-            if n >= 2 and var > 0:
-                m3 = sum((v - mu) ** 3 for v in x) / n
-                m4 = sum((v - mu) ** 4 for v in x) / n
-                f[13] = m3 / (sigma ** 3 + 1e-8)
-                f[14] = m4 / (sigma ** 4 + 1e-8) - 3
+            if n >= 2 and max(x) != min(x):          # exact constant test: independent of summation rounding
+                m3 = _sum((v - mu) * (v - mu) * (v - mu) for v in x) / n
+                m4 = _sum(((v - mu) * (v - mu)) * ((v - mu) * (v - mu)) for v in x) / n
+                f[13] = m3 / (sigma * sigma * sigma + 1e-8)
+                f[14] = m4 / ((sigma * sigma) * (sigma * sigma) + 1e-8) - 3
             f[15] = sum(1 for v in x if v < 0) / n
             f[16] = sum(1 for v in x if v == 0) / n
             f[19] = (max(x) - min(x)) / (abs(mu) + 1e-8)
@@ -614,8 +622,8 @@ def column_features(cols: list, N: int, table: list, sql_toks) -> list:
             f[17] = sum(1 for a, b in zip(x, x[1:]) if b >= a) / (c.n - 1)
         if c.type == "temporal" and c.n >= 3:
             d = [b - a for a, b in zip(x, x[1:])]
-            md = sum(d) / len(d)
-            f[18] = (sum((v - md) ** 2 for v in d) / len(d)) / (abs(md) ** 2 + 1e-8)
+            md = _sum(d) / len(d)
+            f[18] = (_sum((v - md) * (v - md) for v in d) / len(d)) / (md * md + 1e-8)
         f[22], f[23], f[24] = table[3], table[6], table[10]
         f[25], f[26], f[27] = table[16], table[21], table[22]
         out.append(f)

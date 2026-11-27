@@ -301,3 +301,9 @@ def test_lexical_ascii_only_for_digits_and_dates():
 def test_whitespace_set_is_the_documented_unicode_set():
     ws = [0x09, 0x0A, 0x0B, 0x0C, 0x0D, 0x1C, 0x1D, 0x1E, 0x1F, 0x20, 0x85, 0xA0, 0x1680, *range(0x2000, 0x200B), 0x2028, 0x2029, 0x202F, 0x205F, 0x3000]
     assert [cp for cp in range(0x110000) if chr(cp).isspace()] == ws
+
+
+def test_near_constant_column_is_summation_independent():
+    """[0.1]*3 has mean 0.10000000000000002 with naive summation; the exact constant test keeps skew/kurtosis at 0 (not -3)."""
+    _, c = run("SELECT v FROM t", ["v"], [[0.1], [0.1], [0.1]])
+    assert c[0, C["skewness"]] == 0 and c[0, C["excess_kurtosis"]] == 0

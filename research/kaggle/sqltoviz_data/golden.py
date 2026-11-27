@@ -86,6 +86,8 @@ def extension_cases() -> list:
         d("ext_doubled_quote_escapes", "SELECT 'a''b JOIN', \"c\"\"d\" FROM t", s("a", "b"), [[1, 2]]),
         d("ext_group_by_expression_match", "SELECT upper(a), COUNT(*) FROM t GROUP BY UPPER(a)", s("x", "n"), [["A", 1], ["B", 2]]),
         d("ext_order_by_quoted_identifier", "SELECT \"Day\", v FROM t ORDER BY \"Day\" ASC", s("Day", "v"), [["2024-01-01", 1], ["2024-01-02", 2], ["2024-01-03", 3]]),
+        d("ext_near_constant_float_column", "SELECT v FROM t", s("v"), [[0.1], [0.1], [0.1]]),
+        d("ext_skewed_float_column_sums", "SELECT v FROM t", s("v"), [[0.1], [0.2], [0.3], [1e-9], [123456.789], [0.7]]),
         d("ext_reject_unsafe_integral_float", "SELECT v FROM t", s("v"), [[1e300]], "reject"),
         d("ext_reject_unsafe_integer_neg", "SELECT v FROM t", s("v"), [[-9007199254740992]], "reject"),
     ]
