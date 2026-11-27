@@ -21,3 +21,15 @@ var plan = SqlToViz.Preview.Recommend("SELECT category, amount", sales,
         ["amount"] = row.Amount,
     });
 ```
+
+## Model-backed engine (experimental)
+
+```csharp
+using SqlToViz; using SqlToViz.Onnx;                           // dotnet add package SqlToViz.Onnx
+var engine = OnnxEngine.LoadDefault();                          // bundled EXPERIMENTAL candidate models, checksum-verified
+var rec = engine.Recommend("SELECT dept, SUM(sal) AS total FROM emp GROUP BY dept",
+    new[] { new ColumnSpec("dept"), new ColumnSpec("total") },
+    new[] { (IReadOnlyList<object?>)new object?[] { "a", 10.0 }, new object?[] { "b", 20.0 }, new object?[] { "c", 5.0 } });
+rec.FinalClass; rec.ModelStatus; rec.Roles; rec.Warnings;
+```
+`FeatureExtractor.Extract` (package `SqlToViz`, no dependencies) computes the 32 table and 28 column features of SqlVizSpec-v1.0.0; `Engine` takes any `IModelRunner`, and `SqlToViz.Onnx` provides `OnnxRunner` (SHA256 + tensor-schema validated, single-thread CPU). The bundled models are **candidates** (chart: synthetic labels; role: 322 Vega-Lite columns) and every result says `ModelStatus: "experimental"`. Final models drop in with `OnnxEngine.LoadFromDirectory(dir)` (a `manifest.json` with file/sha256/status) - the API and result shape do not change. SQL is never executed.

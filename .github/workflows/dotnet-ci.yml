@@ -1,10 +1,10 @@
 name: .NET SDK CI
 on:
   pull_request:
-    paths: ['packages/nuget/**', '.github/workflows/dotnet-ci.yml']
+    paths: ['packages/nuget/**', 'parity/**', 'spec/**', '.github/workflows/dotnet-ci.yml']
   push:
     branches: [development, main]
-    paths: ['packages/nuget/**', '.github/workflows/dotnet-ci.yml']
+    paths: ['packages/nuget/**', 'parity/**', 'spec/**', '.github/workflows/dotnet-ci.yml']
 permissions:
   contents: read
 jobs:
@@ -17,10 +17,21 @@ jobs:
           dotnet-version: |
             8.0.x
             10.0.x
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python spec/generate_bindings.py --check
       - run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release
       - run: dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts
+      - run: dotnet pack packages/nuget/SqlToViz.Onnx/SqlToViz.Onnx.csproj -c Release -o artifacts
       - run: |
           dotnet new console -o /tmp/sqltoviz-smoke -f net8.0
           dotnet add /tmp/sqltoviz-smoke package SqlToViz --version 0.1.0-alpha.1 --source "$PWD/artifacts"
           echo 'System.Console.WriteLine(typeof(SqlToViz.Preview).FullName);' > /tmp/sqltoviz-smoke/Program.cs
+          dotnet run --project /tmp/sqltoviz-smoke
+          dotnet add /tmp/sqltoviz-smoke package SqlToViz.Onnx --version 0.1.0-alpha.1 --source "$PWD/artifacts" --source https://api.nuget.org/v3/index.json
+          cat > /tmp/sqltoviz-smoke/Program.cs <<'EOF'
+          var r = SqlToViz.Onnx.OnnxEngine.LoadDefault().Recommend("SELECT SUM(x) AS s FROM t", new[] { new SqlToViz.ColumnSpec("s") }, new[] { (IReadOnlyList<object?>)new object?[] { 3L } });
+          if (r.FinalClass != "kpi" || r.ModelStatus != "experimental") Environment.Exit(1);
+          EOF
           dotnet run --project /tmp/sqltoviz-smoke
