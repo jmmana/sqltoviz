@@ -1,95 +1,155 @@
-<p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="docs/assets/logo-dark.svg"><img src="docs/assets/logo-light.svg" width="280" alt="SqlToViz"></picture></p>
-<p align="center"><img src="docs/assets/hero-es.svg" width="100%" alt="SqlToViz — 21 visualizaciones"></p>
+<p align="center"><img src="docs/assets/hero-es.svg" width="100%" alt="SqlToViz — 21 visualizaciones planificadas"></p>
 
-<p align="center"><a href="README.md">English</a> · <a href="README.es.md">Español</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="spec/chart-taxonomy-v1.md">SqlVizSpec</a></p>
+<p align="center"><a href="README.md">English</a> · <a href="README.es.md">Español</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="spec/chart-taxonomy-v1.md">SqlVizSpec</a> · <a href="examples/charts">Examples</a></p>
 
-![Pre-alpha](https://img.shields.io/badge/status-pre--alpha-818cf8) ![Python](https://img.shields.io/badge/Python-planned-3776AB) ![TypeScript](https://img.shields.io/badge/TypeScript-planned-3178C6) ![.NET](https://img.shields.io/badge/.NET-8%20%7C%2010-512BD4)
+<p align="center"><img src="https://img.shields.io/badge/status-pre--alpha-818cf8?style=for-the-badge" alt="Pre-alpha"> <img src="https://img.shields.io/badge/visualizations-21%20planned-0891b2?style=for-the-badge" alt="21 planned"> <img src="https://img.shields.io/badge/Python-planned-3776AB?style=for-the-badge" alt="Python planned"> <img src="https://img.shields.io/badge/TypeScript-planned-3178C6?style=for-the-badge" alt="TypeScript planned"> <img src="https://img.shields.io/badge/.NET-8%20%7C%2010-512BD4?style=for-the-badge" alt=".NET targets"></p>
 
-> **Pre-alfa: imágenes ilustrativas, no ejecuciones del SDK. Modelo, paquetes y playground pendientes.**
+> [!NOTE]
+> Pre-alfa: la galería ilustra datos sintéticos. El motor de inferencia, paquetes instalables y playground aún no están disponibles.
 
-## Qué es SqlToViz
+## ¿Por qué SqlToViz?
 
-Proyecto de recomendación visual a partir de SQL y filas resultantes, con inferencia ONNX local y validación semántica determinista.
+Una aplicación de BI o Text-to-SQL ya conoce la consulta que ejecutó y sus resultados. Sin embargo, elegir una visualización adecuada requiere interpretar dimensiones, medidas, agregaciones, unidades y granularidad. Una gráfica atractiva puede ser matemáticamente incorrecta si mezcla promedios o duplica totales.
 
-## Galería de 21 visualizaciones
+**SqlToViz** propone conservar el contexto de la consulta y combinarlo con el perfil estadístico de las filas. La recomendación se especializa y valida antes de producir un plan visual explicable. No ejecuta SQL ni sustituye el control de acceso a la base de datos: recibe la consulta y los resultados de la aplicación anfitriona.
 
-Cada imagen enlaza al fixture con SQL, filas sintéticas, metadatos, salida esperada y explicación.
+| Para quién | Aplicación prevista |
+|---|---|
+| Desarrolladores BI | Elegir gráficos para paneles dinámicos |
+| Agentes Text-to-SQL | Convertir resultados en visualizaciones sin una segunda llamada a un LLM |
+| Equipos .NET, Python y JS | Integrar un contrato compartido con inferencia local |
+| Investigadores | Evaluar el aporte del contexto SQL y la validación semántica |
 
-| **kpi** | **gauge** | **bar** |
-| :---: | :---: | :---: |
-| [![kpi](docs/assets/charts/kpi.svg)](examples/charts/kpi.json) | [![gauge](docs/assets/charts/gauge.svg)](examples/charts/gauge.json) | [![bar](docs/assets/charts/bar.svg)](examples/charts/bar.json) |
-| Agregado escalar | Objetivo y rango explícitos | Comparación categórica |
+## Cómo funciona
 
-| **horizontal_bar** | **grouped_bar** | **stacked_bar** |
-| :---: | :---: | :---: |
-| [![horizontal_bar](docs/assets/charts/horizontal_bar.svg)](examples/charts/horizontal_bar.json) | [![grouped_bar](docs/assets/charts/grouped_bar.svg)](examples/charts/grouped_bar.json) | [![stacked_bar](docs/assets/charts/stacked_bar.svg)](examples/charts/stacked_bar.json) |
-| Ranking ordenado | Comparar promedios sin apilar | Segmentos aditivos disjuntos |
+![Arquitectura prevista](docs/assets/pipeline-es.svg)
 
-| **waterfall** | **line** | **area** |
-| :---: | :---: | :---: |
-| [![waterfall](docs/assets/charts/waterfall.svg)](examples/charts/waterfall.json) | [![line](docs/assets/charts/line.svg)](examples/charts/line.json) | [![area](docs/assets/charts/area.svg)](examples/charts/area.json) |
-| Variaciones ordenadas conciliables | Tendencia temporal ordenada | Magnitud con base cero |
+El modelo propone; las reglas comprueban. La extracción léxico-estructural SQL no equivale a un parser AST completo. Se prevén 16 rasgos SQL, 16 globales de datos y 28 por columna, sujetos a congelación del contrato. El clasificador propone diez clases base; el resolvedor puede especializarlas a 21 salidas. Si faltan metadatos imprescindibles, el validador debe rechazar la alternativa arriesgada y considerar otra o una tabla.
 
-| **stacked_area** | **combo_dual_axis** | **donut** |
-| :---: | :---: | :---: |
-| [![stacked_area](docs/assets/charts/stacked_area.svg)](examples/charts/stacked_area.json) | [![combo_dual_axis](docs/assets/charts/combo_dual_axis.svg)](examples/charts/combo_dual_axis.json) | [![donut](docs/assets/charts/donut.svg)](examples/charts/donut.json) |
-| Series aditivas alineadas | Dos unidades y escalas explícitas | Partes exclusivas y total positivo |
+## Explora 21 visualizaciones
 
-| **treemap** | **sunburst** | **scatter** |
-| :---: | :---: | :---: |
-| [![treemap](docs/assets/charts/treemap.svg)](examples/charts/treemap.json) | [![sunburst](docs/assets/charts/sunburst.svg)](examples/charts/sunburst.json) | [![scatter](docs/assets/charts/scatter.svg)](examples/charts/scatter.json) |
-| Jerarquía validada | Jerarquía proporcional anidada | Valores cuantitativos pareados |
+Pulsa cualquier imagen para consultar SQL, filas, metadatos y gráfico esperado. Los ejemplos documentan el comportamiento previsto, no predicciones del modelo.
 
-| **bubble** | **heatmap** | **histogram** |
-| :---: | :---: | :---: |
-| [![bubble](docs/assets/charts/bubble.svg)](examples/charts/bubble.json) | [![heatmap](docs/assets/charts/heatmap.svg)](examples/charts/heatmap.json) | [![histogram](docs/assets/charts/histogram.svg)](examples/charts/histogram.json) |
-| Tercera métrica en área | Dos dimensiones discretas | Intervalos ordenados de igual ancho |
+### Resumen ejecutivo
 
-| **boxplot** | **violin** | **table** |
-| :---: | :---: | :---: |
-| [![boxplot](docs/assets/charts/boxplot.svg)](examples/charts/boxplot.json) | [![violin](docs/assets/charts/violin.svg)](examples/charts/violin.json) | [![table](docs/assets/charts/table.svg)](examples/charts/table.json) |
-| Resumen de cinco números | Densidad muestral con KDE gaussiana | Detalle o respaldo |
+| **kpi — Ingresos totales** | **gauge — Cumplimiento de meta** |
+| :---: | :---: |
+| [![Ingresos totales](docs/assets/charts/kpi.svg)](examples/charts/kpi.json) | [![Cumplimiento de meta](docs/assets/charts/gauge.svg)](examples/charts/gauge.json) |
+| Un valor responde una pregunta de negocio. | Una meta y rango conocidos hacen interpretable el progreso. |
 
-## Ejemplo
+### Comparación
+
+| **bar — Comparación de categorías** | **horizontal_bar — Ranking** |
+| :---: | :---: |
+| [![Comparación de categorías](docs/assets/charts/bar.svg)](examples/charts/bar.json) | [![Ranking](docs/assets/charts/horizontal_bar.svg)](examples/charts/horizontal_bar.json) |
+| Compara magnitudes desde una base común. | Lee categorías ordenadas y etiquetas largas. |
+
+| **grouped_bar — Comparar segmentos** | **stacked_bar — Composición por grupo** |
+| :---: | :---: |
+| [![Comparar segmentos](docs/assets/charts/grouped_bar.svg)](examples/charts/grouped_bar.json) | [![Composición por grupo](docs/assets/charts/stacked_bar.svg)](examples/charts/stacked_bar.json) |
+| Compara promedios lado a lado sin sumarlos. | Suma componentes disjuntos y aditivos en unidades comunes. |
+
+| **waterfall — Descomposición del cambio** |
+| :---: |
+| [![Descomposición del cambio](docs/assets/charts/waterfall.svg)](examples/charts/waterfall.json) |
+| Sigue aportes con signo desde el saldo inicial al final. |
+
+### Tiempo y tendencias
+
+| **line — Evolución temporal** | **area — Volumen en el tiempo** |
+| :---: | :---: |
+| [![Evolución temporal](docs/assets/charts/line.svg)](examples/charts/line.json) | [![Volumen en el tiempo](docs/assets/charts/area.svg)](examples/charts/area.json) |
+| Revela cambios entre observaciones ordenadas. | Destaca magnitud con una base significativa. |
+
+| **stacked_area — Composición cambiante** | **combo_dual_axis — Ingresos y pedidos** |
+| :---: | :---: |
+| [![Composición cambiante](docs/assets/charts/stacked_area.svg)](examples/charts/stacked_area.json) | [![Ingresos y pedidos](docs/assets/charts/combo_dual_axis.svg)](examples/charts/combo_dual_axis.json) |
+| Sigue series aditivas alineadas en el tiempo. | Usa unidades explícitas y ejes etiquetados solo si se justifica. |
+
+### Parte-todo y jerarquía
+
+| **donut — Participación del total** | **treemap — Composición de portafolio** |
+| :---: | :---: |
+| [![Participación del total](docs/assets/charts/donut.svg)](examples/charts/donut.json) | [![Composición de portafolio](docs/assets/charts/treemap.svg)](examples/charts/treemap.json) |
+| Muestra partes excluyentes no negativas de un total positivo. | Compara pesos jerárquicos aditivos mediante área. |
+
+| **sunburst — Participaciones anidadas** |
+| :---: |
+| [![Participaciones anidadas](docs/assets/charts/sunburst.svg)](examples/charts/sunburst.json) |
+| Explora una jerarquía padre-hijo validada. |
+
+### Relaciones
+
+| **scatter — Costo frente a ingresos** | **bubble — Relación con volumen** |
+| :---: | :---: |
+| [![Costo frente a ingresos](docs/assets/charts/scatter.svg)](examples/charts/scatter.json) | [![Relación con volumen](docs/assets/charts/bubble.svg)](examples/charts/bubble.json) |
+| Examina observaciones cuantitativas pareadas. | Representa una tercera medida no negativa con el área del marcador. |
+
+### Distribución y matrices
+
+| **heatmap — Actividad por día y hora** | **histogram — Distribución de frecuencias** |
+| :---: | :---: |
+| [![Actividad por día y hora](docs/assets/charts/heatmap.svg)](examples/charts/heatmap.json) | [![Distribución de frecuencias](docs/assets/charts/histogram.svg)](examples/charts/histogram.json) |
+| Expone patrones entre dos dimensiones discretas. | Usa muestras o intervalos de frecuencia válidos y ordenados. |
+
+| **boxplot — Dispersión por grupo** | **violin — Densidad por grupo** |
+| :---: | :---: |
+| [![Dispersión por grupo](docs/assets/charts/boxplot.svg)](examples/charts/boxplot.json) | [![Densidad por grupo](docs/assets/charts/violin.svg)](examples/charts/violin.json) |
+| Compara cuantiles con semántica de bigotes declarada. | Estima la forma de la distribución con muestras suficientes. |
+
+### Detalle y respaldo
+
+| **table — Detalle de transacciones** |
+| :---: |
+| [![Detalle de transacciones](docs/assets/charts/table.svg)](examples/charts/table.json) |
+| Conserva las filas exactas cuando un gráfico no es adecuado. |
+
+## De SQL a un plan de visualización
 
 ```sql
-SELECT category,SUM(amount) AS value FROM sales GROUP BY category;
+SELECT category, SUM(amount) AS value
+FROM sales
+GROUP BY category;
 ```
 
 ```json
-[
-  {
-    "category": "A",
-    "value": 40
-  },
-  {
-    "category": "B",
-    "value": 65
-  },
-  {
-    "category": "C",
-    "value": 30
-  },
-  {
-    "category": "D",
-    "value": 50
-  }
-]
+[{"category":"A","value":40},{"category":"B","value":65},
+ {"category":"C","value":30},{"category":"D","value":50}]
 ```
 
-Salida esperada, no ejecutada: `{"chartType":"bar"}`.
+![Bar example](docs/assets/charts/bar.svg)
 
-## Arquitectura
+Plan ilustrativo esperado (no es una respuesta ejecutada del SDK):
 
-```mermaid
-flowchart LR
- SQL --> F[Features]
- Rows --> F
- F --> M[ONNX 10 base classes]
- M --> S[Semantic resolver]
- S --> V[Semantic validation]
- V --> O[21 outputs]
+```json
+{"chartType":"bar","encodings":{"x":{"field":"category"},"y":{"field":"value"}}}
 ```
+
+Una dimensión categórica y una medida cuantitativa hacen razonable una gráfica de barras. Otra alternativa podría ser válida; este fixture documenta una respuesta prevista.
+
+## Seguridad semántica: por qué importa elegir bien
+
+| Escenario | Incorrecto o sin evidencia | Comportamiento esperado |
+|---|---|---|
+| AVG by segment | stacked_bar | grouped_bar |
+| COUNT DISTINCT | Sumar grupos solapados | Exigir disjunción o rechazar apilado |
+| Gauge | Inventar meta | Exigir meta explícita |
+| Donut | Partes negativas o solapadas | Elegir alternativa admisible |
+
+![Grouped bar](docs/assets/charts/grouped_bar.svg)
+
+Por ejemplo, recombinar dos promedios exige sus denominadores; sumarlos no representa un total válido. El validador previsto expone motivos de rechazo en lugar de producir una gráfica engañosa.
+
+## Hallazgos estadísticos
+
+| Detector | Hallazgo previsto |
+|---|---|
+| Modified Z-score / MAD | Atípicos puntuales; tratamiento explícito de MAD cero |
+| Period shift | Comparar último periodo con base anterior |
+| Pareto | Concentración de aportes no negativos |
+| Pearson | Asociación lineal, no causalidad |
+
+Los hallazgos se calcularán desde los datos, no mediante un LLM. Los umbrales y limitaciones deben validarse.
 
 ## SDK: interfaces previstas
 
@@ -111,18 +171,29 @@ using var engine = new VizEngine();
 var plan = engine.Analyze(sql, rows);
 ```
 
-## Seguridad semántica
+## Investigación y reproducibilidad
 
-No apilar promedios sin recomposición válida. No sumar COUNT DISTINCT sin disjunción demostrada. Gauge exige objetivo; boxplot exige cuantiles o muestras. [Spec](spec/chart-taxonomy-v1.md).
+Hipótesis: el contexto SQL mejora las recomendaciones frente al perfilado de datos aislado. Comparar modelos solo datos, solo SQL, fusión, reglas e híbrido con particiones agrupadas independientes. Medir Macro-F1, roles, violaciones semánticas, cobertura de respaldo, paridad y latencia de inferencia y extremo a extremo por separado. Aún no hay resultados medidos ni identificador arXiv.
 
-## Investigación y benchmarks
+[Kaggle](research/kaggle/README.md) · [Paper](research/paper/README.md) · [Parity](parity/README.md)
 
-MAD, cambio temporal, Pareto y Pearson planificados. Se evaluarán Macro-F1, cobertura, violaciones semánticas y latencia p50/p99. No hay resultados medidos ni preprint publicado.
+## Ruta de desarrollo
 
-[Kaggle](research/kaggle/README.md) · [Paper](research/paper/README.md)
+Las listas de issues son la fuente de verdad; registrar no equivale a completar.
 
-## Progreso y contribución
+| Epic | Enfoque |
+|---|---|
+| [E00](https://github.com/jmmana/sqltoviz/issues/1) | Foundation |
+| [E01](https://github.com/jmmana/sqltoviz/issues/2) | Kaggle |
+| [E02](https://github.com/jmmana/sqltoviz/issues/3) | SqlVizSpec |
+| [E03](https://github.com/jmmana/sqltoviz/issues/4) | Python |
+| [E04](https://github.com/jmmana/sqltoviz/issues/5) | TypeScript |
+| [E05](https://github.com/jmmana/sqltoviz/issues/6) | .NET |
+| [E06](https://github.com/jmmana/sqltoviz/issues/7) | Web & branding |
+| [E07](https://github.com/jmmana/sqltoviz/issues/8) | CI/CD |
+| [E08](https://github.com/jmmana/sqltoviz/issues/9) | Research |
+| [E09](https://github.com/jmmana/sqltoviz/issues/10) | Release |
 
 [Roadmap](docs/roadmap.md) · [Issues](https://github.com/jmmana/sqltoviz/issues) · [Contributing](CONTRIBUTING.md)
 
-Licencia prevista Apache-2.0; texto pendiente.
+Licencia Apache-2.0 prevista; texto pendiente. Por ahora cita la URL del repositorio; referencia del artículo pendiente.
