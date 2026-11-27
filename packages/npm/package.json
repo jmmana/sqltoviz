@@ -17,10 +17,20 @@
         "types": "./dist/cjs/index.d.ts",
         "default": "./dist/cjs/index.js"
       }
-    }
+    },
+    "./node": {
+      "types": "./dist/esm/node.d.ts",
+      "import": "./dist/esm/node.js"
+    },
+    "./web": {
+      "types": "./dist/esm/web.d.ts",
+      "import": "./dist/esm/web.js"
+    },
+    "./models/*": "./models/*"
   },
   "files": [
     "dist",
+    "models",
     "README.md"
   ],
   "engines": {
@@ -32,7 +42,10 @@
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "typescript": "5.8.3"
+    "typescript": "5.8.3",
+    "onnxruntime-node": "1.31.1",
+    "onnxruntime-web": "1.31.1",
+    "@types/node": "22.15.0"
   },
   "repository": {
     "type": "git",
@@ -41,5 +54,17 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "onnxruntime-node": ">=1.20",
+    "onnxruntime-web": ">=1.20"
+  },
+  "peerDependenciesMeta": {
+    "onnxruntime-node": {
+      "optional": true
+    },
+    "onnxruntime-web": {
+      "optional": true
+    }
   }
 }

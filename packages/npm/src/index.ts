@@ -1,5 +1,7 @@
 export * from "./features.js";
 export * from "./contract.js";
+export * from "./rules.js";
+export * from "./engine.js";
 import type {Cell} from "./features.js";
 export type Row=Record<string,Cell>;
 export type Plan={contract_version:"preview-v0.1";mode:"deterministic-preview";chartType:"kpi"|"bar"|"horizontal_bar"|"line"|"table";encodings:{x?:string;y?:string};reason:string;warnings:string[];insights:Record<string,ReturnType<typeof madOutliers>>};

@@ -4,5 +4,9 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "outDir": "dist/cjs"
-  }
+  },
+  "exclude": [
+    "src/node.ts",
+    "src/web.ts"
+  ]
 }
