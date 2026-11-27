@@ -22,4 +22,3 @@ public class PreviewParity {
  foreach(var c in s.GetProperty("pareto").EnumerateArray()){var p=Statistics.Pareto(Numbers(c.GetProperty("values")),additive:c.GetProperty("additive").GetBoolean());Assert.Equal(c.GetProperty("status").GetString(),p.Status);Assert.Equal(Indices(c.GetProperty("indices")),p.Items.Where(v=>v.Included).Select(v=>v.Index).ToArray());}
  foreach(var c in s.GetProperty("pearson").EnumerateArray()){var p=Statistics.Pearson(Numbers(c.GetProperty("xs")),Numbers(c.GetProperty("ys")));Assert.Equal(c.GetProperty("status").GetString(),p.Status);var v=c.GetProperty("r");if(v.ValueKind==JsonValueKind.Null)Assert.Null(p.R);else Assert.InRange(Math.Abs(p.R!.Value-v.GetDouble()),0,doc.RootElement.GetProperty("tolerance").GetDouble());}
  }}
-}
