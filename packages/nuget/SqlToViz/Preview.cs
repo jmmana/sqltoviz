@@ -24,6 +24,26 @@ public static class Preview {
   return new("table",null,null,"No supported safe chart for shape");
  }
  public static Plan Recommend(string sql,DataTable table)=>Recommend(sql,table.Rows.Cast<DataRow>().Select(r=>(IReadOnlyDictionary<string,object?>)table.Columns.Cast<DataColumn>().ToDictionary(c=>c.ColumnName,c=>r.IsNull(c)?null:r[c])).ToArray());
+
+/// <summary>Recommends a chart from typed rows projected into named scalar columns.</summary>
+public static Plan Recommend<TRow>(
+    string sql,
+    IReadOnlyList<TRow> rows,
+    Func<TRow, IReadOnlyDictionary<string, object?>> project)
+{
+    ArgumentNullException.ThrowIfNull(rows);
+    ArgumentNullException.ThrowIfNull(project);
+    if (rows.Count is < 1 or > 5000)
+        throw new ArgumentException("Expected 1–5,000 rows", nameof(rows));
+
+    var projectedRows = new IReadOnlyDictionary<string, object?>[rows.Count];
+    for (int index = 0; index < rows.Count; index++)
+        projectedRows[index] = project(rows[index]) ??
+            throw new ArgumentException("Projection must return a row dictionary", nameof(project));
+
+    return Recommend(sql, projectedRows);
+}
+
  public static object ToApexCharts(Plan p,IReadOnlyList<IReadOnlyDictionary<string,object?>> rows){
   if(p.ChartType is not ("bar" or "horizontal_bar" or "line")||p.X is null||p.Y is null)throw new ArgumentException("Unsupported chart");
   return new { chart=new {type=p.ChartType=="line"?"line":"bar"},plotOptions=new {bar=new {horizontal=p.ChartType=="horizontal_bar"}},xaxis=new {categories=rows.Select(r=>r[p.X]).ToArray()},series=new[]{new{name=p.Y,data=rows.Select(r=>r[p.Y]).ToArray()}}};
