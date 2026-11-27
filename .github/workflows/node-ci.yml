@@ -1,10 +1,10 @@
 name: Node SDK CI
 on:
   pull_request:
-    paths: ['packages/npm/**', '.github/workflows/node-ci.yml']
+    paths: ['packages/npm/**', 'parity/**', 'spec/**', '.github/workflows/node-ci.yml']
   push:
     branches: [development, main]
-    paths: ['packages/npm/**', '.github/workflows/node-ci.yml']
+    paths: ['packages/npm/**', 'parity/**', 'spec/**', '.github/workflows/node-ci.yml']
 permissions:
   contents: read
 jobs:
@@ -21,6 +21,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python ../../spec/generate_bindings.py --check
       - run: npm install --ignore-scripts
       - run: npm test
       - run: |
@@ -32,3 +36,5 @@ jobs:
           npm install "./$archive"
           node --input-type=module -e "import {recommend} from '@sqltoviz/core'; if(recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
           node -e "if(require('@sqltoviz/core').recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
+          npm install onnxruntime-node@1.31.1 onnxruntime-web@1.31.1
+          node --input-type=module -e "import {loadDefaultEngine} from '@sqltoviz/core/node'; const r=await (await loadDefaultEngine()).recommend('SELECT SUM(x) AS s FROM t',['s'],[[3]]); if(r.final_class!=='kpi'||r.model_status!=='experimental')process.exit(1)"
