@@ -35,3 +35,12 @@ Ejecuta las pruebas desde la raíz del repositorio con Node.js 22.13 o posterior
 ```sh
 node --test site/*.test.mjs
 ```
+
+## Appearance / Apariencia
+
+The preview follows the system color scheme until you select a theme. The
+toggle keeps your choice on this browser when local storage is available.
+
+La vista previa sigue el esquema de color del sistema hasta que elijas un tema.
+El selector conserva la elección en este navegador cuando el almacenamiento
+local está disponible.
