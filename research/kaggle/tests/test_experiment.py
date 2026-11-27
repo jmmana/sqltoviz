@@ -42,3 +42,12 @@ def test_meta_records_contract_pin():
 def test_item_hash_is_order_independent():
     a = G.generate(5, seed=1, n_schemas=5)
     assert E.sha256_items(a) == E.sha256_items(list(reversed(a)))
+
+
+def test_ablation_groups_partition_and_report(result):
+    res, tr, te = result
+    Xtr, _ = E.featurize(tr)
+    Xte, _ = E.featurize(te)
+    ab = E.ablate(Xtr, [i["label"] for i in tr], Xte, [i["label"] for i in te], seed=0)
+    assert set(ab["groups"]) == set(E.ABLATION_GROUPS) and 0 <= ab["full"] <= 1
+    assert sum(g["n_features"] for g in ab["groups"].values()) == 32

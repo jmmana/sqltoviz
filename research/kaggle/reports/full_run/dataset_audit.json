@@ -1,0 +1,180 @@
+{
+ "mode": "full",
+ "seed": 20261127,
+ "repo_commit": "de6feb27706111121519c0dc5bddeb3e854ed746",
+ "contract_version": "SqlVizSpec-v1.0.0",
+ "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+ "interpretations": {
+  "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+  "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+  "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+  "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+ },
+ "acquisition": [],
+ "real_candidates": {
+  "spider_train": {
+   "input": 7000,
+   "ok": 6743,
+   "not_executable": 3,
+   "empty": 254,
+   "out_of_contract": 0,
+   "missing_db": 0
+  },
+  "spider_dev": {
+   "input": 1034,
+   "ok": 985,
+   "not_executable": 0,
+   "empty": 49,
+   "out_of_contract": 0,
+   "missing_db": 0
+  },
+  "bird_dev": {
+   "input": 1534,
+   "ok": 1525,
+   "not_executable": 7,
+   "empty": 0,
+   "out_of_contract": 2,
+   "missing_db": 0
+  }
+ },
+ "dedup": {
+  "input": 9253,
+  "kept": 5781,
+  "dropped": 3472,
+  "cross_group_dup_templates": 34
+ },
+ "real_split_audit": {
+  "n": 5781,
+  "splits": {
+   "train": {
+    "n": 4050,
+    "groups": 117,
+    "classes": {
+     "unlabelled": 4050
+    }
+   },
+   "val": {
+    "n": 864,
+    "groups": 26,
+    "classes": {
+     "unlabelled": 864
+    }
+   },
+   "test": {
+    "n": 867,
+    "groups": 27,
+    "classes": {
+     "unlabelled": 867
+    }
+   }
+  }
+ },
+ "synthetic_leakage_audit": {
+  "n": 20000,
+  "n_schemas": 300,
+  "structural_ceiling_accuracy": 0.6,
+  "uniform_chance": 0.1,
+  "views": {
+   "sql_features16": {
+    "accuracy": 0.5703,
+    "macro_f1": 0.5700280485407886,
+    "within_shape": {
+     "cat_quant": {
+      "accuracy": 0.3253333333333333,
+      "chance": 0.3333333333333333,
+      "n": 6000
+     },
+     "time_quant": {
+      "accuracy": 0.48225,
+      "chance": 0.5,
+      "n": 4000
+     },
+     "two_nom_quant": {
+      "accuracy": 0.48725,
+      "chance": 0.5,
+      "n": 4000
+     }
+    }
+   },
+   "sql_token_bag": {
+    "accuracy": 0.5885,
+    "macro_f1": 0.5860157079841176,
+    "within_shape": {
+     "cat_quant": {
+      "accuracy": 0.333,
+      "chance": 0.3333333333333333,
+      "n": 6000
+     },
+     "time_quant": {
+      "accuracy": 0.49075,
+      "chance": 0.5,
+      "n": 4000
+     },
+     "two_nom_quant": {
+      "accuracy": 0.50725,
+      "chance": 0.5,
+      "n": 4000
+     }
+    }
+   },
+   "names_only": {
+    "accuracy": 0.50895,
+    "macro_f1": 0.5041296126680332,
+    "within_shape": {
+     "cat_quant": {
+      "accuracy": 0.3385,
+      "chance": 0.3333333333333333,
+      "n": 6000
+     },
+     "time_quant": {
+      "accuracy": 0.4965,
+      "chance": 0.5,
+      "n": 4000
+     },
+     "two_nom_quant": {
+      "accuracy": 0.50275,
+      "chance": 0.5,
+      "n": 4000
+     }
+    }
+   },
+   "data_features16_global": {
+    "accuracy": 0.8516,
+    "macro_f1": 0.8495449093866263,
+    "within_shape": {
+     "cat_quant": {
+      "accuracy": 0.8573333333333333,
+      "chance": 0.3333333333333333,
+      "n": 6000
+     },
+     "time_quant": {
+      "accuracy": 0.472,
+      "chance": 0.5,
+      "n": 4000
+     },
+     "two_nom_quant": {
+      "accuracy": 1.0,
+      "chance": 0.5,
+      "n": 4000
+     }
+    }
+   }
+  }
+ },
+ "synthetic_sha256": "0d8ebaba289924497ad51a80160de2c554183c715a8920794b7bfd46184298f2",
+ "feature_files": {
+  "synthetic": {
+   "n": 20000,
+   "rejected": 0
+  },
+  "real": {
+   "n": 5781,
+   "rejected": 0
+  }
+ },
+ "label_provenance": {
+  "synthetic": "by construction",
+  "llm": "pilot only (llm-labels/)",
+  "human": "none yet"
+ }
+}

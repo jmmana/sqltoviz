@@ -1,0 +1,28 @@
+name: Preview cross-runtime parity
+on:
+  pull_request:
+    paths: ['parity/**','packages/**','.github/workflows/preview-parity.yml']
+  push:
+    branches: [development, main]
+    paths: ['parity/**','packages/**','.github/workflows/preview-parity.yml']
+permissions:
+  contents: read
+jobs:
+  parity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: cd packages/python && python -m unittest discover -s tests
+      - run: cd packages/npm && npm install --ignore-scripts && npm test
+      - run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release

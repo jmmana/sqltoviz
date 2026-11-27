@@ -1,0 +1,111 @@
+[
+ {
+  "key": "hu2019vizml",
+  "title": "VizML: A Machine Learning Approach to Visualization Recommendation",
+  "prefer": "arxiv",
+  "author": "Hu"
+ },
+ {
+  "key": "dibia2019data2vis",
+  "title": "Data2Vis: Automatic Generation of Data Visualizations Using Sequence-to-Sequence Recurrent Neural Networks",
+  "prefer": "arxiv",
+  "author": "Dibia"
+ },
+ {
+  "key": "luo2018deepeye",
+  "title": "DeepEye: Towards Automatic Data Visualization",
+  "author": "Luo",
+  "doi": "10.1109/ICDE.2018.00019"
+ },
+ {
+  "key": "moritz2018draco",
+  "title": "Formalizing Visualization Design Knowledge as Constraints: Actionable and Extensible Models in Draco",
+  "author": "Moritz",
+  "avoid_doi_prefix": "10.31219",
+  "doi": "10.1109/TVCG.2018.2865240"
+ },
+ {
+  "key": "luo2021nvbench",
+  "title": "Synthesizing Natural Language to Visualization (NL2VIS) Benchmarks from NL2SQL Benchmarks",
+  "author": "Luo"
+ },
+ {
+  "key": "luo2022ncnet",
+  "title": "Natural Language to Visualization by Neural Machine Translation",
+  "prefer": "arxiv",
+  "author": "Luo"
+ },
+ {
+  "key": "yu2018spider",
+  "title": "Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task",
+  "prefer": "arxiv",
+  "author": "Yu"
+ },
+ {
+  "key": "li2023bird",
+  "title": "Can LLM Already Serve as A Database Interface? A BIg Bench for Large-Scale Database Grounded Text-to-SQLs",
+  "prefer": "arxiv",
+  "author": "Li"
+ },
+ {
+  "key": "satyanarayan2017vegalite",
+  "title": "Vega-Lite: A Grammar of Interactive Graphics",
+  "author": "Satyanarayan",
+  "avoid_doi_prefix": "10.31219"
+ },
+ {
+  "key": "mackinlay2007showme",
+  "title": "Show Me: Automatic Presentation for Visual Analysis",
+  "author": "Mackinlay"
+ },
+ {
+  "key": "wongsuphasawat2016voyager",
+  "title": "Voyager: Exploratory Analysis via Faceted Browsing of Visualization Recommendations",
+  "author": "Wongsuphasawat"
+ },
+ {
+  "key": "dibia2023lida",
+  "title": "LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using Large Language Models",
+  "prefer": "arxiv",
+  "author": "Dibia"
+ },
+ {
+  "key": "zhou2020table2charts",
+  "title": "Table2Charts: Recommending Charts by Learning Shared Table Representations",
+  "prefer": "arxiv",
+  "author": "Zhou"
+ },
+ {
+  "key": "cohen1960kappa",
+  "title": "A Coefficient of Agreement for Nominal Scales",
+  "author": "Cohen"
+ },
+ {
+  "key": "breiman2001rf",
+  "title": "Random Forests",
+  "author": "Breiman",
+  "doi": "10.1023/A:1010933404324"
+ },
+ {
+  "key": "pedregosa2011sklearn",
+  "title": "Scikit-learn: Machine Learning in Python",
+  "prefer": "arxiv",
+  "author": "Pedregosa"
+ },
+ {
+  "key": "leys2013mad",
+  "title": "Detecting outliers: Do not use standard deviation around the mean, use absolute deviation around the median",
+  "author": "Leys"
+ },
+ {
+  "key": "zhu2020survey",
+  "title": "A survey on automatic infographics and visualization recommendations",
+  "author": "Zhu"
+ },
+ {
+  "key": "yang2023draco2",
+  "title": "Draco 2: An Extensible Platform to Model Visualization Design",
+  "prefer": "arxiv",
+  "author": "Yang"
+ }
+]

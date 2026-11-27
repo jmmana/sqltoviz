@@ -1,0 +1,53 @@
+{
+ "status": "CANDIDATE - not final",
+ "contract_version": "SqlVizSpec-v1.0.0",
+ "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+ "interpretations": {
+  "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+  "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+  "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+  "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+ },
+ "repo_commit": "de6feb27706111121519c0dc5bddeb3e854ed746",
+ "onnx_sha256": "578f836f04371fc0f1fff5522057acb30493c716650e498930653b8e5a5b54ce",
+ "class_order": [
+  "kpi",
+  "bar",
+  "horizontal_bar",
+  "stacked_bar",
+  "line",
+  "area",
+  "donut",
+  "scatter",
+  "heatmap",
+  "table"
+ ],
+ "trained_on": "synthetic only (label by construction)",
+ "classifier": "RandomForest (fixed defaults, no tuning)",
+ "onnx_vs_sklearn": {
+  "n": 2942,
+  "max_abs_diff": 2.5976928486048934e-07,
+  "within_tolerance": true,
+  "argmax_equal_rate": 1.0,
+  "row_sums_max_dev": 2.384185791015625e-07,
+  "atol": 1e-06,
+  "rtol": 1e-06
+ },
+ "golden_cases": 288,
+ "golden_verification": {
+  "accepted_ok": 277,
+  "rejected_ok": 11,
+  "max_abs_diff": {
+   "table_features": 0.0,
+   "column_features": 0.0,
+   "chart_scores": 0.0
+  }
+ },
+ "limitations": [
+  "synthetic labels encode generator conventions",
+  "table-level features cannot separate bar/horizontal_bar and line/area",
+  "contract readings confirmed (normative) but human validation pending",
+  "role model not trained (no role labels)",
+  "cross-SDK parity not yet measured"
+ ]
+}
