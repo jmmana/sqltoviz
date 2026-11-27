@@ -1,0 +1,11 @@
+{
+  "audit_date": "2026-11-27",
+  "audit_issue": "jmmana/sqltoviz#19",
+  "legal_advice": false,
+  "sources": [
+    {"id": "vizml", "license": null, "status": "blocked", "evidence": ["github license API null", "LICENSE 404", "S3 GET 403 on 2026-11-27", "upstream issues #4, #6"], "redistribution": "not_permitted_until_resolved"},
+    {"id": "spider", "license": "CC-BY-SA-4.0", "code_license": "Apache-2.0", "status": "ok_sharealike", "evidence": ["https://yale-lily.github.io/spider"]},
+    {"id": "bird", "license": "CC-BY-SA-4.0", "code_license": "MIT", "status": "ok_sharealike_per_db_provenance_unresolved", "evidence": ["https://bird-bench.github.io/"]},
+    {"id": "tpch_tpcds", "license": "TPC-EULA-2.2.0", "status": "ok_with_restrictions", "evidence": ["https://www.tpc.org/TPC_Documents_Current_Versions/txt/EULA_v2.2.0.txt"], "constraints": ["label results not comparable to TPC Benchmark Results", "distribute scripts not TPC software"]}
+  ]
+}
