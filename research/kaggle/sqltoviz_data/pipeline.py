@@ -90,6 +90,13 @@ def write_manifest(out_dir, files: dict, extra: dict) -> dict:
     """files: {relative_path: license_namespace}. Records sha256/size per file."""
     out_dir = Path(out_dir)
     entries = {rel: {"namespace": ns, "sha256": sha256_file(out_dir / rel), "bytes": (out_dir / rel).stat().st_size} for rel, ns in files.items()}
+    prev = out_dir / "MANIFEST.json"
+    if prev.exists():                                   # later notebooks add to (never overwrite) earlier entries
+        old = json.loads(prev.read_text())
+        if old.get("contract_sha256") != F.CONTRACT_SHA256:
+            raise F.FeatureError("existing manifest was built with a different contract")
+        entries = {**old.get("files", {}), **entries}
+        extra = {**{k: v for k, v in old.items() if k not in ("files", "contract_version", "contract_sha256")}, **extra}
     man = {"contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "files": entries, **extra}
-    (out_dir / "MANIFEST.json").write_text(json.dumps(man, indent=1, sort_keys=True))
+    prev.write_text(json.dumps(man, indent=1, sort_keys=True))
     return man

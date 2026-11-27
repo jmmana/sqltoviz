@@ -47,3 +47,10 @@ def test_manifest_hashes(tmp_path):
     m = P.write_manifest(tmp_path, {"x.txt": "apache-2.0"}, {"seed": 1})
     assert m["files"]["x.txt"]["sha256"] == P.sha256_file(tmp_path / "x.txt") and m["contract_sha256"] == F.CONTRACT_SHA256
     assert json.loads((tmp_path / "MANIFEST.json").read_text())["seed"] == 1
+
+
+def test_manifest_merges_across_notebooks(tmp_path):
+    (tmp_path / "a.txt").write_text("a"); (tmp_path / "b.txt").write_text("b")
+    P.write_manifest(tmp_path, {"a.txt": "apache-2.0"}, {"mode": "full", "stage": "dataset"})
+    m = P.write_manifest(tmp_path, {"b.txt": "apache-2.0"}, {"stage": "export"})
+    assert set(m["files"]) == {"a.txt", "b.txt"} and m["mode"] == "full" and m["stage"] == "export"

@@ -1,0 +1,60 @@
+{
+ "experiment": "ablation_leave_one_group_out",
+ "meta": {
+  "contract_version": "SqlVizSpec-v1.0.0",
+  "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+  "interpretations": {
+   "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+   "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+   "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+   "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+  },
+  "git_commit": "de6feb27706111121519c0dc5bddeb3e854ed746",
+  "python": "3.12.13",
+  "sklearn": "1.9.1",
+  "numpy": "2.5.5",
+  "model": "RandomForest(n=300,min_leaf=2,balanced)",
+  "tuning": "none (fixed defaults)",
+  "rules_thresholds": {
+   "DONUT_MAX_K": 5,
+   "HEATMAP_MIN_K": 6,
+   "LONG_LABEL": 0.4,
+   "BAR_MAX_ROWS": 25,
+   "SCATTER_MIN_ROWS": 15
+  },
+  "mode": "full"
+ },
+ "full": 0.8543110341559863,
+ "groups": {
+  "sql_clauses": {
+   "macro_f1_without": 0.8543110341559863,
+   "delta_vs_full": 0.0,
+   "n_features": 9
+  },
+  "sql_semantic": {
+   "macro_f1_without": 0.8543110341559863,
+   "delta_vs_full": 0.0,
+   "n_features": 5
+  },
+  "sql_size": {
+   "macro_f1_without": 0.8570554095464853,
+   "delta_vs_full": 0.0027443753904989876,
+   "n_features": 2
+  },
+  "data_size": {
+   "macro_f1_without": 0.8348921730898157,
+   "delta_vs_full": -0.019418861066170634,
+   "n_features": 4
+  },
+  "data_types": {
+   "macro_f1_without": 0.8543110341559863,
+   "delta_vs_full": 0.0,
+   "n_features": 7
+  },
+  "data_cardinality": {
+   "macro_f1_without": 0.8524998736731352,
+   "delta_vs_full": -0.0018111604828511263,
+   "n_features": 5
+  }
+ }
+}

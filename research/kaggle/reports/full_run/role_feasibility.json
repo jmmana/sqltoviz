@@ -1,0 +1,125 @@
+{
+ "experiment": "role_feasibility_vega_lite",
+ "measures": "agreement with Vega-Lite authors' channel assignment on held-out specs; small, SQL-agnostic",
+ "source": {
+  "repo": "vega/vega-lite",
+  "pinned_commit": "2e892a15c227f72022c2d7c04135e375a1bdae04",
+  "license": "BSD-3-Clause",
+  "specs_total": 817,
+  "extraction": {
+   "no inline row data": 583,
+   "ok": 136,
+   "has transform": 45,
+   "encoded field not a data column": 3,
+   "composite": 45,
+   "no field encodings": 5
+  }
+ },
+ "n_specs": 136,
+ "n_columns": 322,
+ "role_counts": {
+  "x_axis": 119,
+  "y_axis": 134,
+  "color_series": 40,
+  "size_or_secondary": 10,
+  "ignore_tooltip": 19
+ },
+ "systems": {
+  "majority": {
+   "accuracy": 0.4161490683229814,
+   "macro_f1": 0.11754385964912281,
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.11324659842972828,
+    0.12211048843913157
+   ],
+   "per_role_f1": {
+    "x_axis": 0.0,
+    "y_axis": 0.5877192982456141,
+    "color_series": 0.0,
+    "size_or_secondary": 0.0,
+    "ignore_tooltip": 0.0
+   },
+   "support": {
+    "x_axis": 119,
+    "y_axis": 134,
+    "color_series": 40,
+    "size_or_secondary": 10,
+    "ignore_tooltip": 19
+   }
+  },
+  "position_heuristic": {
+   "accuracy": 0.562111801242236,
+   "macro_f1": 0.3170766488413547,
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.27293563140332083,
+    0.3583329723433301
+   ],
+   "per_role_f1": {
+    "x_axis": 0.6823529411764706,
+    "y_axis": 0.6363636363636364,
+    "color_series": 0.0,
+    "size_or_secondary": 0.0,
+    "ignore_tooltip": 0.26666666666666666
+   },
+   "support": {
+    "x_axis": 119,
+    "y_axis": 134,
+    "color_series": 40,
+    "size_or_secondary": 10,
+    "ignore_tooltip": 19
+   }
+  },
+  "random_forest": {
+   "accuracy": 0.5838509316770186,
+   "macro_f1": 0.5007465387092805,
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.4361110108374087,
+    0.5613452530924149
+   ],
+   "per_role_f1": {
+    "x_axis": 0.5566037735849056,
+    "y_axis": 0.6919831223628692,
+    "color_series": 0.6415094339622641,
+    "size_or_secondary": 0.36363636363636365,
+    "ignore_tooltip": 0.25
+   },
+   "support": {
+    "x_axis": 119,
+    "y_axis": 134,
+    "color_series": 40,
+    "size_or_secondary": 10,
+    "ignore_tooltip": 19
+   }
+  }
+ },
+ "meta": {
+  "contract_version": "SqlVizSpec-v1.0.0",
+  "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+  "interpretations": {
+   "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+   "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+   "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+   "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+  },
+  "git_commit": "5fedbd01357491ebb31e0243c8b4765c0498f3b8",
+  "python": "3.12.13",
+  "sklearn": "1.9.1",
+  "numpy": "2.5.5",
+  "model": "RandomForest(n=300,min_leaf=2,balanced)",
+  "tuning": "none (fixed defaults)",
+  "rules_thresholds": {
+   "DONUT_MAX_K": 5,
+   "HEATMAP_MIN_K": 6,
+   "LONG_LABEL": 0.4,
+   "BAR_MAX_ROWS": 25,
+   "SCATTER_MIN_ROWS": 15
+  },
+  "examples_sha256": "4218a1f0a2a3de08515e31e5f45e651f8c2f18c1f5c0a70c6d15b888973d69c6"
+ },
+ "onnx_vs_sklearn": {
+  "n": 322,
+  "max_abs_diff": 1.235541564614806e-07,
+  "within_1e-6": true
+ },
+ "onnx_sha256": "171ddf0d6a0e2f74b2bfcbe1a20480a51d0606434d842af1a0be6769bb27151e"
+}
