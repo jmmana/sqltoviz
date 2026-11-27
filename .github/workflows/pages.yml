@@ -2,7 +2,7 @@ name: Pages preview
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'docs/assets/**', '.github/workflows/pages.yml']
+    paths: ['site/**', 'docs/assets/**', 'packages/npm/**', 'model/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: cd packages/npm && npm install --ignore-scripts && npm run build
+      - run: node site/build-engine.mjs
       - run: node --test site/*.test.mjs
       - run: |
           mkdir -p _site

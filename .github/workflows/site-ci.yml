@@ -1,10 +1,10 @@
 name: Playground CI
 on:
   pull_request:
-    paths: ['site/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
+    paths: ['site/**','packages/npm/**','model/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
   push:
     branches: [development,main]
-    paths: ['site/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
+    paths: ['site/**','packages/npm/**','model/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
 permissions:
   contents: read
 jobs:
@@ -15,5 +15,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - run: cd packages/npm && npm install --ignore-scripts && npm run build
+      - run: node site/build-engine.mjs
       - run: node --test site/*.test.mjs
+      - name: Real-browser test of the experimental WASM model
+        run: |
+          npm install --no-save playwright@1.65.1
+          npx playwright install --with-deps chromium
+          node site/e2e/playground.e2e.mjs
       - run: node --check site/app.mjs
