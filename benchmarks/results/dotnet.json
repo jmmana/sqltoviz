@@ -1,0 +1,109 @@
+{
+  "sdk": "dotnet",
+  "environment": {
+    "cpu": "Arm64",
+    "os": "macOS 26.5.1",
+    "runtime": ".NET 10.0.5",
+    "onnxruntime": "Microsoft.ML.OnnxRuntime",
+    "threads": 1
+  },
+  "load": {
+    "import_ms": 0,
+    "engine_load_ms": 81.6872,
+    "note": "OnnxEngine.LoadDefault(): checksum \u002B 2 sessions from embedded resources (cold, first call incl. JIT)"
+  },
+  "sizes": {
+    "10": {
+      "runs": 400,
+      "extract_ms": {
+        "median": 0.0567085,
+        "p95": 0.06704105,
+        "p99": 0.10386407999999993
+      },
+      "onnx_ms": {
+        "median": 0.007041,
+        "p95": 0.009
+      },
+      "constraints_ms": {
+        "median": 0.001583,
+        "p95": 0.0027982500000000017
+      },
+      "end_to_end_ms": {
+        "median": 0.0655625,
+        "p95": 0.07838480000000002,
+        "p99": 0.12588708999999987
+      },
+      "peak_rss_mb": 191.168512,
+      "rss_growth_mb": 2.29376
+    },
+    "100": {
+      "runs": 400,
+      "extract_ms": {
+        "median": 0.28983349999999997,
+        "p95": 0.38888335,
+        "p99": 0.5474393399999999
+      },
+      "onnx_ms": {
+        "median": 0.0082705,
+        "p95": 0.022272900000000005
+      },
+      "constraints_ms": {
+        "median": 0.002291,
+        "p95": 0.006919050000000001
+      },
+      "end_to_end_ms": {
+        "median": 0.30204200000000003,
+        "p95": 0.4144194000000001,
+        "p99": 0.5596163299999999
+      },
+      "peak_rss_mb": 201.44128,
+      "rss_growth_mb": 8.27392
+    },
+    "1000": {
+      "runs": 400,
+      "extract_ms": {
+        "median": 1.130354,
+        "p95": 3.918100000000001,
+        "p99": 4.497764169999999
+      },
+      "onnx_ms": {
+        "median": 0.0123955,
+        "p95": 0.05545625000000005
+      },
+      "constraints_ms": {
+        "median": 0.002833,
+        "p95": 0.008802400000000002
+      },
+      "end_to_end_ms": {
+        "median": 1.1415205,
+        "p95": 3.938942000000001,
+        "p99": 4.582226669999999
+      },
+      "peak_rss_mb": 199.835648,
+      "rss_growth_mb": 7.143424
+    },
+    "10000": {
+      "runs": 50,
+      "extract_ms": {
+        "median": 12.043875,
+        "p95": 14.435521499999998,
+        "p99": 15.100802669999998
+      },
+      "onnx_ms": {
+        "median": 0.0644585,
+        "p95": 0.08018735
+      },
+      "constraints_ms": {
+        "median": 0.0060420000000000005,
+        "p95": 0.008356399999999995
+      },
+      "end_to_end_ms": {
+        "median": 12.109124999999999,
+        "p95": 14.506741849999997,
+        "p99": 15.17738767
+      },
+      "peak_rss_mb": 206.503936,
+      "rss_growth_mb": 0.065536
+    }
+  }
+}

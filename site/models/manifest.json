@@ -1,0 +1,22 @@
+{
+ "manifest_version": 1,
+ "status_policy": "candidate models are EXPERIMENTAL: trained on synthetic labels (chart) and 322 Vega-Lite columns (role); no human validation",
+ "contract_version": "SqlVizSpec-v1.0.0",
+ "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+ "chart": {
+  "file": "chart_model_candidate.onnx",
+  "sha256": "578f836f04371fc0f1fff5522057acb30493c716650e498930653b8e5a5b54ce",
+  "status": "experimental",
+  "version": "candidate-0",
+  "input": "table_features[batch,32]",
+  "output": "chart_scores[batch,10]"
+ },
+ "role": {
+  "file": "role_model_candidate.onnx",
+  "sha256": "171ddf0d6a0e2f74b2bfcbe1a20480a51d0606434d842af1a0be6769bb27151e",
+  "status": "experimental",
+  "version": "candidate-0",
+  "input": "column_features[M,28]",
+  "output": "role_scores[M,5]"
+ }
+}
