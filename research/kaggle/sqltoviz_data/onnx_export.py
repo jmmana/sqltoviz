@@ -30,7 +30,7 @@ def fit_contract_model(X: np.ndarray, y_names: list, seed: int = 0, n_estimators
         raise ValueError(f"all 10 base classes must be present in training; missing {sorted(missing)}")
     y = np.array([CLASSES.index(c) for c in y_names])
     m = RandomForestClassifier(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, class_weight="balanced",
-                               random_state=seed, n_jobs=-1)
+                               random_state=seed, n_jobs=1)
     return m.fit(X.astype(np.float32), y)
 
 
@@ -39,6 +39,7 @@ def export_chart_model(model, path) -> Path:
     onx = convert_sklearn(model, initial_types=[("table_features", FloatTensorType([None, 32]))],
                           options={id(model): {"zipmap": False}}, target_opset={"": 17, "ai.onnx.ml": 3})
     g = onx.graph
+    g.name = "sqltoviz_chart_model"                       # skl2onnx uses a random UUID: fixed for byte-reproducible files
     for node in g.node:                                   # rename probabilities -> chart_scores
         for k, o in enumerate(node.output):
             if o == "probabilities":
@@ -97,7 +98,7 @@ def fit_role_model(Xc: np.ndarray, y_roles: list, seed: int = 0, n_estimators: i
         raise ValueError(f"all 5 roles must be present in training; missing {sorted(missing)}")
     y = np.array([ROLES.index(r) for r in y_roles])
     return RandomForestClassifier(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, class_weight="balanced",
-                                  random_state=seed, n_jobs=-1).fit(Xc.astype(np.float32), y)
+                                  random_state=seed, n_jobs=1).fit(Xc.astype(np.float32), y)
 
 
 def export_role_model(model, path) -> Path:
@@ -105,6 +106,7 @@ def export_role_model(model, path) -> Path:
     onx = convert_sklearn(model, initial_types=[("column_features", FloatTensorType([None, 28]))],
                           options={id(model): {"zipmap": False}}, target_opset={"": 17, "ai.onnx.ml": 3})
     g = onx.graph
+    g.name = "sqltoviz_role_model"
     for node in g.node:
         node.output[:] = ["role_scores" if o == "probabilities" else o for o in node.output]
         node.input[:] = ["role_scores" if i == "probabilities" else i for i in node.input]

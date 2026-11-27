@@ -81,3 +81,14 @@ def test_role_model_export_parity_and_order(tmp_path):
     assert OX.predict_roles_onnx(sess, X[:1]).shape == (1, 5)
     with pytest.raises(ValueError):
         OX.fit_role_model(X[:10], ["x_axis"] * 10)
+
+
+def test_training_and_export_are_byte_reproducible(tmp_path):
+    items = SG.generate(40, seed=4, n_schemas=20)
+    X, _ = E.featurize(items)
+    y = [i["label"] for i in items]
+    hashes = []
+    for k in range(2):
+        m = OX.fit_contract_model(X, y, seed=0, n_estimators=10)
+        hashes.append(OX.sha256_file(OX.export_chart_model(m, tmp_path / f"m{k}.onnx")))
+    assert hashes[0] == hashes[1]

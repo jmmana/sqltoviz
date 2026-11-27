@@ -42,7 +42,7 @@ def featurize(items: list) -> tuple:
 
 
 def make_rf(seed: int) -> RandomForestClassifier:
-    return RandomForestClassifier(n_estimators=300, min_samples_leaf=2, class_weight="balanced", random_state=seed, n_jobs=-1)
+    return RandomForestClassifier(n_estimators=300, min_samples_leaf=2, class_weight="balanced", random_state=seed, n_jobs=1)
 
 
 def _proba_full(model, X) -> np.ndarray:
