@@ -18,7 +18,7 @@ cuando uses un esquema posicional.
 | SQL Server `TOP n` | Recognizes the prefix in projection scanning / Reconoce el prefijo al recorrer la proyección |
 | Dialect-specific grammar, catalog resolution, batch parsing | No compatibility guarantee / Sin garantía de compatibilidad |
 
-For example, the lexer recognizes `"Total"`, `[Total]`, and `\`Total\``
+For example, the lexer recognizes `"Total"`, `[Total]`, and `` `Total` ``
 as quoted identifier forms. This describes token recognition, not equivalent
 query semantics across PostgreSQL, SQL Server, MySQL, or SQLite. Nested block
 comments, PostgreSQL dollar quoting and escaped closing brackets are outside
