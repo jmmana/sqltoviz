@@ -18,9 +18,9 @@ from . import features as F
 from .pipeline import sha256_file
 
 NAMESPACES = {
-    "apache-2.0": {"slug": "sqltoviz-synthetic-model-parity", "title": "SqlToViz synthetic data, candidate model and parity fixtures",
+    "apache-2.0": {"slug": "sqltoviz-synthetic-model-parity", "title": "SqlToViz synthetic data, model and parity",
                    "license": "Apache 2.0", "dirs": ("apache-2.0", "model", "parity", "reports")},
-    "cc-by-sa-4.0": {"slug": "sqltoviz-real-derived-ccbysa", "title": "SqlToViz features derived from Spider/BIRD (CC BY-SA 4.0)",
+    "cc-by-sa-4.0": {"slug": "sqltoviz-real-derived-ccbysa", "title": "SqlToViz Spider/BIRD-derived features CC BY-SA",
                      "license": "CC BY-SA 4.0", "dirs": ("cc-by-sa-4.0", "llm-labels")},
 }
 ATTRIBUTION = ("Derived from Spider (Yu et al., Yale LILY) and BIRD (Li et al.), both CC BY-SA 4.0. Changes: SQL executed, results converted to "
