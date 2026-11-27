@@ -1,10 +1,10 @@
 name: Playground CI
 on:
   pull_request:
-    paths: ['site/**','.github/workflows/site-ci.yml']
+    paths: ['site/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
   push:
     branches: [development,main]
-    paths: ['site/**','.github/workflows/site-ci.yml']
+    paths: ['site/**','.github/workflows/site-ci.yml','.github/workflows/pages.yml']
 permissions:
   contents: read
 jobs:
