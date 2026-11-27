@@ -5,726 +5,726 @@
   "sql_features": [
     {
       "index": 0,
-      "name": "token_count",
+      "name": "log_token_count",
       "dtype": "float32",
-      "formula": "log1p(number of lexical tokens)",
+      "formula": "ln(1+token count)",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 1,
       "name": "join_count",
       "dtype": "float32",
-      "formula": "count JOIN keywords",
+      "formula": "count JOIN keyword tokens",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 2,
-      "name": "subquery_count",
+      "name": "subquery_cte_count",
       "dtype": "float32",
-      "formula": "count SELECT keywords immediately following opening parenthesis",
+      "formula": "count SELECT tokens immediately following opening parenthesis, including CTE bodies; do not double count",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 3,
-      "name": "group_by",
+      "name": "has_group_by",
       "dtype": "float32",
-      "formula": "presence of GROUP BY token pair",
+      "formula": "any GROUP BY token pair",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 4,
-      "name": "group_terms",
+      "name": "group_expression_count",
       "dtype": "float32",
-      "formula": "count comma-separated terms at GROUP BY clause depth",
+      "formula": "sum comma-separated expressions in GROUP BY clauses at clause depth",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 5,
-      "name": "order_by",
+      "name": "has_order_by",
       "dtype": "float32",
-      "formula": "presence of ORDER BY token pair",
+      "formula": "any ORDER BY pair",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 6,
-      "name": "order_desc",
+      "name": "ascending_temporal_order",
       "dtype": "float32",
-      "formula": "presence of DESC in outer ORDER BY",
+      "formula": "1 iff first outer ORDER BY term resolves to temporal result column by exact identifier or ordinal and ASC or implicit ASC",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 7,
-      "name": "limit",
+      "name": "has_limit",
       "dtype": "float32",
-      "formula": "presence of LIMIT, TOP or FETCH keyword",
+      "formula": "any LIMIT or TOP keyword",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 8,
-      "name": "distinct",
+      "name": "normalized_limit",
       "dtype": "float32",
-      "formula": "presence of DISTINCT keyword",
+      "formula": "min(first outer nonnegative integer literal LIMIT or TOP,1000)/1000; 1 if absent or not an integer literal",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 1
     },
     {
       "index": 9,
       "name": "aggregate_count",
       "dtype": "float32",
-      "formula": "count SUM, COUNT, AVG, MIN, MAX followed by opening parenthesis",
+      "formula": "count SUM COUNT AVG MIN MAX followed by opening parenthesis within SELECT projection spans",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 10,
-      "name": "temporal_function",
+      "name": "has_temporal_function",
       "dtype": "float32",
-      "formula": "presence of DATE_TRUNC, EXTRACT, DATEPART, YEAR, MONTH, DAY or STRFTIME followed by opening parenthesis",
+      "formula": "any DATE_TRUNC EXTRACT YEAR MONTH DAY STRFTIME DATEPART followed by opening parenthesis",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 11,
-      "name": "window",
+      "name": "has_window",
       "dtype": "float32",
-      "formula": "presence of OVER followed by opening parenthesis",
+      "formula": "any OVER or PARTITION BY or ROW_NUMBER/LAG/LEAD followed by opening parenthesis",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 12,
-      "name": "having",
+      "name": "has_having",
       "dtype": "float32",
-      "formula": "presence of HAVING keyword",
+      "formula": "any HAVING keyword",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 13,
-      "name": "union",
+      "name": "has_distinct",
       "dtype": "float32",
-      "formula": "presence of UNION keyword",
+      "formula": "any DISTINCT keyword",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 14,
-      "name": "case",
+      "name": "calculated_projection_ratio",
       "dtype": "float32",
-      "formula": "presence of CASE keyword",
+      "formula": "fraction of outer projection expressions containing binary + - * / or CASE WHEN; exclude wildcard and unary signs",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 15,
-      "name": "depth",
+      "name": "parenthesis_depth",
       "dtype": "float32",
-      "formula": "maximum parenthesis nesting depth",
+      "formula": "maximum nesting depth of parentheses outside opaque tokens",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     }
   ],
   "global_features": [
     {
       "index": 0,
-      "name": "log_rows",
+      "name": "log_row_count",
       "dtype": "float32",
-      "formula": "log1p(N)",
+      "formula": "log10(1+N)",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 1,
-      "name": "log_columns",
+      "name": "single_row",
       "dtype": "float32",
-      "formula": "log1p(M)",
+      "formula": "N=1",
       "range": [
         0,
-        1000000
+        1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 2,
-      "name": "single_row",
+      "name": "small_rows",
       "dtype": "float32",
-      "formula": "N equals 1",
+      "formula": "2<=N<=15",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 3,
-      "name": "empty_rows",
+      "name": "large_rows",
       "dtype": "float32",
-      "formula": "N equals 0",
+      "formula": "N>50",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 4,
-      "name": "temporal_count",
+      "name": "column_count",
       "dtype": "float32",
-      "formula": "number of temporal columns",
+      "formula": "M",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 5,
-      "name": "quantitative_count",
+      "name": "temporal_count",
       "dtype": "float32",
-      "formula": "number of quantitative columns",
+      "formula": "count temporal columns",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 6,
-      "name": "nominal_count",
+      "name": "quantitative_count",
       "dtype": "float32",
-      "formula": "number of nominal columns",
+      "formula": "count quantitative columns",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 7,
-      "name": "identifier_count",
+      "name": "nominal_count",
       "dtype": "float32",
-      "formula": "number of identifier columns",
+      "formula": "count nominal columns",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 8,
-      "name": "quantitative_ratio",
+      "name": "identifier_count",
       "dtype": "float32",
-      "formula": "quantitative_count / M",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 9,
-      "name": "nominal_ratio",
-      "dtype": "float32",
-      "formula": "nominal_count / M",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 10,
-      "name": "temporal_ratio",
-      "dtype": "float32",
-      "formula": "temporal_count / M",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 11,
-      "name": "density",
-      "dtype": "float32",
-      "formula": "nonmissing cells / (N*M)",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 12,
-      "name": "max_cardinality",
-      "dtype": "float32",
-      "formula": "maximum distinct count across columns",
+      "formula": "count identifier columns",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 9,
+      "name": "quantitative_ratio",
+      "dtype": "float32",
+      "formula": "quantitative_count/max(M,1)",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 10,
+      "name": "nominal_ratio",
+      "dtype": "float32",
+      "formula": "nominal_count/max(M,1)",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 11,
+      "name": "non_null_density",
+      "dtype": "float32",
+      "formula": "sum nonmissing cells/max(N*M,1)",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 12,
+      "name": "max_nominal_relative_cardinality",
+      "dtype": "float32",
+      "formula": "max over nominal columns K/max(N,1); empty set 0",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 13,
-      "name": "mean_cardinality_ratio",
+      "name": "min_nominal_cardinality",
       "dtype": "float32",
-      "formula": "mean of distinct/nonmissing ratios across columns",
+      "formula": "min K over nominal columns; empty set 0",
       "range": [
         0,
-        1
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 14,
-      "name": "all_unique_columns",
+      "name": "crossed_structure",
       "dtype": "float32",
-      "formula": "fraction of columns with nonmissing count > 0 and distinct count equal to nonmissing count",
+      "formula": "1 iff exactly two nominal and one quantitative column, all cells nonmissing, every nominal pair unique, and N=K1*K2>0",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 15,
-      "name": "constant_columns",
+      "name": "mean_nominal_entropy",
       "dtype": "float32",
-      "formula": "fraction of columns with exactly one distinct nonmissing value",
+      "formula": "mean over nominal columns of Shannon entropy/ln(K); 0 when K<=1 or no nominal columns",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     }
   ],
   "column_features": [
     {
       "index": 0,
-      "name": "position",
+      "name": "relative_position",
       "dtype": "float32",
-      "formula": "zero-based column ordinal / max(M-1,1)",
+      "formula": "j/max(M-1,1)",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 1,
-      "name": "temporal",
+      "name": "is_temporal",
       "dtype": "float32",
-      "formula": "type is temporal",
+      "formula": "type=temporal",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 2,
-      "name": "quantitative",
+      "name": "is_quantitative",
       "dtype": "float32",
-      "formula": "type is quantitative",
+      "formula": "type=quantitative",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 3,
-      "name": "nominal",
+      "name": "is_nominal",
       "dtype": "float32",
-      "formula": "type is nominal",
+      "formula": "type=nominal",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 4,
-      "name": "identifier",
+      "name": "is_identifier",
       "dtype": "float32",
-      "formula": "type is identifier",
+      "formula": "type=identifier",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 5,
-      "name": "missing_ratio",
+      "name": "is_in_group_by",
       "dtype": "float32",
-      "formula": "missing count / N",
+      "formula": "1 iff outer GROUP BY expression resolves unambiguously to result column by ordinal, identifier or exact projected expression",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 6,
-      "name": "log_cardinality",
+      "name": "is_aggregated_in_sql",
       "dtype": "float32",
-      "formula": "log1p(K)",
-      "range": [
-        0,
-        1000000
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 7,
-      "name": "cardinality_ratio",
-      "dtype": "float32",
-      "formula": "K/n",
+      "formula": "1 iff aligned outer SELECT expression contains SUM COUNT AVG MIN MAX followed by opening parenthesis; unresolved projection 0",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 7,
+      "name": "missing_ratio",
+      "dtype": "float32",
+      "formula": "1-n/N when N>0 else 0",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 8,
-      "name": "unique",
+      "name": "log_cardinality",
+      "dtype": "float32",
+      "formula": "log10(1+K)",
+      "range": [
+        0,
+        1000000
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 9,
+      "name": "relative_cardinality",
+      "dtype": "float32",
+      "formula": "K/max(n,1)",
+      "range": [
+        0,
+        1
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 10,
+      "name": "is_unique",
       "dtype": "float32",
       "formula": "n>0 and K=n",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 9,
-      "name": "constant",
-      "dtype": "float32",
-      "formula": "K=1",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 10,
-      "name": "entropy",
-      "dtype": "float32",
-      "formula": "-sum(p*ln(p))/ln(K) for K>1; p is observed frequency/n",
-      "range": [
-        0,
-        1
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 11,
       "name": "mean_string_length",
       "dtype": "float32",
-      "formula": "mean Unicode scalar count over string observations only",
+      "formula": "mean Unicode scalar count of nonmissing string values /50; nonstrings excluded",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 12,
-      "name": "negative_ratio",
+      "name": "coefficient_of_variation",
       "dtype": "float32",
-      "formula": "count numeric x<0 / n",
+      "formula": "population sigma/(abs(mu)+1e-8), quantitative only",
       "range": [
         0,
-        1
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 13,
-      "name": "zero_ratio",
+      "name": "skewness",
       "dtype": "float32",
-      "formula": "count numeric x=0 / n",
+      "formula": "population central moment 3/(sigma^3+1e-8), quantitative only, constant or n<2 =>0",
       "range": [
-        0,
-        1
+        -1000000,
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 14,
-      "name": "positive_ratio",
+      "name": "excess_kurtosis",
       "dtype": "float32",
-      "formula": "count numeric x>0 / n",
+      "formula": "population central moment 4/(sigma^4+1e-8)-3, quantitative only, constant or n<2 =>0",
       "range": [
-        0,
-        1
+        -1000000,
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 15,
-      "name": "cv",
+      "name": "negative_ratio",
       "dtype": "float32",
-      "formula": "population standard deviation / (abs(mean)+1e-8)",
+      "formula": "count x<0/n, quantitative only",
       "range": [
         0,
-        1000000
+        1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 16,
-      "name": "skewness",
+      "name": "zero_ratio",
       "dtype": "float32",
-      "formula": "mean((x-mean)^3)/sigma^3 when sigma>0",
+      "formula": "count x=0/n, quantitative only",
       "range": [
-        -1000000,
-        1000000
+        0,
+        1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 17,
-      "name": "excess_kurtosis",
+      "name": "monotonicity",
       "dtype": "float32",
-      "formula": "mean((x-mean)^4)/sigma^4-3 when sigma>0",
+      "formula": "fraction of adjacent nonmissing pairs in returned row order with next>=previous, quantitative or temporal only; no pairs=>0",
       "range": [
-        -1000000,
-        1000000
+        0,
+        1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 18,
-      "name": "nondecreasing_ratio",
+      "name": "temporal_step_irregularity",
       "dtype": "float32",
-      "formula": "fraction of successive nonmissing numeric or temporal pairs with next>=previous",
+      "formula": "population variance of adjacent temporal differences / (abs(mean difference)^2+1e-8), seconds, fewer than two differences=>0",
       "range": [
         0,
-        1
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 19,
-      "name": "nonincreasing_ratio",
+      "name": "normalized_range",
       "dtype": "float32",
-      "formula": "fraction of successive nonmissing numeric or temporal pairs with next<=previous",
+      "formula": "(max-min)/(abs(mu)+1e-8), quantitative only",
       "range": [
         0,
-        1
+        1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 20,
       "name": "normalized_iqr",
       "dtype": "float32",
-      "formula": "(Q75-Q25)/(abs(median)+1e-8)",
+      "formula": "(Q75-Q25)/(abs(median)+1e-8), quantitative only; quantiles type 7",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 21,
       "name": "normalized_mad",
       "dtype": "float32",
-      "formula": "median(abs(x-median))/(abs(median)+1e-8)",
+      "formula": "median(abs(x-median(x)))/(abs(median(x))+1e-8), quantitative only",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 22,
-      "name": "normalized_range",
+      "name": "context_group_by",
       "dtype": "float32",
-      "formula": "(max-min)/(abs(mean)+1e-8)",
+      "formula": "copy table_features[3]",
       "range": [
         0,
-        1000000
+        1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 23,
-      "name": "duplicate_ratio",
+      "name": "context_temporal_order",
       "dtype": "float32",
-      "formula": "1-K/n if n>0, else 0",
+      "formula": "copy table_features[6]",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 24,
-      "name": "temporal_step_cv",
+      "name": "context_temporal_function",
       "dtype": "float32",
-      "formula": "population standard deviation of successive temporal differences in seconds / (abs(mean difference)+1e-8)",
-      "range": [
-        0,
-        1000000
-      ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
-      "default": 0
-    },
-    {
-      "index": 25,
-      "name": "context_group_by",
-      "dtype": "float32",
-      "formula": "copy sql_features[3]",
+      "formula": "copy table_features[10]",
       "range": [
         0,
         1
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
-      "index": 26,
+      "index": 25,
       "name": "context_log_rows",
       "dtype": "float32",
-      "formula": "copy global_features[0]",
+      "formula": "copy table_features[16]",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
+      "default": 0
+    },
+    {
+      "index": 26,
+      "name": "context_temporal_count",
+      "dtype": "float32",
+      "formula": "copy table_features[21]",
+      "range": [
+        0,
+        1000000
+      ],
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     },
     {
       "index": 27,
       "name": "context_quantitative_count",
       "dtype": "float32",
-      "formula": "copy global_features[5]",
+      "formula": "copy table_features[22]",
       "range": [
         0,
         1000000
       ],
-      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default.",
+      "null_policy": "Exclude missing observations; undefined, inapplicable, zero denominator or nonfinite result => default; clip finite results to range.",
       "default": 0
     }
   ],
@@ -746,10 +746,10 @@
     "type_resolution": "Explicit valid semantic type wins; otherwise identifier if ASCII lowercase column name is id, uuid or ends _id and all nonmissing values are strings or safe integers; temporal if all nonmissing values are valid ISO date-only or RFC3339 timestamp strings with explicit offset; quantitative if all nonmissing values are finite numbers excluding boolean; nominal otherwise including all missing. Explicit incompatible types reject input.",
     "missing": "null, NaN, infinity, empty string; whitespace-only strings are valid; nested values rejected; missing cells represented by true in per-cell mask outside model inputs",
     "numeric": "IEEE binary64, safe integer range, normalize negative zero; temporal values UTC seconds; typed equality; no coercion of numeric strings",
-    "statistics": "N total rows, M total columns, n nonmissing observations in column, K typed distinct nonmissing values; numeric-only statistics apply to quantitative columns; temporal steps only temporal; population moments; exact median and type-7 quantile (linear interpolation at (n-1)p); fewer than two adjacent pairs for temporal step CV => 0; no pairs => 0; constant variance => 0 for standardized moments",
+    "statistics": "N total rows, M total columns, n nonmissing observations in column, K typed distinct nonmissing values; numeric-only statistics apply to quantitative columns; temporal steps only temporal; population moments; exact median and type-7 quantile (linear interpolation at (n-1)p); fewer than two adjacent pairs for temporal step CV => 0; no pairs => 0; constant variance => 0 for standardized moments Entropy uses natural logarithms. j is zero-based ordinal; mu and sigma are population mean and standard deviation. Adjacent nonmissing pairs are formed after filtering missing observations, preserving original order. All-empty columns nominal unless explicit type.",
     "float": "binary64 intermediates; finite result clipped to declared range then float32 round-to-nearest-even; nonfinite defaults; parity atol=1e-6 rtol=1e-6",
-    "lexer": "ASCII case-insensitive unquoted keyword tokens; whitespace and comments excluded; single-quoted strings and quoted identifiers are opaque single tokens, escaped doubled delimiters honored; support SQL line and block comments, brackets, backticks and double quotes; punctuation and operators separate tokens; lexical only, not execution or full AST; malformed/unclosed quote or comment rejects inference",
-    "serialization": "UTF-8 JSON, ordered schema and rows; nonfinite values normalized null before serialization; SHA256 exact contract file bytes including final LF"
+    "lexer": "ASCII case-insensitive unquoted keyword tokens; whitespace and comments excluded; single-quoted strings and quoted identifiers are opaque single tokens, escaped doubled delimiters honored; support SQL line and block comments, brackets, backticks and double quotes; punctuation and operators separate tokens; lexical only, not execution or full AST; malformed/unclosed quote or comment rejects inference Outer SELECT is first SELECT at minimum parenthesis depth after any CTE bodies; projection ends at FROM or set operator at same depth; split expressions only at commas of same depth. Clause ends at next clause keyword (HAVING, ORDER BY, LIMIT, OFFSET, FETCH, UNION, INTERSECT, EXCEPT, WINDOW) at same depth or closing scope. Match unquoted identifiers ASCII case-insensitively and quoted identifiers exactly; ambiguous resolution => 0. SQL set operations resolve projection from first arm. Unsupported syntax must fail closed if tokenization fails; lexical features are approximate.",
+    "serialization": "UTF-8 JSON, ordered schema and rows; nonfinite values normalized null before serialization; SHA256 exact contract file bytes including final LF Hash must be external; no self-referential hash field."
   },
   "model_io": {
     "chart_model": {
@@ -809,11 +809,11 @@
       "table"
     ],
     "roles": [
-      "unused",
-      "dimension",
-      "measure",
-      "series",
-      "time"
+      "x_axis",
+      "y_axis",
+      "color_series",
+      "size_or_secondary",
+      "ignore_tooltip"
     ],
     "score_semantics": "probabilities in class order; sum to one per row within numerical tolerance; not final-chart confidence",
     "auxiliary_encodings": [
