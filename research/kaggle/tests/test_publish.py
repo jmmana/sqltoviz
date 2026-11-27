@@ -41,3 +41,9 @@ def test_refuses_smoke_candidate_and_tampering(tmp_path):
     (out / "parity/g.json").write_text("tampered")
     with pytest.raises(PB.PublishError, match="checksum"):
         PB.stage(out, tmp_path / "s4")
+
+
+def test_titles_respect_kaggle_limits():
+    for ns, cfg in PB.NAMESPACES.items():
+        assert 6 <= len(cfg["title"]) <= 50, (ns, len(cfg["title"]))
+        assert len(cfg["slug"]) <= 50
