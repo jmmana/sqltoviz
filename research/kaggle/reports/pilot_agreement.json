@@ -1,0 +1,63 @@
+{
+ "n": 300,
+ "annotator_a": "claude-sonnet-5-5",
+ "annotator_b": "gpt-codex",
+ "percent_agreement_primary": 0.9266666666666666,
+ "cohens_kappa_primary": 0.8436833878073042,
+ "a_primary_in_b_acceptable": 0.9966666666666667,
+ "b_primary_in_a_acceptable": 0.9666666666666667,
+ "acceptable_sets_intersect": 1.0,
+ "mean_acceptable_jaccard": 0.7941666666666667,
+ "class_counts_a": {
+  "table": 216,
+  "kpi": 58,
+  "bar": 22,
+  "horizontal_bar": 4
+ },
+ "class_counts_b": {
+  "horizontal_bar": 15,
+  "table": 202,
+  "kpi": 64,
+  "bar": 17,
+  "scatter": 1,
+  "line": 1
+ },
+ "discrepancy_pairs": [
+  {
+   "a": "bar",
+   "b": "horizontal_bar",
+   "count": 6
+  },
+  {
+   "a": "table",
+   "b": "kpi",
+   "count": 6
+  },
+  {
+   "a": "table",
+   "b": "horizontal_bar",
+   "count": 5
+  },
+  {
+   "a": "table",
+   "b": "bar",
+   "count": 2
+  },
+  {
+   "a": "table",
+   "b": "scatter",
+   "count": 1
+  },
+  {
+   "a": "bar",
+   "b": "table",
+   "count": 1
+  },
+  {
+   "a": "table",
+   "b": "line",
+   "count": 1
+  }
+ ],
+ "note": "agreement between two LLMs; NOT human consensus"
+}

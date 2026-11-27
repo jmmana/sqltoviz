@@ -1,0 +1,300 @@
+{"item_id": "spider_train_900", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Single text column list, no measure"}
+{"item_id": "spider_train_1184", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_6692", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_1906", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "List of names"}
+{"item_id": "spider_train_5616", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_5317", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_3885", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_4144", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_3594", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Song names list"}
+{"item_id": "spider_train_5696", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Capacity and gender detail row"}
+{"item_id": "spider_train_1021", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names only list"}
+{"item_id": "spider_train_6887", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Identifier row"}
+{"item_id": "spider_train_2015", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_6231", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_5096", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_3164", "primary": "table", "acceptable": ["table"], "confidence": 2, "rationale": "Count plus text columns, ambiguous"}
+{"item_id": "spider_train_4567", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_5794", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_5596", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text detail rows with nulls"}
+{"item_id": "spider_train_2535", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names only list"}
+{"item_id": "spider_train_5861", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Detail codes"}
+{"item_id": "spider_train_6373", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_4807", "primary": "kpi", "acceptable": ["kpi", "table"], "confidence": 2, "rationale": "Max and min scalars"}
+{"item_id": "spider_train_5636", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single average"}
+{"item_id": "spider_train_2655", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Id pairs"}
+{"item_id": "spider_train_1668", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "table"], "confidence": 2, "rationale": "Exhibition count per artist"}
+{"item_id": "spider_train_2776", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "donut", "table"], "confidence": 2, "rationale": "Count per party"}
+{"item_id": "spider_train_1766", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1716", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_2140", "primary": "table", "acceptable": ["table"], "confidence": 2, "rationale": "IDs, type and count per participant"}
+{"item_id": "spider_train_4100", "primary": "kpi", "acceptable": ["kpi", "table"], "confidence": 2, "rationale": "Max and min scalars"}
+{"item_id": "spider_train_5370", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Identifier list"}
+{"item_id": "spider_train_4729", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text detail row"}
+{"item_id": "spider_train_2087", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_953", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Id and name row"}
+{"item_id": "spider_train_4505", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single sum"}
+{"item_id": "spider_train_499", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "table"], "confidence": 2, "rationale": "Student count per advisor id"}
+{"item_id": "spider_train_53", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_5972", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_4886", "primary": "bar", "acceptable": ["bar", "donut", "horizontal_bar"], "confidence": 3, "rationale": "Count per denomination, few categories"}
+{"item_id": "spider_train_4000", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names only list"}
+{"item_id": "spider_train_1946", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text pairs"}
+{"item_id": "spider_train_4215", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1831", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text descriptions"}
+{"item_id": "spider_train_792", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names and ids"}
+{"item_id": "spider_train_5087", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1733", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Single text value"}
+{"item_id": "spider_train_2683", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Single text value"}
+{"item_id": "spider_train_6586", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Single name"}
+{"item_id": "spider_train_248", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id":"spider_train_6336","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_2351","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_2299","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_5438","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_3090","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Distinct codes list"}
+{"item_id":"spider_train_4037","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Classroom-grade id pairs"}
+{"item_id":"spider_train_4625","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names and phones"}
+{"item_id":"spider_train_3394","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6765","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6287","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_1138","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Climber count per country, few categories"}
+{"item_id":"spider_train_682","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single customer detail row"}
+{"item_id":"spider_train_4389","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_5466","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single id-like value"}
+{"item_id":"spider_train_4427","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Min age per job"}
+{"item_id":"spider_train_6420","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single code"}
+{"item_id":"spider_train_1629","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_648","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Track count per many genres"}
+{"item_id":"spider_train_6495","primary":"horizontal_bar","acceptable":["horizontal_bar","bar"],"confidence":3,"rationale":"Count per project with long names"}
+{"item_id":"spider_train_1846","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names only list"}
+{"item_id":"spider_train_2955","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Actor names list"}
+{"item_id":"spider_train_1315","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single location"}
+{"item_id":"spider_train_63","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_230","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single publisher"}
+{"item_id":"spider_train_1504","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Count per person"}
+{"item_id":"spider_train_5248","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2424","primary":"bar","acceptable":["bar","donut"],"confidence":3,"rationale":"Count per sex, two categories"}
+{"item_id":"spider_train_2849","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Emails and names"}
+{"item_id":"spider_train_824","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single name"}
+{"item_id":"spider_train_302","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_2837","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single sum"}
+{"item_id":"spider_train_1604","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_6207","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Repeated status values"}
+{"item_id":"spider_train_1108","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single college"}
+{"item_id":"spider_train_6851","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City names list"}
+{"item_id":"spider_train_4307","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single club name"}
+{"item_id":"spider_train_2310","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_4607","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_1912","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single name"}
+{"item_id":"spider_train_1301","primary":"bar","acceptable":["bar","table"],"confidence":2,"rationale":"Average rating per foot, null row"}
+{"item_id":"spider_train_6982","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Movie detail rows"}
+{"item_id":"spider_train_3779","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Date pair detail rows"}
+{"item_id":"spider_train_4657","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_3924","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single identifier"}
+{"item_id":"spider_train_5950","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Count per transport mode, 3 categories"}
+{"item_id":"spider_train_282","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_1970","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_2900","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single country"}
+{"item_id":"spider_train_6954","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single architect detail row"}
+{"item_id":"spider_train_2814","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Report count per journalist"}
+{"item_id":"spider_train_6616","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6113","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2731","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_1537","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Policy count per type, 4 categories"}
+{"item_id":"spider_train_6190","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Titles list"}
+{"item_id":"spider_train_3719","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single name"}
+{"item_id":"spider_train_3383","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single country"}
+{"item_id":"spider_train_3082","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_5819","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_350","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_3647","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Name and id rows, no measure"}
+{"item_id":"spider_train_1197","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Date pair detail rows"}
+{"item_id":"spider_train_6362","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Count by school type, 2 categories"}
+{"item_id":"spider_train_754","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single track detail row"}
+{"item_id":"spider_train_1825","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Top 3 balances, large outlier"}
+{"item_id":"spider_train_2055","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Member-party text pairs"}
+{"item_id":"spider_train_3236","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1279","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text detail with string numbers"}
+{"item_id":"spider_train_2497","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single title and rating"}
+{"item_id":"spider_train_1031","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single spec row"}
+{"item_id":"spider_train_4848","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single customer row"}
+{"item_id":"spider_train_3145","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single engineer row"}
+{"item_id":"spider_train_2122","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_1983","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_1352","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single sum"}
+{"item_id":"spider_train_4954","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_4929","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product names list"}
+{"item_id":"spider_train_123","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Avg temperature per zip code"}
+{"item_id":"spider_train_4586","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Single price value"}
+{"item_id":"spider_train_4498","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_2132","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_2627","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Average price per bed type"}
+{"item_id":"spider_train_2213","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_3757","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Origins list"}
+{"item_id":"spider_train_665","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Detail rows with text dates"}
+{"item_id":"spider_train_4","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_5664","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Address history detail rows"}
+{"item_id":"spider_train_2250","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Team codes list"}
+{"item_id":"spider_train_3475","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_1161","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_920","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_1191","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6630","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single date value"}
+{"item_id":"spider_train_1905","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single sum"}
+{"item_id":"spider_train_5617","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single category with count"}
+{"item_id":"spider_train_5276","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names and headquarters text"}
+{"item_id":"spider_train_3867","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single claim row"}
+{"item_id":"spider_train_4151","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_3540","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Size strings and formats"}
+{"item_id":"spider_train_5745","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_995","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_6927","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_2017","primary":"table","acceptable":["table","horizontal_bar"],"confidence":2,"rationale":"All counts equal 1, little to compare"}
+{"item_id":"spider_train_6258","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_5170","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single text value"}
+{"item_id":"spider_train_3158","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Train id and name rows"}
+{"item_id":"spider_train_4577","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Industry list"}
+{"item_id":"spider_train_5788","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single product row"}
+{"item_id":"spider_train_5586","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single text row"}
+{"item_id":"spider_train_2545","primary":"table","acceptable":["table"],"confidence":2,"rationale":"Unlabelled percentages, no categories"}
+{"item_id":"spider_train_5880","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_6380","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single name"}
+{"item_id":"spider_train_4820","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_5641","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Builder names list"}
+{"item_id":"spider_train_2649","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Code and id rows"}
+{"item_id":"spider_train_1651","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Artist detail rows"}
+{"item_id":"spider_train_2787","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_1747","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_1697","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2149","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_4103","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_5368","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text descriptions"}
+{"item_id":"spider_train_4765","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Phone numbers list"}
+{"item_id":"spider_train_2088","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single year value"}
+{"item_id":"spider_train_947","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single name"}
+{"item_id":"spider_train_4527","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single name"}
+{"item_id":"spider_train_508","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_34","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Year and host name, no measure"}
+{"item_id":"spider_train_5982","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_4865","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Locations list"}
+{"item_id":"spider_train_4026","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single type"}
+{"item_id":"spider_train_1945","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_4165","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1827","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names only, measure not shown"}
+{"item_id":"spider_train_797","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_5078","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names only list"}
+{"item_id":"spider_train_1725","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Counts per occupation, long labels"}
+{"item_id":"spider_train_2664","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_6581","primary":"table","acceptable":["table"],"confidence":3,"rationale":"County names with duplicates"}
+{"item_id":"spider_train_242","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6328","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single name"}
+{"item_id":"spider_train_2369","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2267","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_5402","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Address detail rows"}
+{"item_id":"spider_train_3114","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single date pair"}
+{"item_id":"spider_train_4073","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_4631","primary":"table","acceptable":["table"],"confidence":2,"rationale":"Raw category pairs, no measure"}
+{"item_id":"spider_train_3396","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_6786","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single name"}
+{"item_id":"spider_train_6299","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City names list"}
+{"item_id":"spider_train_1136","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Time strings list"}
+{"item_id":"spider_train_739","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Transactions per card type, 2 categories"}
+{"item_id":"spider_train_4332","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single code"}
+{"item_id":"spider_train_5480","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Major id list"}
+{"item_id":"spider_train_4466","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Name pairs with age"}
+{"item_id":"spider_train_6414","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single id"}
+{"item_id":"spider_train_1630","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Church detail rows"}
+{"item_id":"spider_train_624","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single title"}
+{"item_id":"spider_train_6504","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_1847","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names only list"}
+{"item_id":"spider_train_2968","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single title and id"}
+{"item_id":"spider_train_1309","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text date and location"}
+{"item_id":"spider_train_105","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Id list"}
+{"item_id":"spider_train_231","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1497","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_5226","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2419","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_2847","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_855","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Date list, no measure"}
+{"item_id":"spider_train_306","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_2827","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_1548","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_6203","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1080","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_6808","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_4250","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_2315","primary":"bar","acceptable":["bar","donut","horizontal_bar"],"confidence":3,"rationale":"Count per country, few categories"}
+{"item_id":"spider_train_4598","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1916","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Text pairs"}
+{"item_id":"spider_train_1295","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single average"}
+{"item_id":"spider_train_6984","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_3792","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_4695","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single person row"}
+{"item_id":"spider_train_3928","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Patients per physician"}
+{"item_id":"spider_train_5944","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Nulls and codes"}
+{"item_id":"spider_train_275","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single id value"}
+{"item_id":"spider_train_1964","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single id"}
+{"item_id":"spider_train_2918","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_6946","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Architect detail rows"}
+{"item_id":"spider_train_2811","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Event detail rows"}
+{"item_id":"spider_train_6614","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Time-of-day strings per train"}
+{"item_id":"spider_train_6065","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single text value"}
+{"item_id":"spider_train_2699","primary":"kpi","acceptable":["kpi"],"confidence":3,"rationale":"Single count"}
+{"item_id":"spider_train_1541","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single description"}
+{"item_id":"spider_train_6160","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Song titles list"}
+{"item_id":"spider_train_3725","primary":"horizontal_bar","acceptable":["horizontal_bar","table","bar"],"confidence":2,"rationale":"Prominence per mountain, long names"}
+{"item_id":"spider_train_3347","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Max and min scalars"}
+{"item_id":"spider_train_3064","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single customer row"}
+{"item_id":"spider_train_5842","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Names list"}
+{"item_id":"spider_train_414","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Flight number list"}
+{"item_id": "spider_train_3691", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_1215", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Identifier list"}
+{"item_id": "spider_train_6349", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Driver detail rows"}
+{"item_id": "spider_train_774", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1813", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Unlabelled sums list"}
+{"item_id": "spider_train_2064", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_3261", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text pairs"}
+{"item_id": "spider_train_1275", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Dates list"}
+{"item_id": "spider_train_2484", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Titles list"}
+{"item_id": "spider_train_1023", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Model names list"}
+{"item_id": "spider_train_4857", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Event detail rows"}
+{"item_id": "spider_train_3139", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Distinct status list"}
+{"item_id": "spider_train_2117", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single agent with count"}
+{"item_id": "spider_train_1986", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_1349", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Titles list"}
+{"item_id": "spider_train_4965", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_4940", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single sum"}
+{"item_id": "spider_train_168", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Text dates list"}
+{"item_id": "spider_train_4593", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "donut", "table"], "confidence": 2, "rationale": "Event count per product"}
+{"item_id": "spider_train_4492", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Name pairs"}
+{"item_id": "spider_train_2133", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_2600", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_2217", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Repeated names list"}
+{"item_id": "spider_train_3738", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Program detail rows"}
+{"item_id": "spider_train_656", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single age value"}
+{"item_id": "spider_train_1", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Head detail rows"}
+{"item_id": "spider_train_5663", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_2235", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_3491", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Id and job title rows"}
+{"item_id": "spider_train_1158", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single name"}
+{"item_id": "spider_train_919", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1190", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "States list"}
+{"item_id": "spider_train_6680", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1902", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Budget detail rows"}
+{"item_id": "spider_train_5630", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Wide detail table"}
+{"item_id": "spider_train_5285", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Distinct cities list"}
+{"item_id": "spider_train_3872", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single sum"}
+{"item_id": "spider_train_4136", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Country and year, no measure"}
+{"item_id": "spider_train_3610", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Counts all equal 1"}
+{"item_id": "spider_train_5760", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
+{"item_id": "spider_train_1020", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Wide mixed detail table"}
+{"item_id": "spider_train_6907", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Id list"}
+{"item_id": "spider_train_2023", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "donut", "table"], "confidence": 3, "rationale": "Station count per company"}
+{"item_id": "spider_train_6228", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Captain detail rows"}
+{"item_id": "spider_train_5106", "primary": "table", "acceptable": ["table", "kpi"], "confidence": 2, "rationale": "Single text value"}
+{"item_id": "spider_train_3170", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Id and authority rows"}
+{"item_id": "spider_train_4558", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names only, measure not shown"}
+{"item_id": "spider_train_5774", "primary": "bar", "acceptable": ["bar", "horizontal_bar", "donut", "table"], "confidence": 3, "rationale": "Complaint count per product"}
+{"item_id": "spider_train_5574", "primary": "kpi", "acceptable": ["kpi"], "confidence": 3, "rationale": "Single count"}
+{"item_id": "spider_train_2543", "primary": "table", "acceptable": ["table"], "confidence": 3, "rationale": "Names list"}
