@@ -69,7 +69,7 @@ lab = pathlib.Path(REPO) / "research/kaggle/annotations"
 for n in ("pilot_llm_labels.jsonl", "human_validation_reserve_ids.json"):
     if (lab / n).exists(): shutil.copy(lab / n, f"{OUT}/llm-labels/{n}")
 print(fs, fr)'''),
-("code", '''report = {"mode": MODE, "seed": SEED, "repo_commit": GIT, "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256,
+("code", '''report = {"mode": MODE, "seed": SEED, "repo_commit": GIT, "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "interpretations": F.interpretations_pin(REPO),
           "acquisition": acq, "real_candidates": real_stats, "dedup": dstats, "real_split_audit": audit, "synthetic_leakage_audit": leak,
           "synthetic_sha256": E.sha256_items(syn), "feature_files": {"synthetic": fs, "real": fr},
           "label_provenance": {"synthetic": "by construction", "llm": "pilot only (llm-labels/)", "human": "none yet"}}
@@ -87,7 +87,7 @@ NB2 = [
 ("md", """# 02 - Training, baselines and ablation (E01-10, #28)
 Five systems under one protocol (rules, SQL-only, data-only, hybrid, hybrid + semantic constraints), leave-one-group-out ablation,
 synthetic->real transfer on the LLM-labelled pilot. **Every number states what it measures.** No definitive model is trained here:
-the contract readings are under review (FEATURE_INTERPRETATIONS.md); rerun after confirmation. Requires outputs of notebook 01 in `SQLTOVIZ_OUT`."""),
+contract readings are confirmed (FEATURE_INTERPRETATIONS.md pinned in every report) but human validation is pending. Requires outputs of notebook 01 in `SQLTOVIZ_OUT`."""),
 ("code", BOOT),
 ("code", '''import numpy as np, pathlib
 from sqltoviz_data import pipeline as P, splits as S, experiment as E, rules as R
@@ -170,11 +170,11 @@ from collections import Counter
 print(Counter(c.get("generator_label", c["kind"]) for c in g["cases"]))
 json.dump(g, open(f"{OUT}/parity/golden_v1.json", "w"))'''),
 ("md", "## Model card (what the artifact is and is not)"),
-("code", '''card = {"status": "CANDIDATE - not final", "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "repo_commit": GIT,
+("code", '''card = {"status": "CANDIDATE - not final", "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "interpretations": F.interpretations_pin(REPO), "repo_commit": GIT,
         "onnx_sha256": OX.sha256_file(path), "class_order": list(OX.CLASSES), "trained_on": "synthetic only (label by construction)",
         "classifier": "RandomForest (fixed defaults, no tuning)", "onnx_vs_sklearn": ver, "golden_cases": g["n_cases"], "golden_verification": {k: rep[k] for k in ("accepted_ok", "rejected_ok", "max_abs_diff")},
         "limitations": ["synthetic labels encode generator conventions", "table-level features cannot separate bar/horizontal_bar and line/area",
-                        "contract readings pending review", "role model not trained (no role labels)", "cross-SDK parity not yet measured"]}
+                        "contract readings confirmed (normative) but human validation pending", "role model not trained (no role labels)", "cross-SDK parity not yet measured"]}
 json.dump(card, open(f"{OUT}/model/MODEL_CARD.json", "w"), indent=1)
 files = {"model/chart_model_candidate.onnx": "apache-2.0", "model/MODEL_CARD.json": "apache-2.0", "parity/golden_v1.json": "apache-2.0"}
 man = P.write_manifest(OUT, files, {"mode": MODE, "repo_commit": GIT, "stage": "export"})

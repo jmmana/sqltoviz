@@ -139,7 +139,7 @@ def run_meta(extra: dict | None = None) -> dict:
         except OSError:
             return ""
     F.load_contract()   # verifies pinned SHA256
-    meta = {"contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256,
+    meta = {"contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "interpretations": F.interpretations_pin(),
             "git_commit": sh("git", "rev-parse", "HEAD"), "python": platform.python_version(), "sklearn": sklearn.__version__,
             "numpy": np.__version__, "model": "RandomForest(n=300,min_leaf=2,balanced)", "tuning": "none (fixed defaults)",
             "rules_thresholds": {"DONUT_MAX_K": R.DONUT_MAX_K, "HEATMAP_MIN_K": R.HEATMAP_MIN_K, "LONG_LABEL": R.LONG_LABEL,
