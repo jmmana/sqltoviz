@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test site/preview.test.mjs
+      - run: node --test site/*.test.mjs
       - run: |
           mkdir -p _site
           cp -R site/. _site/
