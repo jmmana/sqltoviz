@@ -57,8 +57,8 @@ class Tok:
         return f"{self.kind}:{self.text}"
 
 
-_WORD = re.compile(r"[A-Za-z_][A-Za-z0-9_$]*")
-_NUM = re.compile(r"(?:\d+\.\d*|\.\d+|\d+)(?:[eE][+-]?\d+)?")
+_WORD = re.compile(r"[A-Za-z_][A-Za-z0-9_$]*", re.ASCII)
+_NUM = re.compile(r"(?:[0-9]+\.[0-9]*|\.[0-9]+|[0-9]+)(?:[eE][+-]?[0-9]+)?", re.ASCII)
 
 
 def lex(sql: str) -> list:
@@ -105,7 +105,7 @@ def lex(sql: str) -> list:
                 i = m.end()
                 continue
             m = _NUM.match(sql, i)
-            if m and (c.isdigit() or (c == "." and i + 1 < n and sql[i + 1].isdigit())):
+            if m and (c in "0123456789" or (c == "." and i + 1 < n and sql[i + 1] in "0123456789")):
                 toks.append(Tok("number", m.group(), m.group(), depth))
                 i = m.end()
                 continue
@@ -233,8 +233,8 @@ def _tokseq(ts):
 
 
 # ------------------------------------------------------------------ type resolution
-_ISO_DATE = re.compile(r"^(\d{4})-(\d{2})-(\d{2})$")
-_RFC3339 = re.compile(r"^(\d{4})-(\d{2})-(\d{2})[Tt](\d{2}):(\d{2}):(\d{2})(\.\d+)?([Zz]|[+-]\d{2}:\d{2})$")
+_ISO_DATE = re.compile(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})\Z", re.ASCII)
+_RFC3339 = re.compile(r"^([0-9]{4})-([0-9]{2})-([0-9]{2})[Tt]([0-9]{2}):([0-9]{2}):([0-9]{2})(\.[0-9]+)?([Zz]|[+-][0-9]{2}:[0-9]{2})\Z", re.ASCII)
 
 
 def parse_temporal(v):
@@ -397,7 +397,7 @@ def sql_features(sql: str, cols: list) -> list:
             t = toks[i]
             if t.depth == d0 and _kw(t, "LIMIT", "TOP"):
                 nxt = toks[i + 1] if i + 1 < n else None
-                if nxt is not None and nxt.kind == "number" and nxt.text.isdigit():
+                if nxt is not None and nxt.kind == "number" and all(ch in "0123456789" for ch in nxt.text):
                     f[8] = min(int(nxt.text), 1000) / 1000.0
                 break
         # ascending temporal order (first outer ORDER BY term)
@@ -443,7 +443,7 @@ def _asc_temporal(term, cols):
     if len(t) != 1:
         return False
     tok = t[0]
-    if tok.kind == "number" and tok.text.isdigit():
+    if tok.kind == "number" and all(ch in "0123456789" for ch in tok.text):
         k = int(tok.text) - 1
         cand = [k] if 0 <= k < len(cols) else []
     else:
@@ -493,7 +493,7 @@ def _group_flags(toks, cols):
         if toks[i].depth == d0 and _kw(toks[i], "GROUP") and _kw(toks[i + 1], "BY"):
             for item in _split_commas(toks, i + 2, _clause_end(toks, i + 2)):
                 cand = set()
-                if len(item) == 1 and item[0].kind == "number" and item[0].text.isdigit():
+                if len(item) == 1 and item[0].kind == "number" and all(ch in "0123456789" for ch in item[0].text):
                     k = int(item[0].text) - 1
                     if 0 <= k < len(cols):
                         cand.add(k)

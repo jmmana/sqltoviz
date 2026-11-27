@@ -1,4 +1,4 @@
-"""Optional inference loader; no model is bundled in alpha."""
+"""Checksum- and schema-validating ONNX session loader (requires onnxruntime; optional extra 'onnx')."""
 from pathlib import Path
 import hashlib
 

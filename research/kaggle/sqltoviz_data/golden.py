@@ -13,6 +13,7 @@ import numpy as np
 
 from . import features as F
 from . import onnx_export as OX
+from . import rules as RU
 
 ATOL = RTOL = 1e-6
 
@@ -80,7 +81,7 @@ def _clean(v):
     return None if isinstance(v, float) and not math.isfinite(v) else v
 
 
-def build_golden(cases: list, sess=None) -> dict:
+def build_golden(cases: list, sess=None, role_sess=None) -> dict:
     """Compute expected outputs with the reference implementation (+ ONNX session if given)."""
     out = []
     for c in cases:
@@ -98,16 +99,23 @@ def build_golden(cases: list, sess=None) -> dict:
                 sc = OX.predict_onnx(sess, t[None, :])[0]
                 rec["expected"]["chart_scores"] = [float(x) for x in sc]
                 rec["expected"]["base_class"] = OX.CLASSES[int(np.argmax(sc))]
+                final, changed = RU.constrained_choice(sc, t, cols)
+                rec["expected"].update({"rule_class": RU.rule_predict(t, cols), "eligible": RU.eligible(t, cols),
+                                        "final_class": final, "constraint_changed": bool(changed)})
+            if role_sess is not None:
+                rs = OX.predict_roles_onnx(role_sess, cols)
+                rec["expected"]["role_scores"] = [[float(x) for x in r] for r in rs]
+                rec["expected"]["roles"] = [OX.ROLES[int(np.argmax(r))] for r in rs]
         except F.FeatureError as e:
             if c["expect"] != "reject":
                 raise
             rec["expected"] = {"rejected": True, "reason": str(e)}
         out.append(rec)
-    return {"golden_version": 1, "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "atol": ATOL, "rtol": RTOL,
+    return {"golden_version": 2, "contract_version": F.CONTRACT_VERSION, "contract_sha256": F.CONTRACT_SHA256, "atol": ATOL, "rtol": RTOL,
             "class_order": list(OX.CLASSES), "n_cases": len(out), "cases": out}
 
 
-def verify_golden(g: dict, sess=None) -> dict:
+def verify_golden(g: dict, sess=None, role_sess=None) -> dict:
     """Re-run every case; report max abs diffs and failures."""
     fails, max_t, max_c, max_s, n_ok, n_rej = [], 0.0, 0.0, 0.0, 0, 0
     for c in g["cases"]:
@@ -133,6 +141,16 @@ def verify_golden(g: dict, sess=None) -> dict:
             max_s = max(max_s, float(np.abs(sc - np.array(exp["chart_scores"])).max()))
             if not np.allclose(sc, exp["chart_scores"], atol=g["atol"], rtol=g["rtol"]):
                 fails.append((c["case_id"], "score mismatch"))
+                continue
+            if "final_class" in exp:
+                final, changed = RU.constrained_choice(sc, t, cols)
+                if (final, bool(changed), RU.eligible(t, cols), RU.rule_predict(t, cols)) != (exp["final_class"], exp["constraint_changed"], exp["eligible"], exp["rule_class"]):
+                    fails.append((c["case_id"], "classification mismatch"))
+                    continue
+        if role_sess is not None and "role_scores" in exp:
+            rs = OX.predict_roles_onnx(role_sess, cols)
+            if not np.allclose(rs, exp["role_scores"], atol=g["atol"], rtol=g["rtol"]) or [OX.ROLES[int(np.argmax(r))] for r in rs] != exp["roles"]:
+                fails.append((c["case_id"], "role mismatch"))
                 continue
         n_ok += 1
     return {"n_cases": len(g["cases"]), "accepted_ok": n_ok, "rejected_ok": n_rej, "failures": fails,

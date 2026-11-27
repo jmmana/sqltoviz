@@ -19,3 +19,6 @@ Repository = "https://github.com/jmmana/sqltoviz"
 
 [tool.setuptools.packages.find]
 include = ["sqltoviz*"]
+
+[tool.setuptools.package-data]
+sqltoviz = ["models/*.onnx", "models/manifest.json"]
