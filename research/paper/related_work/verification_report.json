@@ -1,0 +1,195 @@
+{
+ "retrieved": "2026-11-27",
+ "entries": [
+  {
+   "key": "hu2019vizml",
+   "verified": true,
+   "source": "arxiv",
+   "id": "1808.04819",
+   "year": 2018,
+   "title": "VizML: A Machine Learning Approach to Visualization Recommendation",
+   "first_author": "Kevin Z. Hu",
+   "abstract": "Data visualization should be accessible for all analysts with data, not just the few with technical expertise. Visualization recommender systems aim to lower the barrier to exploring basic visualizations by automatically generating results for analysts to search and select, rather than manually specify. Here, we demonstrate a novel machine learning-based approach to visualization recommendation that learns visualization design choices from a large corpus of datasets and associated visualizations. First, we identify five key design choices made by analysts while creating visualizations, such as selecting a visualization type and choosing to encode a column along the X- or Y-axis. We train models to predict these design choices using one million dataset-visualization pairs collected from a popular online visualization platform. Neural networks predict these design choices with high accuracy compared to baseline models. We report and interpret feature importances from one of these baseline models. To evaluate the generalizability and uncertainty of our approach, we benchmark with a crowdsourced test set, and show that the performance of our model is comparable to human performance when predicting consensus visualization type, and exceeds that of other ML-based systems."
+  },
+  {
+   "key": "dibia2019data2vis",
+   "verified": true,
+   "source": "arxiv",
+   "id": "1804.03126",
+   "year": 2018,
+   "title": "Data2Vis: Automatic Generation of Data Visualizations Using Sequence to Sequence Recurrent Neural Networks",
+   "first_author": "Victor Dibia",
+   "abstract": "Rapidly creating effective visualizations using expressive grammars is challenging for users who have limited time and limited skills in statistics and data visualization. Even high-level, dedicated visualization tools often require users to manually select among data attributes, decide which transformations to apply, and specify mappings between visual encoding variables and raw or transformed attributes. In this paper we introduce Data2Vis, a neural translation model for automatically generating visualizations from given datasets. We formulate visualization generation as a sequence to sequence translation problem where data specifications are mapped to visualization specifications in a declarative language (Vega-Lite). To this end, we train a multilayered attention-based recurrent neural network (RNN) with long short-term memory (LSTM) units on a corpus of visualization specifications. Qualitative results show that our model learns the vocabulary and syntax for a valid visualization specification, appropriate transformations (count, bins, mean) and how to use common data selection patterns that occur within data visualizations. Data2Vis generates visualizations that are comparable to manually-created visualizations in a fraction of the time, with potential to learn more complex visualization strategies at scale."
+  },
+  {
+   "key": "luo2018deepeye",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/icde.2018.00019",
+   "year": 2018,
+   "title": "DeepEye: Towards Automatic Data Visualization",
+   "first_author": "Luo, Yuyu",
+   "abstract": null
+  },
+  {
+   "key": "moritz2018draco",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/tvcg.2018.2865240",
+   "year": 2019,
+   "title": "Formalizing Visualization Design Knowledge as Constraints: Actionable and Extensible Models in Draco",
+   "first_author": "Moritz, Dominik",
+   "abstract": null
+  },
+  {
+   "key": "luo2021nvbench",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1145/3448016.3457261",
+   "year": 2021,
+   "title": "Synthesizing Natural Language to Visualization (NL2VIS) Benchmarks from NL2SQL Benchmarks",
+   "first_author": "Luo, Yuyu",
+   "abstract": null
+  },
+  {
+   "key": "luo2022ncnet",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/tvcg.2021.3114848",
+   "year": 2022,
+   "title": "Natural Language to Visualization by Neural Machine Translation",
+   "first_author": "Luo, Yuyu",
+   "abstract": null
+  },
+  {
+   "key": "yu2018spider",
+   "verified": true,
+   "source": "arxiv",
+   "id": "1809.08887",
+   "year": 2018,
+   "title": "Spider: A Large-Scale Human-Labeled Dataset for Complex and Cross-Domain Semantic Parsing and Text-to-SQL Task",
+   "first_author": "Tao Yu",
+   "abstract": "We present Spider, a large-scale, complex and cross-domain semantic parsing and text-to-SQL dataset annotated by 11 college students. It consists of 10,181 questions and 5,693 unique complex SQL queries on 200 databases with multiple tables, covering 138 different domains. We define a new complex and cross-domain semantic parsing and text-to-SQL task where different complex SQL queries and databases appear in train and test sets. In this way, the task requires the model to generalize well to both new SQL queries and new database schemas. Spider is distinct from most of the previous semantic parsing tasks because they all use a single database and the exact same programs in the train set and the test set. We experiment with various state-of-the-art models and the best model achieves only 12.4% exact matching accuracy on a database split setting. This shows that Spider presents a strong challenge for future research. Our dataset and task are publicly available at https://yale-lily.github.io/spider"
+  },
+  {
+   "key": "li2023bird",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2305.03111",
+   "year": 2023,
+   "title": "Can LLM Already Serve as A Database Interface? A BIg Bench for Large-Scale Database Grounded Text-to-SQLs",
+   "first_author": "Jinyang Li",
+   "abstract": "Text-to-SQL parsing, which aims at converting natural language instructions into executable SQLs, has gained increasing attention in recent years. In particular, Codex and ChatGPT have shown impressive results in this task. However, most of the prevalent benchmarks, i.e., Spider, and WikiSQL, focus on database schema with few rows of database contents leaving the gap between academic study and real-world applications. To mitigate this gap, we present Bird, a big benchmark for large-scale database grounded in text-to-SQL tasks, containing 12,751 pairs of text-to-SQL data and 95 databases with a total size of 33.4 GB, spanning 37 professional domains. Our emphasis on database values highlights the new challenges of dirty database contents, external knowledge between NL questions and database contents, and SQL efficiency, particularly in the context of massive databases. To solve these problems, text-to-SQL models must feature database value comprehension in addition to semantic parsing. The experimental results demonstrate the significance of database values in generating accurate text-to-SQLs for big databases. Furthermore, even the most effective text-to-SQL models, i.e. ChatGPT, only achieves 40.08% in execution accuracy, which is still far from the human result of 92.96%, proving that challenges still stand. Besides, we also provide an efficiency analysis to offer insights into generating text-to-efficient-SQLs that are beneficial to industries. We believe that BIRD will contribute to advancing real-world applications of text-to-SQL research. The leaderboard and source code are available: https://bird-bench.github.io/."
+  },
+  {
+   "key": "satyanarayan2017vegalite",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/tvcg.2016.2599030",
+   "year": 2017,
+   "title": "Vega-Lite: A Grammar of Interactive Graphics",
+   "first_author": "Satyanarayan, Arvind",
+   "abstract": null
+  },
+  {
+   "key": "mackinlay2007showme",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/tvcg.2007.70594",
+   "year": 2007,
+   "title": "Show Me: Automatic Presentation for Visual Analysis",
+   "first_author": "Mackinlay, Jock",
+   "abstract": null
+  },
+  {
+   "key": "wongsuphasawat2016voyager",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1109/tvcg.2015.2467191",
+   "year": 2016,
+   "title": "Voyager: Exploratory Analysis via Faceted Browsing of Visualization Recommendations",
+   "first_author": "Wongsuphasawat, Kanit",
+   "abstract": null
+  },
+  {
+   "key": "dibia2023lida",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2303.02927",
+   "year": 2023,
+   "title": "LIDA: A Tool for Automatic Generation of Grammar-Agnostic Visualizations and Infographics using Large Language Models",
+   "first_author": "Victor Dibia",
+   "abstract": "Systems that support users in the automatic creation of visualizations must address several subtasks - understand the semantics of data, enumerate relevant visualization goals and generate visualization specifications. In this work, we pose visualization generation as a multi-stage generation problem and argue that well-orchestrated pipelines based on large language models (LLMs) such as ChatGPT/GPT-4 and image generation models (IGMs) are suitable to addressing these tasks. We present LIDA, a novel tool for generating grammar-agnostic visualizations and infographics. LIDA comprises of 4 modules - A SUMMARIZER that converts data into a rich but compact natural language summary, a GOAL EXPLORER that enumerates visualization goals given the data, a VISGENERATOR that generates, refines, executes and filters visualization code and an INFOGRAPHER module that yields data-faithful stylized graphics using IGMs. LIDA provides a python api, and a hybrid user interface (direct manipulation and multilingual natural language) for interactive chart, infographics and data story generation. Learn more about the project here - https://microsoft.github.io/lida/"
+  },
+  {
+   "key": "zhou2020table2charts",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2008.11015",
+   "year": 2020,
+   "title": "Table2Charts: Recommending Charts by Learning Shared Table Representations",
+   "first_author": "Mengyu Zhou",
+   "abstract": "It is common for people to create different types of charts to explore a multi-dimensional dataset (table). However, to recommend commonly composed charts in real world, one should take the challenges of efficiency, imbalanced data and table context into consideration. In this paper, we propose Table2Charts framework which learns common patterns from a large corpus of (table, charts) pairs. Based on deep Q-learning with copying mechanism and heuristic searching, Table2Charts does table-to-sequence generation, where each sequence follows a chart template. On a large spreadsheet corpus with 165k tables and 266k charts, we show that Table2Charts could learn a shared representation of table fields so that recommendation tasks on different chart types could mutually enhance each other. Table2Charts outperforms other chart recommendation systems in both multi-type task (with doubled recall numbers R@3=0.61 and R@1=0.43) and human evaluations."
+  },
+  {
+   "key": "cohen1960kappa",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1177/001316446002000104",
+   "year": 1960,
+   "title": "A Coefficient of Agreement for Nominal Scales",
+   "first_author": "Cohen, Jacob",
+   "abstract": null
+  },
+  {
+   "key": "breiman2001rf",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1023/a:1010933404324",
+   "year": 2001,
+   "title": "Random Forests",
+   "first_author": "Breiman, Leo",
+   "abstract": null
+  },
+  {
+   "key": "pedregosa2011sklearn",
+   "verified": true,
+   "source": "arxiv",
+   "id": "1201.0490",
+   "year": 2012,
+   "title": "Scikit-learn: Machine Learning in Python",
+   "first_author": "Fabian Pedregosa",
+   "abstract": "Scikit-learn is a Python module integrating a wide range of state-of-the-art machine learning algorithms for medium-scale supervised and unsupervised problems. This package focuses on bringing machine learning to non-specialists using a general-purpose high-level language. Emphasis is put on ease of use, performance, documentation, and API consistency. It has minimal dependencies and is distributed under the simplified BSD license, encouraging its use in both academic and commercial settings. Source code, binaries, and documentation can be downloaded from http://scikit-learn.org."
+  },
+  {
+   "key": "leys2013mad",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1016/j.jesp.2013.03.013",
+   "year": 2013,
+   "title": "Detecting outliers: Do not use standard deviation around the mean, use absolute deviation around the median",
+   "first_author": "Leys, Christophe",
+   "abstract": null
+  },
+  {
+   "key": "zhu2020survey",
+   "verified": true,
+   "source": "crossref",
+   "id": "10.1016/j.visinf.2020.07.002",
+   "year": 2020,
+   "title": "A survey on automatic infographics and visualization recommendations",
+   "first_author": "Zhu, Sujia",
+   "abstract": null
+  },
+  {
+   "key": "yang2023draco2",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2308.14247",
+   "year": 2023,
+   "title": "Draco 2: An Extensible Platform to Model Visualization Design",
+   "first_author": "Junran Yang",
+   "abstract": "Draco introduced a constraint-based framework to model visualization design in an extensible and testable form. It provides a way to abstract design guidelines from theoretical and empirical studies and applies the knowledge in automated design tools. However, Draco is challenging to use because there is limited tooling and documentation. In response, we present Draco 2, the successor with (1) a more flexible visualization specification format, (2) a comprehensive test suite and documentation, and (3) flexible and convenient APIs. We designed Draco 2 to be more extensible and easier to integrate into visualization systems. We demonstrate these advantages and believe that they make Draco 2 a platform for future research."
+  }
+ ]
+}
