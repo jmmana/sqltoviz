@@ -61,7 +61,7 @@ def grouped_cv_predict(X, y, groups, seed=0, n_splits=5):
     classes = sorted(set(y))
     proba = np.zeros((len(y), len(classes)))
     for tr, te in GroupKFold(n_splits=n_splits).split(X, y, groups):
-        m = RandomForestClassifier(n_estimators=200, min_samples_leaf=2, random_state=seed, n_jobs=-1).fit(X[tr], np.array(y)[tr])
+        m = RandomForestClassifier(n_estimators=200, min_samples_leaf=2, random_state=seed, n_jobs=1).fit(X[tr], np.array(y)[tr])
         p = m.predict_proba(X[te])
         for j, c in enumerate(m.classes_):
             proba[te, classes.index(c)] = p[:, j]

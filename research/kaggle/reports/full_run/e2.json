@@ -1,0 +1,1140 @@
+{
+ "experiment": "E2",
+ "measures": "agreement with LLM consensus on real queries; not human",
+ "meta": {
+  "contract_version": "SqlVizSpec-v1.0.0",
+  "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+  "interpretations": {
+   "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+   "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+   "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+   "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+  },
+  "git_commit": "de6feb27706111121519c0dc5bddeb3e854ed746",
+  "python": "3.12.13",
+  "sklearn": "1.9.1",
+  "numpy": "2.5.5",
+  "model": "RandomForest(n=300,min_leaf=2,balanced)",
+  "tuning": "none (fixed defaults)",
+  "rules_thresholds": {
+   "DONUT_MAX_K": 5,
+   "HEATMAP_MIN_K": 6,
+   "LONG_LABEL": 0.4,
+   "BAR_MAX_ROWS": 25,
+   "SCATTER_MIN_ROWS": 15
+  },
+  "mode": "full",
+  "n": 131
+ },
+ "n_train": 20000,
+ "n_test": 131,
+ "majority_baseline": {
+  "class": "heatmap",
+  "accuracy": 0.0
+ },
+ "test_majority": {
+  "class": "table",
+  "accuracy": 0.7251908396946565
+ },
+ "train_class_counts": {
+  "heatmap": 2000,
+  "kpi": 2000,
+  "stacked_bar": 2000,
+  "donut": 2000,
+  "table": 2000,
+  "horizontal_bar": 2000,
+  "line": 2000,
+  "area": 2000,
+  "scatter": 2000,
+  "bar": 2000
+ },
+ "test_class_counts": {
+  "table": 95,
+  "kpi": 27,
+  "bar": 7,
+  "horizontal_bar": 2
+ },
+ "systems": {
+  "rules": {
+   "n": 131,
+   "accuracy": 0.8854961832061069,
+   "macro_f1": 0.6385557221389305,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.4536959134615385,
+    0.7336377626864534
+   ],
+   "per_class": {
+    "kpi": {
+     "precision": 0.8709677419354839,
+     "recall": 1.0,
+     "f1": 0.9310344827586207,
+     "support": 27
+    },
+    "bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 7
+    },
+    "horizontal_bar": {
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6666666666666666,
+     "support": 2
+    },
+    "stacked_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "line": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "area": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "donut": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "scatter": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "heatmap": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "table": {
+     "precision": 0.9887640449438202,
+     "recall": 0.9263157894736842,
+     "f1": 0.9565217391304348,
+     "support": 95
+    }
+   },
+   "semantic_violation_rate": 0.0,
+   "table_fallback_rate": 0.6793893129770993,
+   "confusion_matrix": {
+    "labels": [
+     "kpi",
+     "bar",
+     "horizontal_bar",
+     "stacked_bar",
+     "line",
+     "area",
+     "donut",
+     "scatter",
+     "heatmap",
+     "table"
+    ],
+    "matrix": [
+     [
+      27,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      4,
+      1,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      0,
+      88
+     ]
+    ]
+   },
+   "acceptable_hit_rate": 0.9694656488549618
+  },
+  "sql_only": {
+   "n": 131,
+   "accuracy": 0.5725190839694656,
+   "macro_f1": 0.4942536971225496,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.3759043893339039,
+    0.5755885172123719
+   ],
+   "per_class": {
+    "kpi": {
+     "precision": 0.7352941176470589,
+     "recall": 0.9259259259259259,
+     "f1": 0.819672131147541,
+     "support": 27
+    },
+    "bar": {
+     "precision": 0.6,
+     "recall": 0.42857142857142855,
+     "f1": 0.5,
+     "support": 7
+    },
+    "horizontal_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 2
+    },
+    "stacked_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "line": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "area": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "donut": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "scatter": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "heatmap": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "table": {
+     "precision": 0.9791666666666666,
+     "recall": 0.49473684210526314,
+     "f1": 0.6573426573426573,
+     "support": 95
+    }
+   },
+   "semantic_violation_rate": 0.4122137404580153,
+   "table_fallback_rate": 0.366412213740458,
+   "confusion_matrix": {
+    "labels": [
+     "kpi",
+     "bar",
+     "horizontal_bar",
+     "stacked_bar",
+     "line",
+     "area",
+     "donut",
+     "scatter",
+     "heatmap",
+     "table"
+    ],
+    "matrix": [
+     [
+      25,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      0
+     ],
+     [
+      3,
+      3,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      6,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      42,
+      0,
+      47
+     ]
+    ]
+   },
+   "acceptable_hit_rate": 0.5954198473282443
+  },
+  "data_only": {
+   "n": 131,
+   "accuracy": 0.22900763358778625,
+   "macro_f1": 0.22103724769917446,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.14008069602896006,
+    0.3196551895358075
+   ],
+   "per_class": {
+    "kpi": {
+     "precision": 0.45,
+     "recall": 1.0,
+     "f1": 0.6206896551724138,
+     "support": 27
+    },
+    "bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 7
+    },
+    "horizontal_bar": {
+     "precision": 0.14285714285714285,
+     "recall": 0.5,
+     "f1": 0.2222222222222222,
+     "support": 2
+    },
+    "stacked_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "line": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "area": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "donut": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "scatter": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "heatmap": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "table": {
+     "precision": 1.0,
+     "recall": 0.021052631578947368,
+     "f1": 0.041237113402061855,
+     "support": 95
+    }
+   },
+   "semantic_violation_rate": 0.6564885496183206,
+   "table_fallback_rate": 0.015267175572519083,
+   "confusion_matrix": {
+    "labels": [
+     "kpi",
+     "bar",
+     "horizontal_bar",
+     "stacked_bar",
+     "line",
+     "area",
+     "donut",
+     "scatter",
+     "heatmap",
+     "table"
+    ],
+    "matrix": [
+     [
+      27,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      33,
+      15,
+      6,
+      10,
+      5,
+      2,
+      22,
+      0,
+      0,
+      2
+     ]
+    ]
+   },
+   "acceptable_hit_rate": 0.45038167938931295
+  },
+  "hybrid": {
+   "n": 131,
+   "accuracy": 0.5877862595419847,
+   "macro_f1": 0.491977969348659,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.2954216979612065,
+    0.5941614340415532
+   ],
+   "per_class": {
+    "kpi": {
+     "precision": 0.45,
+     "recall": 1.0,
+     "f1": 0.6206896551724138,
+     "support": 27
+    },
+    "bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 7
+    },
+    "horizontal_bar": {
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6666666666666666,
+     "support": 2
+    },
+    "stacked_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "line": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "area": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "donut": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "scatter": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "heatmap": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "table": {
+     "precision": 1.0,
+     "recall": 0.5157894736842106,
+     "f1": 0.6805555555555556,
+     "support": 95
+    }
+   },
+   "semantic_violation_rate": 0.32061068702290074,
+   "table_fallback_rate": 0.37404580152671757,
+   "confusion_matrix": {
+    "labels": [
+     "kpi",
+     "bar",
+     "horizontal_bar",
+     "stacked_bar",
+     "line",
+     "area",
+     "donut",
+     "scatter",
+     "heatmap",
+     "table"
+    ],
+    "matrix": [
+     [
+      27,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      33,
+      1,
+      0,
+      0,
+      1,
+      1,
+      10,
+      0,
+      0,
+      49
+     ]
+    ]
+   },
+   "acceptable_hit_rate": 0.8091603053435115
+  },
+  "hybrid_semantic": {
+   "n": 131,
+   "accuracy": 0.9083969465648855,
+   "macro_f1": 0.6440489432703003,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.4587161392127641,
+    0.7395468239379085
+   ],
+   "per_class": {
+    "kpi": {
+     "precision": 0.8709677419354839,
+     "recall": 1.0,
+     "f1": 0.9310344827586207,
+     "support": 27
+    },
+    "bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 7
+    },
+    "horizontal_bar": {
+     "precision": 1.0,
+     "recall": 0.5,
+     "f1": 0.6666666666666666,
+     "support": 2
+    },
+    "stacked_bar": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "line": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "area": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "donut": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "scatter": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "heatmap": {
+     "precision": 0.0,
+     "recall": 0.0,
+     "f1": 0.0,
+     "support": 0
+    },
+    "table": {
+     "precision": 1.0,
+     "recall": 0.9578947368421052,
+     "f1": 0.978494623655914,
+     "support": 95
+    }
+   },
+   "semantic_violation_rate": 0.0,
+   "table_fallback_rate": 0.6946564885496184,
+   "confusion_matrix": {
+    "labels": [
+     "kpi",
+     "bar",
+     "horizontal_bar",
+     "stacked_bar",
+     "line",
+     "area",
+     "donut",
+     "scatter",
+     "heatmap",
+     "table"
+    ],
+    "matrix": [
+     [
+      27,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      0,
+      0
+     ],
+     [
+      0,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     [
+      4,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      91
+     ]
+    ]
+   },
+   "acceptable_hit_rate": 0.9847328244274809,
+   "constraint_changed_rate": 0.32061068702290074
+  }
+ }
+}

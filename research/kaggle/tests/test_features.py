@@ -282,3 +282,10 @@ def test_extraction_is_deterministic():
     a = run("SELECT a FROM t ORDER BY a", ["a"], [[3], [1], [2]])
     b = run("SELECT a FROM t ORDER BY a", ["a"], [[3], [1], [2]])
     assert np.array_equal(a[0], b[0]) and np.array_equal(a[1], b[1])
+
+
+def test_interpretations_pin_matches_document_bytes():
+    pin = F.interpretations_pin()
+    doc = ROOT / "research" / "kaggle" / "FEATURE_INTERPRETATIONS.md"
+    assert pin["sha256"] == hashlib.sha256(doc.read_bytes()).hexdigest()
+    assert pin["file"].endswith("FEATURE_INTERPRETATIONS.md")
