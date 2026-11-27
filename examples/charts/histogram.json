@@ -1,0 +1,44 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT bin,COUNT(*) AS value FROM observations GROUP BY bin ORDER BY bin;",
+  "rows": [
+    {
+      "bin": 0,
+      "value": 3
+    },
+    {
+      "bin": 1,
+      "value": 8
+    },
+    {
+      "bin": 2,
+      "value": 15
+    },
+    {
+      "bin": 3,
+      "value": 22
+    },
+    {
+      "bin": 4,
+      "value": 14
+    },
+    {
+      "bin": 5,
+      "value": 7
+    },
+    {
+      "bin": 6,
+      "value": 2
+    }
+  ],
+  "metadata": {
+    "binWidth": 1
+  },
+  "expected": {
+    "chartType": "histogram"
+  },
+  "explanation": {
+    "en": "Equal-width ordered bins",
+    "es": "Intervalos ordenados de igual ancho"
+  }
+}

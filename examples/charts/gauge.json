@@ -1,0 +1,21 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT SUM(amount) AS value FROM sales;",
+  "rows": [
+    {
+      "value": 78
+    }
+  ],
+  "metadata": {
+    "target": 100,
+    "min": 0,
+    "max": 100
+  },
+  "expected": {
+    "chartType": "gauge"
+  },
+  "explanation": {
+    "en": "Explicit target and range",
+    "es": "Objetivo y rango explícitos"
+  }
+}
