@@ -92,3 +92,10 @@ def test_training_and_export_are_byte_reproducible(tmp_path):
         m = OX.fit_contract_model(X, y, seed=0, n_estimators=10)
         hashes.append(OX.sha256_file(OX.export_chart_model(m, tmp_path / f"m{k}.onnx")))
     assert hashes[0] == hashes[1]
+
+
+def test_extension_cases_are_unique_and_include_rejections():
+    ext = G.extension_cases()
+    assert len({c["case_id"] for c in ext}) == len(ext) >= 15
+    assert sum(c["expect"] == "reject" for c in ext) == 2
+    assert not {c["case_id"] for c in ext} & {c["case_id"] for c in G.handcrafted_cases()}

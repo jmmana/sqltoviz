@@ -65,6 +65,32 @@ def handcrafted_cases() -> list:
     return cs
 
 
+def extension_cases() -> list:
+    """Cross-runtime portability edge cases appended after the original 288 (never reorder or change existing cases)."""
+    d = lambda name, sql, schema, rows, expect="accept": {"case_id": name, "sql": sql, "schema": schema, "rows": rows, "expect": expect, "kind": "portability"}
+    s = lambda *n: [{"name": x} for x in n]
+    return [
+        d("ext_integral_float_ids", "SELECT user_id, v FROM t", s("user_id", "v"), [[1.0, 0.5], [2.0, 1.5], [3.0, 2.5]]),
+        d("ext_integral_float_quantitative", "SELECT v FROM t", s("v"), [[1.0], [2.5], [3.0]]),
+        d("ext_astral_symbol_outside_quotes", "SELECT \U0001F600 FROM t", s("a"), [[1]]),
+        d("ext_non_ascii_digit_is_not_number", "SELECT \u0663, a FROM t LIMIT \u0663", s("a"), [[1]]),
+        d("ext_nbsp_and_unicode_whitespace", "SELECT\u00a0a,\u2003b\u3000FROM t", s("a", "b"), [[1, 2]]),
+        d("ext_string_length_counts_code_points", "SELECT s FROM t", s("s"), [["\U0001F600\U0001F600ab"], ["e\u0301x"], ["\u65e5\u672c"]]),
+        d("ext_date_with_trailing_newline_is_nominal", "SELECT d FROM t", s("d"), [["2024-01-01\n"], ["2024-01-02\n"]]),
+        d("ext_line_comment_crlf", "SELECT a -- c JOIN\r\nFROM t JOIN u ON 1=1", s("a"), [[1]]),
+        d("ext_leap_day_and_year_one", "SELECT d FROM t ORDER BY d", s("d"), [["0001-01-01"], ["2024-02-29"], ["2023-03-01"]]),
+        d("ext_invalid_leap_day_nominal", "SELECT d FROM t", s("d"), [["2023-02-29"], ["2023-03-01"]]),
+        d("ext_big_but_safe_integers", "SELECT v FROM t", s("v"), [[9007199254740991], [-9007199254740991], [1]]),
+        d("ext_limit_huge_literal", "SELECT a FROM t LIMIT 99999999999999999999999", s("a"), [[1]]),
+        d("ext_numeric_exponent_literal_limit", "SELECT a FROM t LIMIT 1e3", s("a"), [[1]]),
+        d("ext_doubled_quote_escapes", "SELECT 'a''b JOIN', \"c\"\"d\" FROM t", s("a", "b"), [[1, 2]]),
+        d("ext_group_by_expression_match", "SELECT upper(a), COUNT(*) FROM t GROUP BY UPPER(a)", s("x", "n"), [["A", 1], ["B", 2]]),
+        d("ext_order_by_quoted_identifier", "SELECT \"Day\", v FROM t ORDER BY \"Day\" ASC", s("Day", "v"), [["2024-01-01", 1], ["2024-01-02", 2], ["2024-01-03", 3]]),
+        d("ext_reject_unsafe_integral_float", "SELECT v FROM t", s("v"), [[1e300]], "reject"),
+        d("ext_reject_unsafe_integer_neg", "SELECT v FROM t", s("v"), [[-9007199254740992]], "reject"),
+    ]
+
+
 def synthetic_cases(items: list, per_class: int, max_rows: int = 80, seed: int = 0) -> list:
     rng = random.Random(seed)
     out = []

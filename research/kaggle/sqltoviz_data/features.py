@@ -287,8 +287,15 @@ def _check_cell(v):
             raise FeatureError("integer outside safe range")
         return
     if isinstance(v, float):
+        if math.isfinite(v) and v.is_integer() and abs(v) > SAFE_INT:       # JSON cannot tell 1e20 from 100000000000000000000
+            raise FeatureError("integer outside safe range")
         return
     raise FeatureError(f"unsupported cell type {type(v).__name__}")
+
+
+def _is_int(v):
+    """Integer-valued number (JSON does not distinguish 1 from 1.0): bool excluded."""
+    return not isinstance(v, bool) and (isinstance(v, int) or (isinstance(v, float) and math.isfinite(v) and v.is_integer()))
 
 
 def _is_num(v):
@@ -309,7 +316,7 @@ def resolve_type(name: str, values: list, explicit: str | None) -> str:
             "nominal": True,
             "quantitative": all(_is_num(v) for v in nonmissing),
             "temporal": all(parse_temporal(v) is not None for v in nonmissing),
-            "identifier": all(isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool)) for v in nonmissing),
+            "identifier": all(isinstance(v, str) or _is_int(v) for v in nonmissing),
         }[explicit]
         if not ok:
             raise FeatureError(f"explicit type {explicit!r} incompatible with column {name!r}")
@@ -318,7 +325,7 @@ def resolve_type(name: str, values: list, explicit: str | None) -> str:
         return "nominal"
     ln = _ascii_lower(name)
     if (ln in ("id", "uuid") or ln.endswith("_id")) and all(
-            isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool)) for v in nonmissing):
+            isinstance(v, str) or _is_int(v) for v in nonmissing):
         return "identifier"
     if all(parse_temporal(v) is not None for v in nonmissing):
         return "temporal"

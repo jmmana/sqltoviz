@@ -43,7 +43,8 @@ class Features(unittest.TestCase):
                 for a, b in zip(ra, rb):
                     self.assertTrue(close(a, b, atol, rtol), (c["case_id"], a, b))
             accepted += 1
-        self.assertEqual((accepted, rejected), (277, 11))
+        self.assertEqual((accepted, rejected), (sum(1 for c in GOLDEN["cases"] if not c["expected"].get("rejected")), sum(1 for c in GOLDEN["cases"] if c["expected"].get("rejected"))))
+        self.assertGreaterEqual(accepted + rejected, 288)                                              # the original 288 are a prefix
 
     def test_constraints_and_rules_match_reference_without_models(self):
         for c in GOLDEN["cases"]:
@@ -79,7 +80,7 @@ class Models(unittest.TestCase):
                 for a, b in zip(x["scores"], row):
                     self.assertTrue(close(a, b, atol, rtol))
             n += 1
-        self.assertEqual(n, 277)
+        self.assertEqual(n, sum(1 for c in GOLDEN["cases"] if not c["expected"].get("rejected")))
 
     def test_models_are_labelled_experimental(self):
         r = self.engine.recommend("SELECT a FROM t", ["a"], [[1.0]])
