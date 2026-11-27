@@ -1,5 +1,5 @@
 # SqlToViz .NET alpha
-Targets .NET 8 and 10. Deterministic preview, four statistical detectors, DataTable and dictionary inputs, ApexCharts configuration. Model-backed engine with experimental candidate ONNX models: see below (package `SqlToViz.Onnx`). No SQL execution. Full feature extraction and parity remain pending.
+Targets .NET 8 and 10. Deterministic preview, four statistical detectors, DataTable and dictionary inputs, ApexCharts configuration. Model-backed engine with experimental candidate ONNX models: see below (package `SqlToViz.Onnx`). No SQL execution. Full feature extraction and golden parity (308 cases + differential fuzz) are implemented.
 
 Run dotnet test SqlToViz.Tests/SqlToViz.Tests.csproj and dotnet pack SqlToViz/SqlToViz.csproj -c Release.
 
