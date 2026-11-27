@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import re
 from collections import Counter
 from datetime import datetime, timezone
@@ -19,7 +20,7 @@ import numpy as np
 
 CONTRACT_VERSION = "SqlVizSpec-v1.0.0"
 CONTRACT_SHA256 = "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864"
-CONTRACT_PATH = Path(__file__).resolve().parents[3] / "spec" / "sqlvizspec-v1-features.json"
+CONTRACT_PATH = Path(os.environ.get("SQLTOVIZ_CONTRACT") or Path(__file__).resolve().parents[3] / "spec" / "sqlvizspec-v1-features.json")
 SAFE_INT = 2 ** 53 - 1
 MAX_COLUMNS, MAX_ROWS = 128, 100_000
 
@@ -641,3 +642,15 @@ def extract(sql: str, schema: list, rows: list) -> tuple:
     cdefs = C["column_features"]
     colmat = np.stack([_finalize(r, cdefs) for r in colraw]).astype(np.float32)
     return table, colmat
+
+
+def interpretations_pin(repo: str | Path | None = None) -> dict:
+    """Pin of the normative interpretation document (confirmed by the contract owner): file SHA256 + last commit."""
+    import subprocess
+    repo = Path(repo) if repo else Path(__file__).resolve().parents[3]
+    doc = repo / "research" / "kaggle" / "FEATURE_INTERPRETATIONS.md"
+    sha = hashlib.sha256(doc.read_bytes()).hexdigest()
+    r = subprocess.run(["git", "-C", str(repo), "log", "-1", "--format=%H", "--", "research/kaggle/FEATURE_INTERPRETATIONS.md"],
+                       capture_output=True, text=True)
+    return {"file": "research/kaggle/FEATURE_INTERPRETATIONS.md", "sha256": sha, "last_commit": r.stdout.strip() or None,
+            "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"}

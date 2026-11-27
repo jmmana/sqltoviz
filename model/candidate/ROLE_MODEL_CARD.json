@@ -1,0 +1,66 @@
+{
+ "status": "CANDIDATE - not final",
+ "model": "role model (column_features[M,28] -> role_scores[M,5])",
+ "role_order": [
+  "x_axis",
+  "y_axis",
+  "color_series",
+  "size_or_secondary",
+  "ignore_tooltip"
+ ],
+ "contract_version": "SqlVizSpec-v1.0.0",
+ "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+ "interpretations": {
+  "file": "research/kaggle/FEATURE_INTERPRETATIONS.md",
+  "sha256": "35c1e40db60a99a584a91d0cf6683fefc0faac26fa7f4e17165a7e188e3797b1",
+  "last_commit": "31cc76833e00e81efd0b54c94b56f607aebd1ef0",
+  "status": "confirmed normative clarification of SqlVizSpec-v1.0.0 (E02, issues #2 #3 #36)"
+ },
+ "onnx_sha256": "171ddf0d6a0e2f74b2bfcbe1a20480a51d0606434d842af1a0be6769bb27151e",
+ "onnx_vs_sklearn": {
+  "n": 322,
+  "max_abs_diff": 1.235541564614806e-07,
+  "within_1e-6": true
+ },
+ "trained_on": "322 columns from 136 expert-authored Vega-Lite example specs (vega/vega-lite @ 2e892a15c227f72022c2d7c04135e375a1bdae04, BSD-3-Clause); SQL context fixed to 'SELECT * FROM data'",
+ "grouped_cv_by_spec": {
+  "majority": {
+   "accuracy": 0.416,
+   "macro_f1": 0.118,
+   "macro_f1_ci95": [
+    0.113,
+    0.122
+   ]
+  },
+  "position_heuristic": {
+   "accuracy": 0.562,
+   "macro_f1": 0.317,
+   "macro_f1_ci95": [
+    0.273,
+    0.358
+   ]
+  },
+  "random_forest": {
+   "accuracy": 0.584,
+   "macro_f1": 0.501,
+   "macro_f1_ci95": [
+    0.436,
+    0.561
+   ]
+  }
+ },
+ "role_counts": {
+  "x_axis": 119,
+  "y_axis": 134,
+  "color_series": 40,
+  "size_or_secondary": 10,
+  "ignore_tooltip": 19
+ },
+ "limitations": [
+  "very small (n=322 columns), imbalanced; size_or_secondary has 10 examples",
+  "not SQL-aware",
+  "macro-F1 0.50 vs positional heuristic 0.32: feasibility evidence only",
+  "no human validation",
+  "roles of aggregated/derived Vega-Lite fields are not modelled"
+ ]
+}
