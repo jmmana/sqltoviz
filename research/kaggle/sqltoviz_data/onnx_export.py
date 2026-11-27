@@ -83,3 +83,47 @@ def verify_against_sklearn(model, sess, X: np.ndarray, atol: float = 1e-6, rtol:
 
 def sha256_file(path) -> str:
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+ROLES = tuple(F.contract()["model_io"]["roles"])
+
+
+def fit_role_model(Xc: np.ndarray, y_roles: list, seed: int = 0, n_estimators: int = 100, min_samples_leaf: int = 3):
+    """Role classifier on per-column features (28) -> probabilities in contract role order."""
+    if Xc.shape[1] != 28:
+        raise ValueError("column_features must have 28 columns")
+    missing = set(ROLES) - set(y_roles)
+    if missing:
+        raise ValueError(f"all 5 roles must be present in training; missing {sorted(missing)}")
+    y = np.array([ROLES.index(r) for r in y_roles])
+    return RandomForestClassifier(n_estimators=n_estimators, min_samples_leaf=min_samples_leaf, class_weight="balanced",
+                                  random_state=seed, n_jobs=-1).fit(Xc.astype(np.float32), y)
+
+
+def export_role_model(model, path) -> Path:
+    assert list(model.classes_) == list(range(len(ROLES)))
+    onx = convert_sklearn(model, initial_types=[("column_features", FloatTensorType([None, 28]))],
+                          options={id(model): {"zipmap": False}}, target_opset={"": 17, "ai.onnx.ml": 3})
+    g = onx.graph
+    for node in g.node:
+        node.output[:] = ["role_scores" if o == "probabilities" else o for o in node.output]
+        node.input[:] = ["role_scores" if i == "probabilities" else i for i in node.input]
+    keep = [o for o in g.output if o.name != "label"]
+    for o in keep:
+        if o.name == "probabilities":
+            o.name = "role_scores"
+    del g.output[:]
+    g.output.extend(keep)
+    g.output[0].type.tensor_type.shape.dim[1].dim_value = len(ROLES)
+    for k, v in (("contract_version", F.CONTRACT_VERSION), ("contract_sha256", F.CONTRACT_SHA256), ("role_order", json.dumps(list(ROLES))),
+                 ("score_semantics", "probabilities per column in role order")):
+        onx.metadata_props.add(key=k, value=v)
+    onnx.checker.check_model(onx)
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(onx.SerializeToString())
+    return path
+
+
+def predict_roles_onnx(sess, Xc: np.ndarray) -> np.ndarray:
+    return sess.run(["role_scores"], {"column_features": np.asarray(Xc, dtype=np.float32)})[0]

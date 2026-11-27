@@ -66,3 +66,18 @@ def test_handcrafted_cases_cover_rejections_and_edge_kinds():
     cs = G.handcrafted_cases()
     assert sum(c["expect"] == "reject" for c in cs) >= 10 and sum(c["expect"] == "accept" for c in cs) >= 25
     assert len({c["case_id"] for c in cs}) == len(cs)
+
+
+def test_role_model_export_parity_and_order(tmp_path):
+    rng = np.random.default_rng(0)
+    X = rng.normal(size=(300, 28)).astype(np.float32)
+    y = [OX.ROLES[int(abs(X[i, 0] * 2) + (X[i, 1] > 0)) % 5] for i in range(300)]
+    m = OX.fit_role_model(X, y, n_estimators=20)
+    p = OX.export_role_model(m, tmp_path / "role.onnx")
+    sess = OX.session(p)
+    got = OX.predict_roles_onnx(sess, X[:7])               # dynamic M rows, any M
+    ref = m.predict_proba(X[:7])
+    assert got.shape == (7, 5) and np.allclose(got, ref, atol=1e-6)
+    assert OX.predict_roles_onnx(sess, X[:1]).shape == (1, 5)
+    with pytest.raises(ValueError):
+        OX.fit_role_model(X[:10], ["x_axis"] * 10)
