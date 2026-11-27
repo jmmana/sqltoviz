@@ -1,0 +1,107 @@
+{
+ "sdk": "typescript-browser-wasm",
+ "environment": {
+  "cpu": "same machine",
+  "os": "darwin",
+  "runtime": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+  "onnxruntime": "onnxruntime-web (WASM, 1 thread)",
+  "threads": 1
+ },
+ "load": {
+  "import_ms": 0,
+  "engine_load_ms": 356.70000000018626,
+  "note": "dynamic import of SDK + ORT-web, fetch + checksum + 2 WASM sessions (cold, same-origin localhost, no network latency)"
+ },
+ "sizes": {
+  "10": {
+   "runs": 2500,
+   "batch_size": 50,
+   "extract_ms": {
+    "median": 0.02599999999627471,
+    "p95": 0.033099999996833496,
+    "p99": 0.035020000009424984
+   },
+   "onnx_ms": {
+    "median": 0.01199999999254942,
+    "p95": 0.01909999999497085
+   },
+   "constraints_ms": {
+    "median": 0,
+    "p95": 0.002000000011175871
+   },
+   "end_to_end_ms": {
+    "median": 0.03799999998882413,
+    "p95": 0.05110000000614672,
+    "p99": 0.06411999999452381
+   }
+  },
+  "100": {
+   "runs": 2500,
+   "batch_size": 50,
+   "extract_ms": {
+    "median": 0.09,
+    "p95": 0.10840000000782309,
+    "p99": 0.12004000000022351
+   },
+   "onnx_ms": {
+    "median": 0.01,
+    "p95": 0.012000000011175871
+   },
+   "constraints_ms": {
+    "median": 0,
+    "p95": 0.002000000011175871
+   },
+   "end_to_end_ms": {
+    "median": 0.10099999999627471,
+    "p95": 0.1204000000003725,
+    "p99": 0.1320400000018999
+   }
+  },
+  "1000": {
+   "runs": 500,
+   "batch_size": 10,
+   "extract_ms": {
+    "median": 0.7,
+    "p95": 0.7355000000540166,
+    "p99": 0.7451000000182538
+   },
+   "onnx_ms": {
+    "median": 0.010000000055879355,
+    "p95": 0.02000000001862645
+   },
+   "constraints_ms": {
+    "median": 0,
+    "p95": 0.0054999999795108745
+   },
+   "end_to_end_ms": {
+    "median": 0.7099999999627471,
+    "p95": 0.7509999999962746,
+    "p99": 0.7651000000368803
+   }
+  },
+  "10000": {
+   "runs": 40,
+   "batch_size": 1,
+   "extract_ms": {
+    "median": 7.400000000372529,
+    "p95": 7.899999999487773,
+    "p99": 8.144000000031665
+   },
+   "onnx_ms": {
+    "median": 0.09999999962747097,
+    "p95": 0.19999999930150808
+   },
+   "constraints_ms": {
+    "median": 0,
+    "p95": 0
+   },
+   "end_to_end_ms": {
+    "median": 7.5,
+    "p95": 7.905000000353902,
+    "p99": 8.244000000227242
+   }
+  }
+ },
+ "js_heap_mb": 47.4,
+ "note": "per-call means over batches (timer resolution 0.1 ms in non-isolated pages); p95 is over batch means"
+}
