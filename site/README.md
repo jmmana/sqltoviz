@@ -1,0 +1,2 @@
+# Independent browser preview
+Serve this directory with a static HTTP server and copy docs/assets into site/assets for local gallery previews. Run `node --test site/preview.test.mjs`. This is a temporary static site, not the final VitePress implementation. The preview does not execute SQL, use ONNX or implement the shared feature contract. It supports KPI, bar, horizontal bar, line and table; all 21 gallery illustrations are linked separately. Translation currently covers introductory copy only.
