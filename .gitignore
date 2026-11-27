@@ -22,3 +22,5 @@ __pycache__/
 site/sdk/
 site/models/
 site/vendor/
+benchmarks/bench_dotnet/bin/
+benchmarks/bench_dotnet/obj/
