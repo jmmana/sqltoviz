@@ -1,0 +1,30 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,SUM(amount) AS value FROM sales GROUP BY category ORDER BY value DESC;",
+  "rows": [
+    {
+      "category": "B",
+      "value": 65
+    },
+    {
+      "category": "D",
+      "value": 50
+    },
+    {
+      "category": "A",
+      "value": 40
+    },
+    {
+      "category": "C",
+      "value": 30
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "horizontal_bar"
+  },
+  "explanation": {
+    "en": "Ordered ranking",
+    "es": "Ranking ordenado"
+  }
+}

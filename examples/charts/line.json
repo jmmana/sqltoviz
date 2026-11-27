@@ -1,0 +1,38 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT month,SUM(amount) AS value FROM sales GROUP BY month ORDER BY month;",
+  "rows": [
+    {
+      "month": "2026-01",
+      "value": 20
+    },
+    {
+      "month": "2026-02",
+      "value": 35
+    },
+    {
+      "month": "2026-03",
+      "value": 28
+    },
+    {
+      "month": "2026-04",
+      "value": 55
+    },
+    {
+      "month": "2026-05",
+      "value": 48
+    },
+    {
+      "month": "2026-06",
+      "value": 70
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "line"
+  },
+  "explanation": {
+    "en": "Ordered temporal trend",
+    "es": "Tendencia temporal ordenada"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,SUM(amount) AS value FROM sales GROUP BY category;",
+  "rows": [
+    {
+      "category": "A",
+      "value": 50
+    },
+    {
+      "category": "B",
+      "value": 30
+    },
+    {
+      "category": "C",
+      "value": 20
+    }
+  ],
+  "metadata": {
+    "additive": true,
+    "disjoint": true,
+    "exhaustive": true
+  },
+  "expected": {
+    "chartType": "donut"
+  },
+  "explanation": {
+    "en": "Exclusive positive total",
+    "es": "Partes exclusivas y total positivo"
+  }
+}

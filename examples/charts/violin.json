@@ -1,0 +1,256 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,amount AS value FROM sales;",
+  "rows": [
+    {
+      "category": "A",
+      "value": 40
+    },
+    {
+      "category": "A",
+      "value": 50
+    },
+    {
+      "category": "A",
+      "value": 31
+    },
+    {
+      "category": "A",
+      "value": 19
+    },
+    {
+      "category": "A",
+      "value": 36
+    },
+    {
+      "category": "A",
+      "value": 44
+    },
+    {
+      "category": "A",
+      "value": 30
+    },
+    {
+      "category": "A",
+      "value": 33
+    },
+    {
+      "category": "A",
+      "value": 48
+    },
+    {
+      "category": "A",
+      "value": 39
+    },
+    {
+      "category": "A",
+      "value": 19
+    },
+    {
+      "category": "A",
+      "value": 29
+    },
+    {
+      "category": "A",
+      "value": 46
+    },
+    {
+      "category": "A",
+      "value": 37
+    },
+    {
+      "category": "A",
+      "value": 28
+    },
+    {
+      "category": "A",
+      "value": 42
+    },
+    {
+      "category": "A",
+      "value": 44
+    },
+    {
+      "category": "A",
+      "value": 23
+    },
+    {
+      "category": "A",
+      "value": 22
+    },
+    {
+      "category": "A",
+      "value": 43
+    },
+    {
+      "category": "A",
+      "value": 45
+    },
+    {
+      "category": "A",
+      "value": 29
+    },
+    {
+      "category": "A",
+      "value": 34
+    },
+    {
+      "category": "A",
+      "value": 45
+    },
+    {
+      "category": "A",
+      "value": 31
+    },
+    {
+      "category": "A",
+      "value": 19
+    },
+    {
+      "category": "A",
+      "value": 37
+    },
+    {
+      "category": "A",
+      "value": 50
+    },
+    {
+      "category": "A",
+      "value": 34
+    },
+    {
+      "category": "A",
+      "value": 28
+    },
+    {
+      "category": "B",
+      "value": 55
+    },
+    {
+      "category": "B",
+      "value": 51
+    },
+    {
+      "category": "B",
+      "value": 34
+    },
+    {
+      "category": "B",
+      "value": 42
+    },
+    {
+      "category": "B",
+      "value": 63
+    },
+    {
+      "category": "B",
+      "value": 55
+    },
+    {
+      "category": "B",
+      "value": 39
+    },
+    {
+      "category": "B",
+      "value": 47
+    },
+    {
+      "category": "B",
+      "value": 55
+    },
+    {
+      "category": "B",
+      "value": 40
+    },
+    {
+      "category": "B",
+      "value": 37
+    },
+    {
+      "category": "B",
+      "value": 58
+    },
+    {
+      "category": "B",
+      "value": 62
+    },
+    {
+      "category": "B",
+      "value": 42
+    },
+    {
+      "category": "B",
+      "value": 40
+    },
+    {
+      "category": "B",
+      "value": 54
+    },
+    {
+      "category": "B",
+      "value": 48
+    },
+    {
+      "category": "B",
+      "value": 36
+    },
+    {
+      "category": "B",
+      "value": 51
+    },
+    {
+      "category": "B",
+      "value": 65
+    },
+    {
+      "category": "B",
+      "value": 49
+    },
+    {
+      "category": "B",
+      "value": 35
+    },
+    {
+      "category": "B",
+      "value": 48
+    },
+    {
+      "category": "B",
+      "value": 54
+    },
+    {
+      "category": "B",
+      "value": 40
+    },
+    {
+      "category": "B",
+      "value": 43
+    },
+    {
+      "category": "B",
+      "value": 63
+    },
+    {
+      "category": "B",
+      "value": 56
+    },
+    {
+      "category": "B",
+      "value": 35
+    },
+    {
+      "category": "B",
+      "value": 40
+    }
+  ],
+  "metadata": {
+    "bandwidth": 6
+  },
+  "expected": {
+    "chartType": "violin"
+  },
+  "explanation": {
+    "en": "Sample density with Gaussian KDE",
+    "es": "Densidad muestral con KDE gaussiana"
+  }
+}

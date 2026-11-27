@@ -1,0 +1,32 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT category,MIN(amount) AS low,PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY amount) AS q1,PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY amount) AS median,PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY amount) AS q3,MAX(amount) AS high FROM sales GROUP BY category;",
+  "rows": [
+    {
+      "category": "A",
+      "low": 10,
+      "q1": 20,
+      "median": 35,
+      "q3": 48,
+      "high": 65
+    },
+    {
+      "category": "B",
+      "low": 15,
+      "q1": 25,
+      "median": 40,
+      "q3": 55,
+      "high": 75
+    }
+  ],
+  "metadata": {
+    "whiskers": "minmax"
+  },
+  "expected": {
+    "chartType": "boxplot"
+  },
+  "explanation": {
+    "en": "Five-number summary",
+    "es": "Resumen de cinco números"
+  }
+}

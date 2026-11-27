@@ -1,0 +1,17 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT SUM(amount) AS value FROM sales;",
+  "rows": [
+    {
+      "value": 120
+    }
+  ],
+  "metadata": {},
+  "expected": {
+    "chartType": "kpi"
+  },
+  "explanation": {
+    "en": "Scalar aggregate",
+    "es": "Agregado escalar"
+  }
+}

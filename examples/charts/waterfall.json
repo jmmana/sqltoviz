@@ -1,0 +1,33 @@
+{
+  "status": "illustrative_not_sdk_execution",
+  "sql": "SELECT step,delta FROM movements ORDER BY step;",
+  "rows": [
+    {
+      "step": 1,
+      "delta": 40
+    },
+    {
+      "step": 2,
+      "delta": 25
+    },
+    {
+      "step": 3,
+      "delta": -15
+    },
+    {
+      "step": 4,
+      "delta": 20
+    }
+  ],
+  "metadata": {
+    "opening": 0,
+    "closing": 70
+  },
+  "expected": {
+    "chartType": "waterfall"
+  },
+  "explanation": {
+    "en": "Ordered reconciled changes",
+    "es": "Variaciones ordenadas conciliables"
+  }
+}
