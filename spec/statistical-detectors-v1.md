@@ -1,0 +1,5 @@
+# Statistical detectors — Python reference
+
+Independent of trained models. Input numbers exclude booleans and nonfinite values. Output indices are zero-based original row indices. MAD uses exact median and modified Z = 0.6744897501960817 (x-median)/MAD; strict threshold >3.5 by default. Zero MAD is indeterminate. Temporal changes compare adjacent ordered rows, relative change = (current-previous)/abs(previous), undefined at zero baseline; missing observations break adjacency. Caller validates ordering and metric semantics. Pareto requires caller evidence of additive disjoint categories and nonnegative finite values; sort descending with original index tie break, include minimum positive prefix reaching coverage. Pearson uses pairwise complete numeric observations, minimum three pairs, constant columns undefined. No causal or significance claims.
+
+MAD and Pareto O(N log N), temporal shifts and Pearson O(N); O(N) auxiliary memory. Test: cd packages/python && python -m unittest discover -s tests -p test_statistics.py. Cross-runtime parity remains pending. These detectors do not change frozen model features.

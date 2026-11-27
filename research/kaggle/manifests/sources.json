@@ -1,0 +1,39 @@
+{
+  "manifest_version": 1,
+  "verified_on": "2026-11-27",
+  "sources": {
+    "spider": {
+      "namespace": "cc-by-sa-4.0",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://drive.usercontent.google.com/download?id=1403EGqzIDoHMdQF4c9Bkyl7dZLZ5Wt6J&export=download&confirm=t",
+      "filename": "spider.zip",
+      "size": 205800266,
+      "sha256": "00636695dabed6b5f4b8328a16b13e069a2f16591d5efcce57660669c85b121b",
+      "extract_root": "spider"
+    },
+    "bird_dev": {
+      "namespace": "cc-by-sa-4.0",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://bird-bench.oss-cn-beijing.aliyuncs.com/dev.zip",
+      "filename": "bird_dev.zip",
+      "size": 346207293,
+      "sha256": "cdd6d19faeb45a23970b98d3ef6c40a87987c95459c2cf12076897a60cf5a630",
+      "upstream_md5": "04b4af221c9186361f09b16abfd917ec",
+      "extract_root": "bird_dev",
+      "nested_archives": [
+        "dev_20240627/dev_databases.zip"
+      ]
+    },
+    "bird_train": {
+      "namespace": "cc-by-sa-4.0",
+      "license": "CC-BY-SA-4.0",
+      "url": "https://bird-bench.oss-cn-beijing.aliyuncs.com/train.zip",
+      "filename": "bird_train.zip",
+      "size": 8919543554,
+      "sha256": "66e9e3115b59559554013aa3b124156249f30437a6b4e4f96de3d2dfb5ae8cbc",
+      "note": "8.9 GB. sha256 pinned from a full download on 2026-11-27 (upstream only publishes a multipart ETag). Extraction needs ~tens of GB of disk; use --no-extract to verify only.",
+      "extract_root": "bird_train",
+      "nested_archives": []
+    }
+  }
+}

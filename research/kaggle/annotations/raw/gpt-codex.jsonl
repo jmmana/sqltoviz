@@ -1,0 +1,300 @@
+{"item_id":"spider_train_900","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Policy names only; qualifying counts are absent."}
+{"item_id":"spider_train_1184","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single party name without votes."}
+{"item_id":"spider_train_6692","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of customers without payments."}
+{"item_id":"spider_train_1906","primary":"table","acceptable":["table"],"confidence":3,"rationale":"School names without budget or endowment measures."}
+{"item_id":"spider_train_5616","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct nationality count."}
+{"item_id":"spider_train_5317","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One distinct product count."}
+{"item_id":"spider_train_3885","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer names are textual details."}
+{"item_id":"spider_train_4144","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Studios listed without counts."}
+{"item_id":"spider_train_3594","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Song titles only."}
+{"item_id":"spider_train_5696","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Single capacity value with gender context."}
+{"item_id":"spider_train_1021","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Ordered team names lack the sorting measure."}
+{"item_id":"spider_train_6887","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Order and customer identifiers are not measures."}
+{"item_id":"spider_train_2015","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One station count for a fixed period."}
+{"item_id":"spider_train_6231","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Rank name alone without frequency."}
+{"item_id":"spider_train_5096","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single customer total."}
+{"item_id":"spider_train_3164","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Route counts by station with long names; services provide context."}
+{"item_id":"spider_train_4567","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Building names without story counts."}
+{"item_id":"spider_train_5794","primary":"table","acceptable":["table"],"confidence":3,"rationale":"One staff surname without a measure."}
+{"item_id":"spider_train_5596","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Textual characteristic details and nulls."}
+{"item_id":"spider_train_2535","primary":"table","acceptable":["table"],"confidence":3,"rationale":"County names lack population values."}
+{"item_id":"spider_train_5861","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Lot detail strings have no quantitative measure."}
+{"item_id":"spider_train_6373","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single company type label."}
+{"item_id":"spider_train_4807","primary":"kpi","acceptable":["kpi","bar","table"],"confidence":3,"rationale":"Maximum and minimum of one passenger metric."}
+{"item_id":"spider_train_5636","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average manager age."}
+{"item_id":"spider_train_2655","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Identifier pairs are detail records."}
+{"item_id":"spider_train_1668","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Exhibition counts across five artists."}
+{"item_id":"spider_train_2776","primary":"table","acceptable":["table"],"confidence":2,"rationale":"Distinct party IDs share displayed names, making category attribution ambiguous."}
+{"item_id":"spider_train_1766","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Gymnast names without height values."}
+{"item_id":"spider_train_1716","primary":"table","acceptable":["table"],"confidence":3,"rationale":"User names only."}
+{"item_id":"spider_train_2140","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":2,"rationale":"Event counts per participant; type can annotate each identifier category."}
+{"item_id":"spider_train_4100","primary":"kpi","acceptable":["kpi","bar","table"],"confidence":3,"rationale":"Minimum and maximum compare one market value metric."}
+{"item_id":"spider_train_5370","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Problem identifiers only."}
+{"item_id":"spider_train_4729","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Staff name and job title are textual details."}
+{"item_id":"spider_train_2087","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Pilot names only."}
+{"item_id":"spider_train_953","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Enzyme identifier and name without interaction count."}
+{"item_id":"spider_train_4505","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One summed access count."}
+{"item_id":"spider_train_499","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Student counts across eighteen advisor categories."}
+{"item_id":"spider_train_53","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City names without population values."}
+{"item_id":"spider_train_5972","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct game type count."}
+{"item_id":"spider_train_4886","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"School counts across three mutually exclusive denominations."}
+{"item_id":"spider_train_4000","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Ordered ship names without tonnage."}
+{"item_id":"spider_train_1946","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Film titles and director names are textual details."}
+{"item_id":"spider_train_4215","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Employee names only."}
+{"item_id":"spider_train_1831","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Software names and operating system descriptions lack measures."}
+{"item_id":"spider_train_792","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Member names and identifiers."}
+{"item_id":"spider_train_5087","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Carrier names without quantitative values."}
+{"item_id":"spider_train_1733","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single residence name."}
+{"item_id":"spider_train_2683","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single location description."}
+{"item_id":"spider_train_6586","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Wine name without its price."}
+{"item_id":"spider_train_248","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Nominee names only."}
+{"item_id":"spider_train_6336","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Organization names only."}
+{"item_id":"spider_train_2351","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Campus name without faculty count."}
+{"item_id":"spider_train_2299","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct company count."}
+{"item_id":"spider_train_5438","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single purchase count for selected members."}
+{"item_id":"spider_train_3090","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Detention type codes without frequencies."}
+{"item_id":"spider_train_4037","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Classroom identifiers map to grade categories, not quantitative measures."}
+{"item_id":"spider_train_4625","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer contact details."}
+{"item_id":"spider_train_3394","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Furniture names without prices."}
+{"item_id":"spider_train_6765","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Activity names only."}
+{"item_id":"spider_train_6287","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City name without temperature."}
+{"item_id":"spider_train_1138","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Climber counts across three countries."}
+{"item_id":"spider_train_682","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer identity without account count."}
+{"item_id":"spider_train_4389","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single task total."}
+{"item_id":"spider_train_5466","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Vote value represents a candidate identifier."}
+{"item_id":"spider_train_4427","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Minimum age compared across three jobs; minima are not additive."}
+{"item_id":"spider_train_6420","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Document type code without frequency."}
+{"item_id":"spider_train_1629","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of older churches."}
+{"item_id":"spider_train_648","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Many genres with track counts and lengthy labels."}
+{"item_id":"spider_train_6495","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Assignment counts by project with long descriptive names."}
+{"item_id":"spider_train_1846","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Wrestler names without days held."}
+{"item_id":"spider_train_2955","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Actor names without film counts."}
+{"item_id":"spider_train_1315","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Location label only."}
+{"item_id":"spider_train_63","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Student identifiers only."}
+{"item_id":"spider_train_230","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Publisher name alone."}
+{"item_id":"spider_train_1504","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","donut","table"],"confidence":3,"rationale":"Affirmative debate counts by person; long names favor horizontal labels."}
+{"item_id":"spider_train_5248","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count, including meaningful zero."}
+{"item_id":"spider_train_2424","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Counts for two disjoint sex categories."}
+{"item_id":"spider_train_2849","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer names and email addresses."}
+{"item_id":"spider_train_824","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Artist name only."}
+{"item_id":"spider_train_302","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Catalog entry names without measures."}
+{"item_id":"spider_train_2837","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single customer's total spending."}
+{"item_id":"spider_train_1604","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single invoice count."}
+{"item_id":"spider_train_6207","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Repeated status detail rows without an aggregated measure."}
+{"item_id":"spider_train_1108","primary":"table","acceptable":["table"],"confidence":3,"rationale":"College name alone."}
+{"item_id":"spider_train_6851","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City names without airport counts."}
+{"item_id":"spider_train_4307","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Club name only."}
+{"item_id":"spider_train_2310","primary":"table","acceptable":["table"],"confidence":3,"rationale":"People names only."}
+{"item_id":"spider_train_4607","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Artwork and festival name pairs without measures."}
+{"item_id":"spider_train_1912","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Building name without height."}
+{"item_id":"spider_train_1301","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Average ratings by preferred foot; null group has no plotted value."}
+{"item_id":"spider_train_6982","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Movie metadata lacks budget values or another measure."}
+{"item_id":"spider_train_3779","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Enrollment and completion timestamp details without a quantitative series."}
+{"item_id":"spider_train_4657","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Department names only."}
+{"item_id":"spider_train_3924","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Patient identifier is not a metric."}
+{"item_id":"spider_train_5950","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Attraction counts split across three transport categories."}
+{"item_id":"spider_train_282","primary":"table","acceptable":["table"],"confidence":3,"rationale":"User names only."}
+{"item_id":"spider_train_1970","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average amount due."}
+{"item_id":"spider_train_2900","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Country label without authorship count."}
+{"item_id":"spider_train_6954","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Architect identity and nationality without mill count."}
+{"item_id":"spider_train_2814","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","donut","table"],"confidence":3,"rationale":"Report counts for six journalists with full name labels."}
+{"item_id":"spider_train_6616","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Station names without train counts."}
+{"item_id":"spider_train_6113","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One customer's distinct product count."}
+{"item_id":"spider_train_2731","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Region name without deaths measure."}
+{"item_id":"spider_train_1537","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Policy counts across four exclusive types."}
+{"item_id":"spider_train_6190","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Titles alone have no quantitative measure."}
+{"item_id":"spider_train_3719","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Lens name without photo count."}
+{"item_id":"spider_train_3383","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Country name without tournament count."}
+{"item_id":"spider_train_3082","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average credit score."}
+{"item_id":"spider_train_5819","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Authors and college affiliations are text details."}
+{"item_id":"spider_train_350","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single aircraft count."}
+{"item_id":"spider_train_3647","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Top player identities omit award counts."}
+{"item_id":"spider_train_1197","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Booking timestamp pairs are interval details, without a measure."}
+{"item_id":"spider_train_6362","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"School bus counts across two school types."}
+{"item_id":"spider_train_754","primary":"table","acceptable":["table","kpi"],"confidence":2,"rationale":"Single track detail record; seating could also be a contextual KPI."}
+{"item_id":"spider_train_1825","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Ranked savings balances for three named customers."}
+{"item_id":"spider_train_2055","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Member and party affiliation details without counts."}
+{"item_id":"spider_train_3236","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct class section count."}
+{"item_id":"spider_train_1279","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Match counts include ambiguous parenthetical totals and repeated players."}
+{"item_id":"spider_train_2497","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One winning movie's average rating."}
+{"item_id":"spider_train_1031","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Mixed display specifications include dimension strings."}
+{"item_id":"spider_train_4848","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer identity without event count."}
+{"item_id":"spider_train_3145","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Engineer identity without visit count."}
+{"item_id":"spider_train_2122","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Document identifiers only."}
+{"item_id":"spider_train_1983","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Carrier name without price."}
+{"item_id":"spider_train_1352","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single combined department budget."}
+{"item_id":"spider_train_4954","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One average player metric."}
+{"item_id":"spider_train_4929","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product names only."}
+{"item_id":"spider_train_123","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Average temperatures across postal code categories, not a numeric sequence."}
+{"item_id":"spider_train_4586","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Result contains one product price."}
+{"item_id":"spider_train_4498","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Member names only."}
+{"item_id":"spider_train_2132","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Spouse names only."}
+{"item_id":"spider_train_2627","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Average room prices across three bed types."}
+{"item_id":"spider_train_2213","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Circuit names without measures."}
+{"item_id":"spider_train_3757","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Sorted origin names only."}
+{"item_id":"spider_train_665","primary":"line","acceptable":["line","bar","horizontal_bar","table"],"confidence":2,"rationale":"Journal sales over dates; chronological sorting supports a series, themes support categorical comparison."}
+{"item_id":"spider_train_4","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average employee count."}
+{"item_id":"spider_train_5664","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer address history with date intervals and no measure."}
+{"item_id":"spider_train_2250","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Team labels without technician counts."}
+{"item_id":"spider_train_3475","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Employee identifiers without salaries."}
+{"item_id":"spider_train_1161","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average total for selected bodybuilders."}
+{"item_id":"spider_train_920","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer names without measures."}
+{"item_id":"spider_train_1191","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Representative names only."}
+{"item_id":"spider_train_6630","primary":"table","acceptable":["table"],"confidence":3,"rationale":"One birth timestamp is a detail, not a metric."}
+{"item_id":"spider_train_1905","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single school's total budget."}
+{"item_id":"spider_train_5617","primary":"kpi","acceptable":["kpi","bar","table"],"confidence":2,"rationale":"One qualifying nationality with swimmer count."}
+{"item_id":"spider_train_5276","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Manufacturer names and headquarters without revenue."}
+{"item_id":"spider_train_3867","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Single highest settlement count with claim and date context."}
+{"item_id":"spider_train_4151","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Film and studio names only."}
+{"item_id":"spider_train_3540","primary":"table","acceptable":["table"],"confidence":3,"rationale":"File size strings and repeated formats lack unique observation labels."}
+{"item_id":"spider_train_5745","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average student age."}
+{"item_id":"spider_train_995","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average university enrollment."}
+{"item_id":"spider_train_6927","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Ordered identifiers without dates or measures."}
+{"item_id":"spider_train_2017","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Station counts across eleven named locations."}
+{"item_id":"spider_train_6258","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Ship names without captain counts."}
+{"item_id":"spider_train_5170","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Service description only."}
+{"item_id":"spider_train_3158","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Train numbers are identifiers paired with names."}
+{"item_id":"spider_train_4577","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Industry names only."}
+{"item_id":"spider_train_5788","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product name and category without price."}
+{"item_id":"spider_train_5586","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Unit description and category without quantity."}
+{"item_id":"spider_train_2545","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Unlabeled demographic values lack city identities or a second quantitative dimension."}
+{"item_id":"spider_train_5880","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Investor identifiers without transaction counts."}
+{"item_id":"spider_train_6380","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Airport name only."}
+{"item_id":"spider_train_4820","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average passenger total."}
+{"item_id":"spider_train_5641","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Builder names without measures."}
+{"item_id":"spider_train_2649","primary":"table","acceptable":["table"],"confidence":3,"rationale":"System codes and council tax identifiers."}
+{"item_id":"spider_train_1651","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":2,"rationale":"Ages can be compared by artist; country supplies descriptive context."}
+{"item_id":"spider_train_2787","primary":"table","acceptable":["table"],"confidence":3,"rationale":"County names without election counts."}
+{"item_id":"spider_train_1747","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Gymnast names only."}
+{"item_id":"spider_train_1697","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of unreviewed items."}
+{"item_id":"spider_train_2149","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Event identifiers only."}
+{"item_id":"spider_train_4103","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Headquarters country without company count."}
+{"item_id":"spider_train_5368","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Problem description strings only."}
+{"item_id":"spider_train_4765","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Phone numbers are contact details, not measures."}
+{"item_id":"spider_train_2088","primary":"table","acceptable":["table"],"confidence":3,"rationale":"A single joining year is a date attribute."}
+{"item_id":"spider_train_947","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Enzyme name only."}
+{"item_id":"spider_train_4527","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Document name without section count."}
+{"item_id":"spider_train_508","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Student identifiers only."}
+{"item_id":"spider_train_34","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Year and host city pairs lack a quantitative measure."}
+{"item_id":"spider_train_5982","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of games in one type."}
+{"item_id":"spider_train_4865","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Location names without founding dates."}
+{"item_id":"spider_train_4026","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Ship type label only."}
+{"item_id":"spider_train_1945","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Film titles and directors are textual details."}
+{"item_id":"spider_train_4165","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single document type count."}
+{"item_id":"spider_train_1827","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Browser names without market shares."}
+{"item_id":"spider_train_797","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single filtered member count."}
+{"item_id":"spider_train_5078","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Platform labels omit frequency values."}
+{"item_id":"spider_train_1725","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Player counts across many occupations with long labels."}
+{"item_id":"spider_train_2664","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Party themes and location descriptions lack measures."}
+{"item_id":"spider_train_6581","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Repeated county labels without appellation identities or wine counts."}
+{"item_id":"spider_train_242","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Character names without age values."}
+{"item_id":"spider_train_6328","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Service name only."}
+{"item_id":"spider_train_2369","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"One university's degree total for a fixed year."}
+{"item_id":"spider_train_2267","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Company and investor name pairs."}
+{"item_id":"spider_train_5402","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Branch names and addresses without measures."}
+{"item_id":"spider_train_3114","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single incident's start and end timestamps."}
+{"item_id":"spider_train_4073","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count with a meaningful zero result."}
+{"item_id":"spider_train_4631","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Raw categorical address pairs contain no aggregated measure."}
+{"item_id":"spider_train_3396","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average factory count."}
+{"item_id":"spider_train_6786","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Activity name without participation count."}
+{"item_id":"spider_train_6299","primary":"table","acceptable":["table"],"confidence":3,"rationale":"City names without population values."}
+{"item_id":"spider_train_1136","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Time strings without climber labels or another dimension."}
+{"item_id":"spider_train_739","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Transaction counts across credit and debit card categories."}
+{"item_id":"spider_train_4332","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Organization type code without staff count."}
+{"item_id":"spider_train_5480","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Major codes are categorical identifiers."}
+{"item_id":"spider_train_4466","primary":"table","acceptable":["table","bar","horizontal_bar"],"confidence":2,"rationale":"Friendship detail pairs with friend ages; pair labels could support an age comparison."}
+{"item_id":"spider_train_6414","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Project identifier without document count."}
+{"item_id":"spider_train_1630","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Church names, founding years, and organizers are metadata."}
+{"item_id":"spider_train_624","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Album title only."}
+{"item_id":"spider_train_6504","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Scientist names only."}
+{"item_id":"spider_train_1847","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Wrestler names without days held."}
+{"item_id":"spider_train_2968","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Film title and inventory identifier omit rental count."}
+{"item_id":"spider_train_1309","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Performance dates and venues without measures."}
+{"item_id":"spider_train_105","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Student identifiers only."}
+{"item_id":"spider_train_231","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct publication date count."}
+{"item_id":"spider_train_1497","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Party label without age."}
+{"item_id":"spider_train_5226","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single vocal count with zero result."}
+{"item_id":"spider_train_2419","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Sex label without average unsure rate."}
+{"item_id":"spider_train_2847","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product name without price."}
+{"item_id":"spider_train_855","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Invoice timestamps alone do not form a measured time series."}
+{"item_id":"spider_train_306","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Data type label only."}
+{"item_id":"spider_train_2827","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Single categorical personal attribute."}
+{"item_id":"spider_train_1548","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single account total."}
+{"item_id":"spider_train_6203","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single roller coaster count."}
+{"item_id":"spider_train_1080","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct language count."}
+{"item_id":"spider_train_6808","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single airline count."}
+{"item_id":"spider_train_4250","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single club total."}
+{"item_id":"spider_train_2315","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Perpetrator counts across four countries."}
+{"item_id":"spider_train_4598","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single artwork count."}
+{"item_id":"spider_train_1916","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Institution names and locations only."}
+{"item_id":"spider_train_1295","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single average player weight."}
+{"item_id":"spider_train_6984","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single distinct director count."}
+{"item_id":"spider_train_3792","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single filtered student count."}
+{"item_id":"spider_train_4695","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Student first and last name only."}
+{"item_id":"spider_train_3928","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Patient counts across three primary physicians."}
+{"item_id":"spider_train_5944","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Star codes with null details lack hotel labels."}
+{"item_id":"spider_train_275","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Partition identifier is not a metric."}
+{"item_id":"spider_train_1964","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product identifier without booking count."}
+{"item_id":"spider_train_2918","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Sorted author first names only."}
+{"item_id":"spider_train_6946","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Architect names, nationalities, and identifiers are detail records."}
+{"item_id":"spider_train_2811","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Event metadata omits attendance measure."}
+{"item_id":"spider_train_6614","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Train names and departure times are schedule details."}
+{"item_id":"spider_train_6065","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Payment method label without count."}
+{"item_id":"spider_train_2699","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of fatal storms."}
+{"item_id":"spider_train_1541","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Claim status description only."}
+{"item_id":"spider_train_6160","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Song names without weeks on top."}
+{"item_id":"spider_train_3725","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Prominence across nineteen mountains with long names."}
+{"item_id":"spider_train_3347","primary":"kpi","acceptable":["kpi","bar","table"],"confidence":3,"rationale":"Maximum and minimum silver medal counts compare one metric."}
+{"item_id":"spider_train_3064","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer name and account type without loan amount."}
+{"item_id":"spider_train_5842","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Author names only."}
+{"item_id":"spider_train_414","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Flight numbers are identifiers."}
+{"item_id":"spider_train_3691","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of matching home game records."}
+{"item_id":"spider_train_1215","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Apartment identifiers only."}
+{"item_id":"spider_train_6349","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":2,"rationale":"Age comparison across twelve named drivers; home city provides context."}
+{"item_id":"spider_train_774","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Track names without measures."}
+{"item_id":"spider_train_1813","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Sorted balances omit customer labels and a second quantitative variable."}
+{"item_id":"spider_train_2064","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Party names only."}
+{"item_id":"spider_train_3261","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Professor names and office locations are directory details."}
+{"item_id":"spider_train_1275","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Game dates alone lack a measure."}
+{"item_id":"spider_train_2484","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Movie titles only."}
+{"item_id":"spider_train_1023","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Chip model names only."}
+{"item_id":"spider_train_4857","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Event identifiers, move dates, and property identifiers are details."}
+{"item_id":"spider_train_3139","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Fault status categories without counts."}
+{"item_id":"spider_train_2117","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Top shipping agent's single document count."}
+{"item_id":"spider_train_1986","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Carrier name only."}
+{"item_id":"spider_train_1349","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Course titles without measures."}
+{"item_id":"spider_train_4965","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single goalie tryout count."}
+{"item_id":"spider_train_4940","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single summed population."}
+{"item_id":"spider_train_168","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Filtered dates lack weather measurements or counts."}
+{"item_id":"spider_train_4593","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Event association counts across products with long names."}
+{"item_id":"spider_train_4492","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Member and school name pairs without measures."}
+{"item_id":"spider_train_2133","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single female dependent count."}
+{"item_id":"spider_train_2600","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Decor label without reservation count."}
+{"item_id":"spider_train_2217","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Repeated constructor names omit points and standings context."}
+{"item_id":"spider_train_3738","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Program names, origins, and owners are descriptive metadata."}
+{"item_id":"spider_train_656","primary":"kpi","acceptable":["kpi","table"],"confidence":2,"rationale":"Single modal editor age is a summary statistic."}
+{"item_id":"spider_train_1","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Ordered ages across ten named heads with birthplace context."}
+{"item_id":"spider_train_5663","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count of products priced above average."}
+{"item_id":"spider_train_2235","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Technician names without ages."}
+{"item_id":"spider_train_3491","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Employee identifiers and job titles are detail rows."}
+{"item_id":"spider_train_1158","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Bodybuilder name without weight."}
+{"item_id":"spider_train_919","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer names only."}
+{"item_id":"spider_train_1190","primary":"table","acceptable":["table"],"confidence":3,"rationale":"State names without representative counts."}
+{"item_id":"spider_train_6680","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Customer names without outstanding amounts."}
+{"item_id":"spider_train_1902","primary":"scatter","acceptable":["scatter","table"],"confidence":3,"rationale":"Budgeted versus invested amounts per record; repeated schools prevent unambiguous category aggregation."}
+{"item_id":"spider_train_5630","primary":"table","acceptable":["table","line"],"confidence":2,"rationale":"Wide swimmer details favor a table; parsed split times can form lines over distance."}
+{"item_id":"spider_train_5285","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Headquarters locations only."}
+{"item_id":"spider_train_3872","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single total settled amount."}
+{"item_id":"spider_train_4136","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Country and year detail pairs lack a measure."}
+{"item_id":"spider_train_3610","primary":"bar","acceptable":["bar","horizontal_bar","table"],"confidence":3,"rationale":"Song counts for three top artists."}
+{"item_id":"spider_train_5760","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Dorm names without quantitative values."}
+{"item_id":"spider_train_1020","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Many mixed identifiers, record strings, and overlapping percentages require detailed tabular presentation."}
+{"item_id":"spider_train_6907","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Product identifiers only."}
+{"item_id":"spider_train_2023","primary":"horizontal_bar","acceptable":["horizontal_bar","bar","table"],"confidence":3,"rationale":"Station association counts by company; long company labels favor horizontal bars."}
+{"item_id":"spider_train_6228","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Captain names, ship classes, and ranks are textual details."}
+{"item_id":"spider_train_5106","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Marketing description only."}
+{"item_id":"spider_train_3170","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Station identifiers and authority names omit precipitation values."}
+{"item_id":"spider_train_4558","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Building names without height values."}
+{"item_id":"spider_train_5774","primary":"bar","acceptable":["bar","horizontal_bar","donut","table"],"confidence":3,"rationale":"Complaint counts across four products."}
+{"item_id":"spider_train_5574","primary":"kpi","acceptable":["kpi","table"],"confidence":3,"rationale":"Single count for selected product characteristics."}
+{"item_id":"spider_train_2543","primary":"table","acceptable":["table"],"confidence":3,"rationale":"Alphabetical city names only."}
