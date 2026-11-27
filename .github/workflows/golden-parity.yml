@@ -1,0 +1,81 @@
+name: Cross-language parity gate
+# Release gate (#82): the 308 golden cases (features, rejections, ONNX scores, classes, roles) plus 3000 differential fuzz cases generated from the
+# Python SDK must pass unchanged in Python, TypeScript (Node + WASM) and .NET 8/10, and the generated bindings must match the frozen spec.
+on:
+  pull_request:
+    paths: ['parity/**', 'spec/**', 'model/**', 'packages/**', '.github/workflows/golden-parity.yml']
+  push:
+    branches: [development, main]
+    paths: ['parity/**', 'spec/**', 'model/**', 'packages/**', '.github/workflows/golden-parity.yml']
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generated bindings match the frozen spec
+        run: python spec/generate_bindings.py --check
+      - name: Golden file is pinned to the frozen contract
+        run: |
+          python - <<'EOF'
+          import hashlib, json
+          sha = hashlib.sha256(open('spec/sqlvizspec-v1-features.json', 'rb').read()).hexdigest()
+          g = json.load(open('parity/golden_v1.json'))
+          assert g['contract_sha256'] == sha, 'golden file built with another contract'
+          assert g['n_cases'] >= 288 and g['n_cases'] == len(g['cases'])
+          print('golden cases:', g['n_cases'], 'contract', sha[:12])
+          EOF
+      - name: Generate differential fuzz cases (expected values from the Python SDK)
+        run: python parity/tools/gen_fuzz.py fuzz.json 3000
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parity-fuzz
+          path: fuzz.json
+  python:
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy onnxruntime
+      - run: cd packages/python && python -m unittest discover -s tests
+  node:
+    needs: generate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: parity-fuzz
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: cd packages/npm && npm install --ignore-scripts && SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" npm test
+  dotnet:
+    needs: generate
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tfm: [net8.0, net10.0]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: parity-fuzz
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release -f ${{ matrix.tfm }}
+  gate:
+    needs: [python, node, dotnet]
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Python, TypeScript and .NET agree with the golden fixtures and the Python-generated fuzz cases."
