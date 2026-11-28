@@ -3,7 +3,7 @@ message: "If you use SqlToViz, please cite it as below. The software is pre-rele
 title: "SqlToViz: chart recommendation from a SQL query and its result set"
 type: software
 version: "0.1.0-alpha.2"
-# date-released: set when the first release is verified on all three registries (see docs/alpha-release.md)
+date-released: 2026-11-28
 license: Apache-2.0
 repository-code: "https://github.com/jmmana/sqltoviz"
 url: "https://jmmana.github.io/sqltoviz/"
@@ -18,5 +18,6 @@ authors:
   - family-names: "Castillo Pinto"
     given-names: "Juan Manuel"
     orcid: "https://orcid.org/0009-0002-5751-0709"
-    # OWNER TODO: confirm the author list and order and add `affiliation:`.
+    affiliation: "Universidad de La Salle, Bogot\u00e1"
+    # Name and affiliation taken from the public ORCID record; add co-authors by hand if any.
     # Only the sole git committer was added automatically; add co-authors by hand (annotators/LLMs are not authors).
