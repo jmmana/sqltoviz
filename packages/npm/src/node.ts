@@ -26,3 +26,4 @@ export async function loadEngine(manifest: ModelManifest, dir: string): Promise<
 export async function loadDefaultEngine(dir: string = bundledModelsDir()): Promise<Engine> {
   return loadEngine(JSON.parse(await readFile(join(dir, "manifest.json"), "utf8")) as ModelManifest, dir);
 }
+export {specializeOutputs, resolveColumns, normalizeOutput, type OutputsResult} from "./outputs.js";

@@ -38,6 +38,10 @@ var plan = SqlToViz.Preview.Recommend(
 Console.WriteLine(plan.ChartType); // kpi
 ```
 
+## Salidas concretas (aditivo, por ahora en TypeScript)
+
+`specializeOutputs(columns, rows, metadata, baseScores, roles, baseEligibility)` (`sqltoviz`, `sqltoviz/web`, `sqltoviz/node`) refina una clase base en una de las 21 salidas de `SqlVizSpec-Outputs-v1.0.0` (`spec/OUTPUTS_V1.md`) con precondiciones deterministas, y devuelve `{output, encodings, params, rejected, fallback_chain}`. Replica `specialize_outputs` de Python; el port a .NET está pendiente. Los umbrales (límites de categorías, tamaños mínimos de muestra, regla de bins, factor de bigotes) son decisiones de diseño, no valores validados. Los 120 casos de `parity/outputs_v1.json` prueban que los runtimes coinciden entre sí, no que las reglas elijan el gráfico correcto.
+
 ## Investigación y estado de los modelos
 
 El [protocolo de investigación](https://github.com/jmmana/sqltoviz/blob/main/research/paper/PROTOCOL.md)

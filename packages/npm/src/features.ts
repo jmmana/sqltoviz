@@ -210,7 +210,7 @@ const isInt = (v: unknown) => (typeof v === "number" && Number.isFinite(v) && Nu
 const isNum = (v: unknown) => typeof v === "number" || typeof v === "bigint";
 const asciiLower = (s: string) => s.replace(/[A-Z]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) + 32));
 
-function resolveType(name: string, values: unknown[], explicit?: string): ColumnType {
+export function resolveType(name: string, values: unknown[], explicit?: string): ColumnType {
   const nm = values.filter((v) => !isMissing(v));
   if (explicit !== undefined) {
     if (!(TYPES as readonly string[]).includes(explicit)) throw new FeatureError(`unknown explicit type '${explicit}'`);
