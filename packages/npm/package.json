@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@types/node": "22.15.0",
-    "echarts": "5.6.0",
+    "echarts": "6.1.0",
     "onnxruntime-node": "1.31.1",
     "onnxruntime-web": "1.31.1",
     "typescript": "5.8.3"
