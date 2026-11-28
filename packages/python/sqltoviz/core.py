@@ -51,6 +51,8 @@ def recommend(
     if temporal_column is not None:
         diagnostics["temporal"] = temporal_shifts(numeric_values(temporal_column))
     if pareto_column is not None:
+        if not isinstance(pareto_additive, bool):
+            raise ValueError("Pareto additivity must be an explicit boolean")
         diagnostics["pareto"] = pareto(numeric_values(pareto_column), additive=pareto_additive)
     if correlation_columns is not None:
         if not isinstance(correlation_columns, (tuple, list)) or len(correlation_columns) != 2:
