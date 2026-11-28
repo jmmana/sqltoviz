@@ -13,8 +13,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/checkout@v7
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: |
             8.0.x
@@ -22,7 +22,7 @@ jobs:
       - run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release
       - run: dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts
       - run: dotnet pack packages/nuget/SqlToViz.Onnx/SqlToViz.Onnx.csproj -c Release -o artifacts
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: nuget-distribution
           path: artifacts/*.nupkg
@@ -35,10 +35,10 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: '10.0.x'
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: nuget-distribution
           path: artifacts

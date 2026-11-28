@@ -13,8 +13,8 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Generated bindings match the frozen spec
@@ -33,7 +33,7 @@ jobs:
         run: python parity/tools/gen_fuzz.py fuzz.json 3000
       - name: Generate numerical-faithfulness cases (exact rational/decimal references)
         run: python parity/tools/gen_faithfulness.py faith.json 1500
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: parity-fuzz
           path: |
@@ -43,11 +43,11 @@ jobs:
     needs: generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           name: parity-fuzz
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: python -m pip install numpy onnxruntime
@@ -56,11 +56,11 @@ jobs:
     needs: generate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           name: parity-fuzz
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: cd packages/npm && npm install --ignore-scripts && SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" npm test
@@ -71,11 +71,11 @@ jobs:
       matrix:
         tfm: [net8.0, net10.0]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           name: parity-fuzz
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v6
         with:
           dotnet-version: |
             8.0.x
