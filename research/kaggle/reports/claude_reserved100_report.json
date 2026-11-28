@@ -1,0 +1,22 @@
+{
+  "provenance": "llm_claude_reserved100",
+  "human": false,
+  "confirmatory": false,
+  "annotator": "Claude (Anthropic model), single pass over human_validation_100_cases.xlsx only (blind: no key, no model or LLM labels seen while labelling)",
+  "date": "2026-11-28",
+  "labels_file": "research/kaggle/annotations/claude_labels_reserved100.jsonl",
+  "label_counts": {"table": 73, "kpi": 18, "bar": 7, "horizontal_bar": 2},
+  "post_hoc_comparison_with_pilot_llm_labels": {
+    "note": "computed AFTER the labels were fixed, using the id->item key",
+    "agreement_with_pilot_claude_primary": 0.97, "kappa_vs_pilot_claude_primary": 0.931,
+    "agreement_with_pilot_codex_primary": 0.92, "kappa_vs_pilot_codex_primary": 0.829,
+    "my_primary_inside_pilot_acceptable_sets": 1.0
+  },
+  "caveats": [
+    "NOT human validation. These labels must never be reported as human labels or merged into human_labels.jsonl.",
+    "Not independent of the pilot Claude annotator: same model family, so the high agreement with it is expected and is not evidence of correctness.",
+    "The reserved 100 are Spider items dominated by 'table' (73 of 100); class balance is poor, so metrics on them are weak for chart classes other than table and kpi.",
+    "Eight disagreements with the pilot Codex annotator (H018, H023, H059, H060, H063, H075, H078, H098) are judgement calls about kpi vs table and bar vs horizontal_bar."
+  ],
+  "does_not_unblock": ["#93 confirmatory scoring", "#94 held-out human metrics", "#97 human-validation table", "#98 submission"]
+}

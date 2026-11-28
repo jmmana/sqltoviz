@@ -1,0 +1,1362 @@
+{
+ "banner": "external human-authored benchmark (nvBench); label = chart requested in natural language, not the best chart; covers 5 of 10 base classes; models remain EXPERIMENTAL candidates, not validated",
+ "confirmatory": false,
+ "contract_sha256": "d14d140b9118c0b535d4e504af7f16546f47d56ac8f1692c2ab62615686e5864",
+ "contract_version": "SqlVizSpec-v1.0.0",
+ "covered_classes": [
+  "bar",
+  "stacked_bar",
+  "line",
+  "donut",
+  "scatter"
+ ],
+ "dropped": {
+  "chart_data:engine_FeatureError": 5,
+  "sql_result:engine_FeatureError": 5,
+  "sql_result:error": 145
+ },
+ "models": {
+  "chart": {
+   "sha256": "578f836f04371fc0f1fff5522057acb30493c716650e498930653b8e5a5b54ce",
+   "status": "experimental",
+   "version": "candidate-0"
+  },
+  "role": {
+   "sha256": "171ddf0d6a0e2f74b2bfcbe1a20480a51d0606434d842af1a0be6769bb27151e",
+   "status": "experimental",
+   "version": "candidate-0"
+  }
+ },
+ "n_items_in_file": 7247,
+ "nvbench": {
+  "databases_zip_sha256_tofu": "a2e22bf648f6d8e4c387d85f75962931976f1756338b41d025de528c8ff2da3d",
+  "file": "NVBench.json",
+  "license_note": "README says MIT, no LICENSE file; Spider DBs CC BY-SA 4.0; data not redistributed",
+  "sha256": "8c85a9454fe1343074ba915bcbb379f170ab62bb1279b6a7aed23255e6eefbcf"
+ },
+ "nvbench_vis_type_counts": {
+  "Bar": 5523,
+  "Grouping Line": 72,
+  "Grouping Scatter": 129,
+  "Line": 380,
+  "Pie": 520,
+  "Scatter": 264,
+  "Stacked Bar": 359
+ },
+ "provenance": "external_human_authored_nvbench",
+ "results": {
+  "chart_data": {
+   "all": {
+    "bootstrap": {
+     "accuracy_ci95": {
+      "always_bar": [
+       0.7288810170924684,
+       0.7919905159103389
+      ],
+      "model_argmax": [
+       0.33698771187015697,
+       0.4323514552164642
+      ],
+      "model_constrained": [
+       0.3031117411643983,
+       0.4214352449631165
+      ],
+      "rules_baseline": [
+       0.3257354661715494,
+       0.43850599002714546
+      ]
+     },
+     "cluster": "db_id",
+     "macro_f1_ci95": {
+      "always_bar": [
+       0.16863647852635097,
+       0.17678453291733584
+      ],
+      "model_argmax": [
+       0.3916540896310489,
+       0.48764878141822704
+      ],
+      "model_constrained": [
+       0.3516208757470734,
+       0.48048278906249503
+      ],
+      "rules_baseline": [
+       0.2663866597248608,
+       0.3625871379241634
+      ]
+     },
+     "n_clusters": 152,
+     "pairwise": {
+      "accuracy: model_argmax - always_bar": {
+       "ci95": [
+        -0.4445700016761755,
+        -0.3144165698052854
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.3835050930051362
+      },
+      "accuracy: model_argmax - rules_baseline": {
+       "ci95": [
+        -0.030928627388062385,
+        0.026055333594974518
+       ],
+       "excludes_zero": false,
+       "mean_diff": 0.00027828169547674977
+      },
+      "accuracy: model_constrained - always_bar": {
+       "ci95": [
+        -0.47541293637788473,
+        -0.32799477326684584
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.40566837092224534
+      },
+      "accuracy: model_constrained - model_argmax": {
+       "ci95": [
+        -0.03988321638972212,
+        -0.0066212927876874526
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.022163277917109158
+      },
+      "accuracy: model_constrained - rules_baseline": {
+       "ci95": [
+        -0.04879626365838462,
+        7.242178447237239e-06
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.02188499622163241
+      },
+      "accuracy: rules_baseline - always_bar": {
+       "ci95": [
+        -0.44835227630465413,
+        -0.31273729118601146
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.38378337470061297
+      },
+      "macro_f1: model_argmax - always_bar": {
+       "ci95": [
+        0.21721098189736193,
+        0.3149417617440875
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.2632440122839914
+      },
+      "macro_f1: model_argmax - rules_baseline": {
+       "ci95": [
+        0.0938040495642414,
+        0.16139479236333865
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.12465037318472816
+      },
+      "macro_f1: model_constrained - always_bar": {
+       "ci95": [
+        0.1778674430596983,
+        0.307067017344754
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.24078402369307333
+      },
+      "macro_f1: model_constrained - model_argmax": {
+       "ci95": [
+        -0.05632894348264406,
+        0.0014173876808594745
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.02245998859091804
+      },
+      "macro_f1: model_constrained - rules_baseline": {
+       "ci95": [
+        0.06768151739624914,
+        0.14180462257070803
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.10219038459381012
+      },
+      "macro_f1: rules_baseline - always_bar": {
+       "ci95": [
+        0.0953663948694991,
+        0.18865581771910717
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.13859363909926325
+      }
+     },
+     "reps": 2000,
+     "seed": 0
+    },
+    "macro_f1_classes": [
+     "bar",
+     "stacked_bar",
+     "line",
+     "donut",
+     "scatter"
+    ],
+    "n": 7242,
+    "support": {
+     "bar": 5518,
+     "donut": 520,
+     "line": 452,
+     "scatter": 393,
+     "stacked_bar": 359
+    },
+    "systems": {
+     "always_bar": {
+      "accuracy": 0.7619442143054405,
+      "macro_f1_covered": 0.1729780564263323,
+      "per_class": {
+       "bar": {
+        "f1": 0.8648902821316614,
+        "precision": 0.7619442143054405,
+        "recall": 1.0
+       },
+       "donut": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 7242
+      },
+      "top2_accuracy": null
+     },
+     "model_argmax": {
+      "accuracy": 0.3775200220933444,
+      "macro_f1_covered": 0.43154809623725365,
+      "per_class": {
+       "bar": {
+        "f1": 0.47440364513535244,
+        "precision": 0.9104938271604939,
+        "recall": 0.3207683943457775
+       },
+       "donut": {
+        "f1": 0.2602361215774931,
+        "precision": 0.14966772609072523,
+        "recall": 0.9961538461538462
+       },
+       "line": {
+        "f1": 0.17579617834394903,
+        "precision": 0.2072072072072072,
+        "recall": 0.15265486725663716
+       },
+       "scatter": {
+        "f1": 0.5308411214953271,
+        "precision": 1.0,
+        "recall": 0.361323155216285
+       },
+       "stacked_bar": {
+        "f1": 0.7164634146341463,
+        "precision": 0.7912457912457912,
+        "recall": 0.6545961002785515
+       }
+      },
+      "predicted_distribution": {
+       "area": 88,
+       "bar": 1944,
+       "donut": 3461,
+       "heatmap": 137,
+       "horizontal_bar": 215,
+       "kpi": 2,
+       "line": 333,
+       "scatter": 142,
+       "stacked_bar": 297,
+       "table": 623
+      },
+      "top2_accuracy": 0.4620270643468655
+     },
+     "model_constrained": {
+      "accuracy": 0.35418392709196356,
+      "macro_f1_covered": 0.40895475553908345,
+      "per_class": {
+       "bar": {
+        "f1": 0.46203728721967036,
+        "precision": 0.9076433121019108,
+        "recall": 0.3098948894527003
+       },
+       "donut": {
+        "f1": 0.2562070787110407,
+        "precision": 0.1484996938150643,
+        "recall": 0.9326923076923077
+       },
+       "line": {
+        "f1": 0.24642857142857144,
+        "precision": 0.6388888888888888,
+        "recall": 0.15265486725663716
+       },
+       "scatter": {
+        "f1": 0.428,
+        "precision": 1.0,
+        "recall": 0.272264631043257
+       },
+       "stacked_bar": {
+        "f1": 0.6521008403361345,
+        "precision": 0.8220338983050848,
+        "recall": 0.5403899721448467
+       }
+      },
+      "predicted_distribution": {
+       "area": 31,
+       "bar": 1884,
+       "donut": 3266,
+       "heatmap": 137,
+       "horizontal_bar": 215,
+       "kpi": 2,
+       "line": 108,
+       "scatter": 107,
+       "stacked_bar": 236,
+       "table": 1256
+      },
+      "top2_accuracy": 0.45912731289698977
+     },
+     "rules_baseline": {
+      "accuracy": 0.3764153548743441,
+      "macro_f1_covered": 0.30877617246032923,
+      "per_class": {
+       "bar": {
+        "f1": 0.5232919254658385,
+        "precision": 0.9149321266968325,
+        "recall": 0.3664371148967017
+       },
+       "donut": {
+        "f1": 0.2607066381156317,
+        "precision": 0.15143034825870647,
+        "recall": 0.9365384615384615
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.1330166270783848,
+        "precision": 1.0,
+        "recall": 0.07124681933842239
+       },
+       "stacked_bar": {
+        "f1": 0.6268656716417911,
+        "precision": 0.7745901639344263,
+        "recall": 0.5264623955431755
+       }
+      },
+      "predicted_distribution": {
+       "area": 228,
+       "bar": 2210,
+       "donut": 3216,
+       "heatmap": 124,
+       "horizontal_bar": 85,
+       "kpi": 2,
+       "scatter": 28,
+       "stacked_bar": 244,
+       "table": 1105
+      },
+      "top2_accuracy": null
+     }
+    }
+   },
+   "no_binning": {
+    "bootstrap": {
+     "accuracy_ci95": {
+      "always_bar": [
+       0.7420324897986083,
+       0.7971377564199674
+      ],
+      "model_argmax": [
+       0.29706851412244095,
+       0.4205530845004961
+      ],
+      "model_constrained": [
+       0.25423572401095185,
+       0.40528274392381625
+      ],
+      "rules_baseline": [
+       0.2823707024238939,
+       0.4282088063977967
+      ]
+     },
+     "cluster": "db_id",
+     "macro_f1_ci95": {
+      "always_bar": [
+       0.17038315738546692,
+       0.17742385156352805
+      ],
+      "model_argmax": [
+       0.3768589465739493,
+       0.5163676963589081
+      ],
+      "model_constrained": [
+       0.3446483233651676,
+       0.5305172863097856
+      ],
+      "rules_baseline": [
+       0.23727037302182682,
+       0.37035950723822203
+      ]
+     },
+     "n_clusters": 152,
+     "pairwise": {
+      "accuracy: model_argmax - always_bar": {
+       "ci95": [
+        -0.4792829276847077,
+        -0.33948451389690315
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.41841191997603056
+      },
+      "accuracy: model_argmax - rules_baseline": {
+       "ci95": [
+        -0.03710970067439863,
+        0.03139386929625384
+       ],
+       "excludes_zero": false,
+       "mean_diff": 0.00046265434447955654
+      },
+      "accuracy: model_constrained - always_bar": {
+       "ci95": [
+        -0.5167279067229834,
+        -0.3594394206145967
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.4450705269081549
+      },
+      "accuracy: model_constrained - model_argmax": {
+       "ci95": [
+        -0.049469115023315746,
+        -0.0076345723902415405
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.02665860693212429
+      },
+      "accuracy: model_constrained - rules_baseline": {
+       "ci95": [
+        -0.05792184372856179,
+        8.348639171769606e-06
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.026195952587644733
+      },
+      "accuracy: rules_baseline - always_bar": {
+       "ci95": [
+        -0.4833847433748358,
+        -0.34264518778754177
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.4188745743205102
+      },
+      "macro_f1: model_argmax - always_bar": {
+       "ci95": [
+        0.20274894803583252,
+        0.3412757786081441
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.26939094378369927
+      },
+      "macro_f1: model_argmax - rules_baseline": {
+       "ci95": [
+        0.09282830153390297,
+        0.20832024253312467
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.14633034617202514
+      },
+      "macro_f1: model_constrained - always_bar": {
+       "ci95": [
+        0.1723128812770638,
+        0.3560110562370902
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.2592901925516487
+      },
+      "macro_f1: model_constrained - model_argmax": {
+       "ci95": [
+        -0.06295160960211178,
+        0.028861887985198845
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.010100751232050498
+      },
+      "macro_f1: model_constrained - rules_baseline": {
+       "ci95": [
+        0.07996247657960277,
+        0.197036393569492
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.13622959493997466
+      },
+      "macro_f1: rules_baseline - always_bar": {
+       "ci95": [
+        0.06449195442341159,
+        0.19460415485122629
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.12306059761167407
+      }
+     },
+     "reps": 2000,
+     "seed": 0
+    },
+    "macro_f1_classes": [
+     "bar",
+     "stacked_bar",
+     "line",
+     "donut",
+     "scatter"
+    ],
+    "n": 6054,
+    "support": {
+     "bar": 4651,
+     "donut": 520,
+     "line": 213,
+     "scatter": 393,
+     "stacked_bar": 277
+    },
+    "systems": {
+     "always_bar": {
+      "accuracy": 0.7682523951106707,
+      "macro_f1_covered": 0.17378794955628213,
+      "per_class": {
+       "bar": {
+        "f1": 0.8689397477814106,
+        "precision": 0.7682523951106707,
+        "recall": 1.0
+       },
+       "donut": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 6054
+      },
+      "top2_accuracy": null
+     },
+     "model_argmax": {
+      "accuracy": 0.35051205814337627,
+      "macro_f1_covered": 0.4337030979972171,
+      "per_class": {
+       "bar": {
+        "f1": 0.4206241519674355,
+        "precision": 0.9959839357429718,
+        "recall": 0.2666093313265964
+       },
+       "donut": {
+        "f1": 0.2843029637760702,
+        "precision": 0.16581306017925737,
+        "recall": 0.9961538461538462
+       },
+       "line": {
+        "f1": 0.25274725274725274,
+        "precision": 0.2072072072072072,
+        "recall": 0.323943661971831
+       },
+       "scatter": {
+        "f1": 0.5308411214953271,
+        "precision": 1.0,
+        "recall": 0.361323155216285
+       },
+       "stacked_bar": {
+        "f1": 0.68,
+        "precision": 0.884393063583815,
+        "recall": 0.5523465703971119
+       }
+      },
+      "predicted_distribution": {
+       "area": 88,
+       "bar": 1245,
+       "donut": 3124,
+       "heatmap": 124,
+       "horizontal_bar": 200,
+       "kpi": 2,
+       "line": 333,
+       "scatter": 142,
+       "stacked_bar": 173,
+       "table": 623
+      },
+      "top2_accuracy": 0.451602246448629
+     },
+     "model_constrained": {
+      "accuracy": 0.3225966303270565,
+      "macro_f1_covered": 0.4238739046356798,
+      "per_class": {
+       "bar": {
+        "f1": 0.4043865661411926,
+        "precision": 0.9957805907172996,
+        "recall": 0.2537088798107934
+       },
+       "donut": {
+        "f1": 0.28124093940272543,
+        "precision": 0.16558552406964835,
+        "recall": 0.9326923076923077
+       },
+       "line": {
+        "f1": 0.42990654205607476,
+        "precision": 0.6388888888888888,
+        "recall": 0.323943661971831
+       },
+       "scatter": {
+        "f1": 0.428,
+        "precision": 1.0,
+        "recall": 0.272264631043257
+       },
+       "stacked_bar": {
+        "f1": 0.5758354755784062,
+        "precision": 1.0,
+        "recall": 0.4043321299638989
+       }
+      },
+      "predicted_distribution": {
+       "area": 31,
+       "bar": 1185,
+       "donut": 2929,
+       "heatmap": 124,
+       "horizontal_bar": 200,
+       "kpi": 2,
+       "line": 108,
+       "scatter": 107,
+       "stacked_bar": 112,
+       "table": 1256
+      },
+      "top2_accuracy": 0.4481334654773703
+     },
+     "rules_baseline": {
+      "accuracy": 0.34919061777337296,
+      "macro_f1_covered": 0.2924606429764213,
+      "per_class": {
+       "bar": {
+        "f1": 0.4854400520579144,
+        "precision": 0.9973262032085561,
+        "recall": 0.32079122769296925
+       },
+       "donut": {
+        "f1": 0.2865548690791409,
+        "precision": 0.1691559569294894,
+        "recall": 0.9365384615384615
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.1330166270783848,
+        "precision": 1.0,
+        "recall": 0.07124681933842239
+       },
+       "stacked_bar": {
+        "f1": 0.5572916666666666,
+        "precision": 1.0,
+        "recall": 0.3862815884476534
+       }
+      },
+      "predicted_distribution": {
+       "area": 228,
+       "bar": 1496,
+       "donut": 2879,
+       "heatmap": 124,
+       "horizontal_bar": 85,
+       "kpi": 2,
+       "scatter": 28,
+       "stacked_bar": 107,
+       "table": 1105
+      },
+      "top2_accuracy": null
+     }
+    }
+   }
+  },
+  "sql_result": {
+   "all": {
+    "bootstrap": {
+     "accuracy_ci95": {
+      "always_bar": [
+       0.7301966128190123,
+       0.7932225460301799
+      ],
+      "model_argmax": [
+       0.2230941470485981,
+       0.3710196448819181
+      ],
+      "model_constrained": [
+       0.17997995754313245,
+       0.3450718856302565
+      ],
+      "rules_baseline": [
+       0.2088353728249855,
+       0.3577095225129878
+      ]
+     },
+     "cluster": "db_id",
+     "macro_f1_ci95": {
+      "always_bar": [
+       0.1688124013984416,
+       0.17693789267769083
+      ],
+      "model_argmax": [
+       0.28563623539659205,
+       0.3888091271200422
+      ],
+      "model_constrained": [
+       0.167620005606553,
+       0.28602985201304576
+      ],
+      "rules_baseline": [
+       0.13652598573378752,
+       0.18632467973803588
+      ]
+     },
+     "n_clusters": 152,
+     "pairwise": {
+      "accuracy: model_argmax - always_bar": {
+       "ci95": [
+        -0.5584770222415427,
+        -0.3829297122364007
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.47581328695316355
+      },
+      "accuracy: model_argmax - rules_baseline": {
+       "ci95": [
+        -0.02624733321495349,
+        0.042476725470337026
+       ],
+       "excludes_zero": false,
+       "mean_diff": 0.010230362386779867
+      },
+      "accuracy: model_constrained - always_bar": {
+       "ci95": [
+        -0.6004710821398893,
+        -0.4101320837188561
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.5115405951463238
+      },
+      "accuracy: model_constrained - model_argmax": {
+       "ci95": [
+        -0.05837525838786318,
+        -0.015611676907921824
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.03572730819316018
+      },
+      "accuracy: model_constrained - rules_baseline": {
+       "ci95": [
+        -0.05522585692279231,
+        0.0002071733715743433
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.025496945806380317
+      },
+      "accuracy: rules_baseline - always_bar": {
+       "ci95": [
+        -0.5664274792102341,
+        -0.3955321627869727
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.4860436493399434
+      },
+      "macro_f1: model_argmax - always_bar": {
+       "ci95": [
+        0.11126264452220828,
+        0.21679087550056012
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.16652888363615279
+      },
+      "macro_f1: model_argmax - rules_baseline": {
+       "ci95": [
+        0.12171363393294295,
+        0.23528964498140487
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.1796819660698268
+      },
+      "macro_f1: model_constrained - always_bar": {
+       "ci95": [
+        -0.006351004451045814,
+        0.11384594104074311
+       ],
+       "excludes_zero": false,
+       "mean_diff": 0.04699125825942986
+      },
+      "macro_f1: model_constrained - model_argmax": {
+       "ci95": [
+        -0.19212480660149434,
+        -0.05209037996739938
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.11953762537672293
+      },
+      "macro_f1: model_constrained - rules_baseline": {
+       "ci95": [
+        0.01996398926881727,
+        0.11117723694204425
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.06014434069310386
+      },
+      "macro_f1: rules_baseline - always_bar": {
+       "ci95": [
+        -0.03609041030835057,
+        0.012834575327138524
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.013153082433674
+      }
+     },
+     "reps": 2000,
+     "seed": 0
+    },
+    "macro_f1_classes": [
+     "bar",
+     "stacked_bar",
+     "line",
+     "donut",
+     "scatter"
+    ],
+    "n": 7097,
+    "support": {
+     "bar": 5418,
+     "donut": 513,
+     "line": 430,
+     "scatter": 378,
+     "stacked_bar": 358
+    },
+    "systems": {
+     "always_bar": {
+      "accuracy": 0.7634211638720586,
+      "macro_f1_covered": 0.17316819816220536,
+      "per_class": {
+       "bar": {
+        "f1": 0.8658409908110267,
+        "precision": 0.7634211638720586,
+        "recall": 1.0
+       },
+       "donut": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 7097
+      },
+      "top2_accuracy": null
+     },
+     "model_argmax": {
+      "accuracy": 0.2858954487811751,
+      "macro_f1_covered": 0.341754158734591,
+      "per_class": {
+       "bar": {
+        "f1": 0.3681577398469688,
+        "precision": 0.9078374455732946,
+        "recall": 0.23089700996677742
+       },
+       "donut": {
+        "f1": 0.27213695395513576,
+        "precision": 0.16034782608695652,
+        "recall": 0.898635477582846
+       },
+       "line": {
+        "f1": 0.025078369905956112,
+        "precision": 0.038461538461538464,
+        "recall": 0.018604651162790697
+       },
+       "scatter": {
+        "f1": 0.5743145743145743,
+        "precision": 0.6317460317460317,
+        "recall": 0.5264550264550265
+       },
+       "stacked_bar": {
+        "f1": 0.4690831556503198,
+        "precision": 0.990990990990991,
+        "recall": 0.30726256983240224
+       }
+      },
+      "predicted_distribution": {
+       "area": 53,
+       "bar": 1378,
+       "donut": 2875,
+       "horizontal_bar": 274,
+       "kpi": 1060,
+       "line": 208,
+       "scatter": 315,
+       "stacked_bar": 111,
+       "table": 823
+      },
+      "top2_accuracy": 0.3829787234042553
+     },
+     "model_constrained": {
+      "accuracy": 0.24897844159504015,
+      "macro_f1_covered": 0.21965105441745317,
+      "per_class": {
+       "bar": {
+        "f1": 0.34940828402366864,
+        "precision": 0.8800298062593145,
+        "recall": 0.21797711332595054
+       },
+       "donut": {
+        "f1": 0.27056672760511885,
+        "precision": 0.16034669555796316,
+        "recall": 0.8654970760233918
+       },
+       "line": {
+        "f1": 0.036036036036036036,
+        "precision": 0.5714285714285714,
+        "recall": 0.018604651162790697
+       },
+       "scatter": {
+        "f1": 0.44224422442244227,
+        "precision": 0.5877192982456141,
+        "recall": 0.3544973544973545
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 1342,
+       "donut": 2769,
+       "horizontal_bar": 274,
+       "kpi": 1060,
+       "line": 14,
+       "scatter": 228,
+       "table": 1410
+      },
+      "top2_accuracy": 0.3804424404678033
+     },
+     "rules_baseline": {
+      "accuracy": 0.2747639847823024,
+      "macro_f1_covered": 0.1591871622349007,
+      "per_class": {
+       "bar": {
+        "f1": 0.41624365482233505,
+        "precision": 0.8817204301075269,
+        "recall": 0.2724252491694352
+       },
+       "donut": {
+        "f1": 0.267497034400949,
+        "precision": 0.1577474641483036,
+        "recall": 0.8791423001949318
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.11219512195121951,
+        "precision": 0.71875,
+        "recall": 0.06084656084656084
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "area": 57,
+       "bar": 1674,
+       "donut": 2859,
+       "horizontal_bar": 93,
+       "kpi": 1060,
+       "scatter": 32,
+       "table": 1322
+      },
+      "top2_accuracy": null
+     }
+    }
+   },
+   "no_binning": {
+    "bootstrap": {
+     "accuracy_ci95": {
+      "always_bar": [
+       0.7426910292295482,
+       0.7969323431576196
+      ],
+      "model_argmax": [
+       0.281540571528849,
+       0.4206754044549404
+      ],
+      "model_constrained": [
+       0.22508387186927373,
+       0.3906249350347057
+      ],
+      "rules_baseline": [
+       0.2629244414196557,
+       0.4064830033061578
+      ]
+     },
+     "cluster": "db_id",
+     "macro_f1_ci95": {
+      "always_bar": [
+       0.17046992651540654,
+       0.1773984080872387
+      ],
+      "model_argmax": [
+       0.32305422382557036,
+       0.4296056560398078
+      ],
+      "model_constrained": [
+       0.18462042523606867,
+       0.31478589915193234
+      ],
+      "rules_baseline": [
+       0.15018124961105658,
+       0.1964829565814002
+      ]
+     },
+     "n_clusters": 152,
+     "pairwise": {
+      "accuracy: model_argmax - always_bar": {
+       "ci95": [
+        -0.49591295228229326,
+        -0.34289301735347055
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.4285709387430968
+      },
+      "accuracy: model_argmax - rules_baseline": {
+       "ci95": [
+        -0.03195486936923639,
+        0.05020374447308534
+       ],
+       "excludes_zero": false,
+       "mean_diff": 0.012208686006880754
+      },
+      "accuracy: model_constrained - always_bar": {
+       "ci95": [
+        -0.5455455901159828,
+        -0.37579775938134574
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.47124947462986383
+      },
+      "accuracy: model_constrained - model_argmax": {
+       "ci95": [
+        -0.07039187495502408,
+        -0.01782258981971616
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.04267853588676701
+      },
+      "accuracy: model_constrained - rules_baseline": {
+       "ci95": [
+        -0.06515240757980661,
+        0.00024220604589334432
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.030469849879886258
+      },
+      "accuracy: rules_baseline - always_bar": {
+       "ci95": [
+        -0.5015853412815655,
+        -0.36378035207282294
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.4407796247499775
+      },
+      "macro_f1: model_argmax - always_bar": {
+       "ci95": [
+        0.1477789007115729,
+        0.25620155665757055
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.2050047073729556
+      },
+      "macro_f1: model_argmax - rules_baseline": {
+       "ci95": [
+        0.14426755378503223,
+        0.2662541707542374
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.2063696600631153
+      },
+      "macro_f1: model_constrained - always_bar": {
+       "ci95": [
+        0.010885864135017331,
+        0.14131527577814293
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.06737234439928366
+      },
+      "macro_f1: model_constrained - model_argmax": {
+       "ci95": [
+        -0.21489401457967594,
+        -0.056554031704992756
+       ],
+       "excludes_zero": true,
+       "mean_diff": -0.13763236297367193
+      },
+      "macro_f1: model_constrained - rules_baseline": {
+       "ci95": [
+        0.02206068916507561,
+        0.1316672257312617
+       ],
+       "excludes_zero": true,
+       "mean_diff": 0.06873729708944339
+      },
+      "macro_f1: rules_baseline - always_bar": {
+       "ci95": [
+        -0.022609732174319185,
+        0.02137891856330234
+       ],
+       "excludes_zero": false,
+       "mean_diff": -0.0013649526901597336
+      }
+     },
+     "reps": 2000,
+     "seed": 0
+    },
+    "macro_f1_classes": [
+     "bar",
+     "stacked_bar",
+     "line",
+     "donut",
+     "scatter"
+    ],
+    "n": 5950,
+    "support": {
+     "bar": 4575,
+     "donut": 513,
+     "line": 207,
+     "scatter": 378,
+     "stacked_bar": 277
+    },
+    "systems": {
+     "always_bar": {
+      "accuracy": 0.7689075630252101,
+      "macro_f1_covered": 0.17387173396674585,
+      "per_class": {
+       "bar": {
+        "f1": 0.8693586698337292,
+        "precision": 0.7689075630252101,
+        "recall": 1.0
+       },
+       "donut": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 5950
+      },
+      "top2_accuracy": null
+     },
+     "model_argmax": {
+      "accuracy": 0.3410084033613445,
+      "macro_f1_covered": 0.37880385933025984,
+      "per_class": {
+       "bar": {
+        "f1": 0.4202922896018814,
+        "precision": 0.9078374455732946,
+        "recall": 0.27344262295081967
+       },
+       "donut": {
+        "f1": 0.28144078144078144,
+        "precision": 0.166847629388346,
+        "recall": 0.898635477582846
+       },
+       "line": {
+        "f1": 0.039119804400977995,
+        "precision": 0.039603960396039604,
+        "recall": 0.03864734299516908
+       },
+       "scatter": {
+        "f1": 0.5861561119293078,
+        "precision": 0.6611295681063123,
+        "recall": 0.5264550264550265
+       },
+       "stacked_bar": {
+        "f1": 0.5670103092783505,
+        "precision": 0.990990990990991,
+        "recall": 0.3971119133574007
+       }
+      },
+      "predicted_distribution": {
+       "area": 53,
+       "bar": 1378,
+       "donut": 2763,
+       "horizontal_bar": 274,
+       "kpi": 45,
+       "line": 202,
+       "scatter": 301,
+       "stacked_bar": 111,
+       "table": 823
+      },
+      "top2_accuracy": 0.45563025210084035
+     },
+     "model_constrained": {
+      "accuracy": 0.2969747899159664,
+      "macro_f1_covered": 0.24067959904873454,
+      "per_class": {
+       "bar": {
+        "f1": 0.39918877809700865,
+        "precision": 0.8800298062593145,
+        "recall": 0.25814207650273224
+       },
+       "donut": {
+        "f1": 0.2801261829652997,
+        "precision": 0.16710575837410613,
+        "recall": 0.8654970760233918
+       },
+       "line": {
+        "f1": 0.07441860465116279,
+        "precision": 1.0,
+        "recall": 0.03864734299516908
+       },
+       "scatter": {
+        "f1": 0.44966442953020136,
+        "precision": 0.6146788990825688,
+        "recall": 0.3544973544973545
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "bar": 1342,
+       "donut": 2657,
+       "horizontal_bar": 274,
+       "kpi": 45,
+       "line": 8,
+       "scatter": 218,
+       "table": 1406
+      },
+      "top2_accuracy": 0.45260504201680674
+     },
+     "rules_baseline": {
+      "accuracy": 0.3277310924369748,
+      "macro_f1_covered": 0.17225556436179273,
+      "per_class": {
+       "bar": {
+        "f1": 0.4723955832933269,
+        "precision": 0.8817204301075269,
+        "recall": 0.3226229508196721
+       },
+       "donut": {
+        "f1": 0.2766871165644172,
+        "precision": 0.16417910447761194,
+        "recall": 0.8791423001949318
+       },
+       "line": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       },
+       "scatter": {
+        "f1": 0.11219512195121951,
+        "precision": 0.71875,
+        "recall": 0.06084656084656084
+       },
+       "stacked_bar": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+       }
+      },
+      "predicted_distribution": {
+       "area": 51,
+       "bar": 1674,
+       "donut": 2747,
+       "horizontal_bar": 93,
+       "kpi": 45,
+       "scatter": 32,
+       "table": 1308
+      },
+      "top2_accuracy": null
+     }
+    }
+   }
+  }
+ },
+ "top2_definition": "model: top-2 by raw chart_scores; rules baseline and always_bar expose no alternatives (null)",
+ "uncovered_classes": [
+  "kpi",
+  "horizontal_bar",
+  "area",
+  "heatmap",
+  "table"
+ ],
+ "views": {
+  "chart_data": "nvBench's own vis_obj data (post-binning/grouping) as a long table; SQL text passed is the data_part SQL",
+  "sql_result": "SQL text executed verbatim in the read-only sandbox on the Spider DB; binned items lack nvBench's binning step"
+ },
+ "vis_type_mapping": {
+  "Bar": "bar",
+  "Grouping Line": "line",
+  "Grouping Scatter": "scatter",
+  "Line": "line",
+  "Pie": "donut",
+  "Scatter": "scatter",
+  "Stacked Bar": "stacked_bar"
+ }
+}

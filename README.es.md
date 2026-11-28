@@ -2,10 +2,10 @@
 
 <p align="center"><a href="README.md">English</a> · <a href="README.es.md">Español</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="spec/chart-taxonomy-v1.md">SqlVizSpec</a> · <a href="examples/charts">Examples</a></p>
 
-<p align="center"><img src="https://img.shields.io/badge/status-pre--alpha-818cf8?style=for-the-badge" alt="Pre-alpha"> <img src="https://img.shields.io/badge/visualizations-21%20planned-0891b2?style=for-the-badge" alt="21 planned"> <img src="https://img.shields.io/badge/Python-planned-3776AB?style=for-the-badge" alt="Python planned"> <img src="https://img.shields.io/badge/TypeScript-planned-3178C6?style=for-the-badge" alt="TypeScript planned"> <img src="https://img.shields.io/badge/.NET-8%20%7C%2010-512BD4?style=for-the-badge" alt=".NET targets"></p>
+<p align="center"><a href="https://pypi.org/project/sqltoviz/"><img src="https://img.shields.io/badge/PyPI-0.1.0a2-3776AB?style=for-the-badge" alt="PyPI"></a> <a href="https://www.npmjs.com/package/sqltoviz"><img src="https://img.shields.io/badge/npm-0.1.0--alpha.2-CB3837?style=for-the-badge" alt="npm"></a> <a href="https://www.nuget.org/packages/SqlToViz"><img src="https://img.shields.io/badge/NuGet-0.1.0--alpha.2-512BD4?style=for-the-badge" alt="NuGet"></a> <img src="https://img.shields.io/badge/status-alpha-818cf8?style=for-the-badge" alt="Alpha"> <img src="https://img.shields.io/badge/license-Apache--2.0-0891b2?style=for-the-badge" alt="Apache-2.0"></p>
 
 > [!NOTE]
-> Pre-alfa: la galería ilustra datos sintéticos. El motor de inferencia, paquetes instalables y playground aún no están disponibles.
+> Alfa: los SDK de Python, TypeScript y .NET están publicados como `0.1.0a2` / `0.1.0-alpha.2` con una vista previa determinista y modelos ONNX **experimentales** (candidatos sin validación humana). La galería ilustra datos sintéticos. [Probar el playground](https://jmmana.github.io/sqltoviz/#play) · [Documentación](https://jmmana.github.io/sqltoviz/docs/).
 
 ## ¿Por qué SqlToViz?
 
@@ -151,25 +151,31 @@ Por ejemplo, recombinar dos promedios exige sus denominadores; sumarlos no repre
 
 Los hallazgos se calcularán desde los datos, no mediante un LLM. Los umbrales y limitaciones deben validarse.
 
-## SDK: interfaces previstas
+## Instalación y uso
 
-APIs propuestas, aún no verificadas ni publicadas.
-
-```python
-from sqltoviz import analyze_query
-plan = analyze_query(sql=sql, rows=rows)
+```bash
+pip install --pre sqltoviz          # Python 3.10+
+npm install sqltoviz@alpha          # Node.js 20+
+dotnet add package SqlToViz --prerelease   # .NET 8 / 10
 ```
 
-```typescript
-import { analyzeQuery } from 'sqltoviz';
-const plan = await analyzeQuery({ sql, rows });
+```python
+from sqltoviz import recommend
+plan = recommend("SELECT 42 AS total", [{"total": 42}])
+assert plan["chartType"] == "kpi"
+```
+
+```javascript
+import { recommend } from 'sqltoviz';
+const plan = recommend('SELECT 42 AS total', [{ total: 42 }]);
 ```
 
 ```csharp
-using SqlToViz;
-using var engine = new VizEngine();
-var plan = engine.Analyze(sql, rows);
+var plan = SqlToViz.Preview.Recommend("SELECT 42 AS total",
+    new[] { new Dictionary<string, object?> { ["total"] = 42 } });
 ```
+
+Los modelos ONNX incluidos son candidatos **experimentales** entrenados con datos sintéticos y 322 columnas de Vega-Lite; no tienen validación humana. Detalles: [guía de los SDK](https://jmmana.github.io/sqltoviz/docs/es/sdk.html).
 
 ## Investigación y reproducibilidad
 
