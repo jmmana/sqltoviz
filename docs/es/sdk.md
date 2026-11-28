@@ -1,18 +1,19 @@
 # Guía rápida de los SDK
 
-Los paquetes alfa están publicados en PyPI, npm y NuGet. Los ejemplos usan resultados SQL ya calculados. Cada SDK ofrece
-una vista previa determinista y documenta por separado cómo usar ONNX experimental.
+Instala los paquetes alfa desde los registros públicos (son versiones
+preliminares, por eso se necesitan las opciones indicadas). Los ejemplos usan
+resultados SQL ya calculados. Cada SDK ofrece una vista previa determinista y
+documenta por separado cómo usar ONNX experimental.
 
-| SDK | Entorno | Instalación (0.1.0 alfa 2) |
+| SDK | Entorno | Instalación |
 | --- | --- | --- |
-| [Python](https://pypi.org/project/sqltoviz/) | Python 3.10+ | `python -m pip install --pre sqltoviz` |
-| [TypeScript](https://www.npmjs.com/package/sqltoviz) | Node.js 20+ | `npm install sqltoviz@0.1.0-alpha.2` |
-| [.NET](https://www.nuget.org/packages/SqlToViz) | .NET 8 o 10 | `dotnet add package SqlToViz --prerelease` |
+| [Python](https://pypi.org/project/sqltoviz/) | Python 3.10+ | `pip install --pre sqltoviz` (agrega `"sqltoviz[onnx]"` para los modelos experimentales) |
+| [TypeScript](https://www.npmjs.com/package/sqltoviz) | Node.js 20+ | `npm install sqltoviz@alpha` |
+| [.NET](https://www.nuget.org/packages/SqlToViz) | .NET 8 o 10 | `dotnet add package SqlToViz --prerelease` (y `SqlToViz.Onnx` para los modelos experimentales) |
 
-Instala en un entorno virtual (Python) o en un proyecto nuevo. `SqlToViz.Onnx`
-es un paquete NuGet aparte con los modelos ONNX experimentales (candidatos sin
-validación humana). Para compilar desde el código fuente, consulta el
-[README](https://github.com/jmmana/sqltoviz#readme).
+Para compilar desde un clon, usa `python -m build packages/python`,
+`cd packages/npm && npm install --ignore-scripts && npm pack` o
+`dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts`.
 
 ## Un resultado, tres SDK
 
