@@ -43,5 +43,5 @@ Console.WriteLine(plan.ChartType); // kpi
 The [research protocol](https://github.com/jmmana/sqltoviz/blob/main/research/paper/PROTOCOL.md)
 describes the held-out evaluation. The [model cards](https://github.com/jmmana/sqltoviz/tree/main/model/candidate)
 document the training sources, feature contract and limitations. The bundled
-ONNX models remain experimental. See the [roadmap](./roadmap.md) for release
+ONNX models remain experimental. See the [roadmap](/roadmap) for release
 and research acceptance criteria.
