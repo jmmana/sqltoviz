@@ -51,3 +51,13 @@ The **Run experimental model** button runs the two candidate ONNX models (chart 
 To try it locally: `cd packages/npm && npm install --ignore-scripts && npm run build`, then `node site/build-engine.mjs` (generates `site/sdk`, `site/models`, `site/vendor`; not committed) and serve `site/`. Tests: `node --test site/*.test.mjs`; real-browser test: `node site/e2e/playground.e2e.mjs` (needs `npm i --no-save playwright` and `npx playwright install chromium`).
 
 El botón **Run experimental model** ejecuta en el navegador los dos modelos ONNX candidatos (gráfico y roles) con `onnxruntime-web` (WebAssembly de un hilo). No se sube nada: el runtime, los modelos y el SDK se sirven desde este sitio (la primera vez descarga unos 14 MB). Los modelos son **candidatos**, sin validación científica; el panel y el resultado lo indican.
+
+## Editors / Editores
+
+Use **Format JSON** to indent the result rows. Invalid JSON stays in the
+editor, with a message explaining the formatting failure. Press Ctrl+Enter
+or Cmd+Enter in either editor to run the deterministic analysis.
+
+Usa **Formatear JSON** para indentar las filas. Si la sintaxis es inválida,
+el texto permanece en el editor y aparece un aviso. Pulsa Ctrl+Enter o
+Cmd+Enter en cualquiera de los editores para ejecutar el análisis determinista.
