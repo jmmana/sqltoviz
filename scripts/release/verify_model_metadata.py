@@ -31,7 +31,7 @@ for n, c in cards.items():
 lic = json.loads((CAND / "LICENSE_METADATA.json").read_text())
 for f, m in lic["models"].items():
     check(m["model_status"] == "experimental", f"{f}: license metadata must say experimental")
-    check(m["weights_license"] == "undecided", f"{f}: weights license changed - update docs/release/MODEL_LICENSES.md and this check")
+    check(m["weights_license"] == "Apache-2.0", f"{f}: weights license changed - update docs/release/MODEL_LICENSES.md and this check")
 check("synthetic" in cards["chart"]["trained_on"], "chart card must state synthetic training")
 check("BSD-3-Clause" in cards["role"]["trained_on"], "role card must record the BSD-3-Clause source")
 
@@ -51,4 +51,4 @@ for d in COPIES:
 if errors:
     print("FAIL"); [print(" -", e) for e in errors]; sys.exit(1)
 print("OK: 2 models x (candidate + 3 package copies) share SHA-256 with cards/manifests; all marked experimental;")
-print("    contract hash matches spec; weights license recorded as UNDECIDED (not redistributable-by-license-claim).")
+print("    contract hash matches spec; weights license recorded as Apache-2.0 (owner decision 2026-11-28).")
