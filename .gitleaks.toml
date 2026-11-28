@@ -1,0 +1,9 @@
+title = "sqltoviz gitleaks config"
+[extend]
+useDefault = true
+[[allowlists]]
+description = "Reviewed false positives: bibliography keys such as \"chen2024viseval\" flagged as generic-api-key"
+condition = "AND"
+regexTarget = "line"
+paths = ['''research/paper/related_work/(candidates|verification_report)\.json''']
+regexes = ['''"key":\s*"[a-z]+[0-9]{4}[a-z0-9]+"''']
