@@ -17,6 +17,7 @@ export default defineConfig({
         ],
         sidebar: [
           { text: 'Overview', link: '/' },
+          { text: 'SDK quickstart', link: '/sdk' },
           { text: 'Architecture', link: '/architecture' },
           { text: 'SQL input', link: '/sql-input-scope' },
           { text: 'Alpha release', link: '/alpha-release' },
@@ -32,7 +33,10 @@ export default defineConfig({
           { text: 'Demostración', link: 'https://jmmana.github.io/sqltoviz/#play' },
           { text: 'Hoja de ruta', link: '/roadmap' },
         ],
-        sidebar: [{ text: 'Inicio', link: '/es/' }],
+        sidebar: [
+          { text: 'Inicio', link: '/es/' },
+          { text: 'Guía rápida de los SDK', link: '/es/sdk' },
+        ],
       },
     },
   },
