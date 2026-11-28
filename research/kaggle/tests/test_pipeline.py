@@ -54,3 +54,17 @@ def test_manifest_merges_across_notebooks(tmp_path):
     P.write_manifest(tmp_path, {"a.txt": "apache-2.0"}, {"mode": "full", "stage": "dataset"})
     m = P.write_manifest(tmp_path, {"b.txt": "apache-2.0"}, {"stage": "export"})
     assert set(m["files"]) == {"a.txt", "b.txt"} and m["mode"] == "full" and m["stage"] == "export"
+
+
+def test_load_features_reads_each_array_once(tmp_path, monkeypatch):
+    """Regression: accessing z['columns'] per item decompresses the whole array each time (O(items x size))."""
+    items = [{"item_id": f"i{k}", "sql": "SELECT a FROM t", "columns": ["a"], "rows": [[k], [k + 1]]} for k in range(50)]
+    P.save_features(tmp_path / "f.npz", items)
+    reads = {}
+    real = np.lib.npyio.NpzFile.__getitem__
+    def counting(self, key):
+        reads[key] = reads.get(key, 0) + 1
+        return real(self, key)
+    monkeypatch.setattr(np.lib.npyio.NpzFile, "__getitem__", counting)
+    d = P.load_features(tmp_path / "f.npz")
+    assert len(d["columns"]) == 50 and all(v == 1 for k, v in reads.items() if k in ("table", "columns", "offsets", "item_ids")), reads
