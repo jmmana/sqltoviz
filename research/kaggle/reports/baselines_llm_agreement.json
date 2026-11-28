@@ -1,0 +1,65 @@
+{
+ "provenance": "llm",
+ "confirmatory": false,
+ "banner": "exploratory: agreement with LLM annotators, not human validation",
+ "n_free_items": 200,
+ "note": "each run scored against the OTHER LLM's labels; this is inter-LLM agreement, not accuracy; reserved items excluded",
+ "runs": {
+  "claude-sonnet-5-5_vs_other_llm": {
+   "n": 200,
+   "parse_failures": 0,
+   "accuracy": 0.925,
+   "macro_f1": 0.5046522573404294,
+   "acceptable_hit_rate": 0.995,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "line",
+    "scatter",
+    "table"
+   ],
+   "majority_baseline": 0.675,
+   "class_support": {
+    "table": 135,
+    "kpi": 42,
+    "horizontal_bar": 9,
+    "bar": 12,
+    "line": 1,
+    "scatter": 1
+   },
+   "prompt_sha256": "n/a",
+   "model": "claude-sonnet-5-5",
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.42017686997977133,
+    0.5792740934026516
+   ]
+  },
+  "gpt-codex_vs_other_llm": {
+   "n": 200,
+   "parse_failures": 0,
+   "accuracy": 0.925,
+   "macro_f1": 0.756978386010644,
+   "acceptable_hit_rate": 0.97,
+   "macro_f1_classes": [
+    "kpi",
+    "bar",
+    "horizontal_bar",
+    "table"
+   ],
+   "majority_baseline": 0.72,
+   "class_support": {
+    "table": 144,
+    "kpi": 39,
+    "bar": 15,
+    "horizontal_bar": 2
+   },
+   "prompt_sha256": "n/a",
+   "model": "gpt-codex",
+   "macro_f1_ci95_cluster_bootstrap": [
+    0.630265304969657,
+    0.8689111401039774
+   ]
+  }
+ }
+}
