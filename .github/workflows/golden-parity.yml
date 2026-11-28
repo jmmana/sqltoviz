@@ -60,7 +60,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: parity-fuzz
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - run: cd packages/npm && npm install --ignore-scripts && SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" npm test
