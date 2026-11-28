@@ -42,7 +42,7 @@
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "@types/node": "22.15.0",
+    "@types/node": "26.6.7",
     "echarts": "5.6.0",
     "onnxruntime-node": "1.31.1",
     "onnxruntime-web": "1.31.1",
