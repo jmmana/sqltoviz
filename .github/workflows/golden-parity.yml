@@ -2,8 +2,7 @@ name: Cross-language parity gate
 # Release gate (#82): the 308 golden cases (features, rejections, ONNX scores, classes, roles) plus 3000 differential fuzz cases generated from the
 # Python SDK must pass unchanged in Python, TypeScript (Node + WASM) and .NET 8/10, and the generated bindings must match the frozen spec.
 on:
-  pull_request:
-    paths: ['parity/**', 'spec/**', 'model/**', 'packages/**', '.github/workflows/golden-parity.yml']
+  pull_request:   # no path filter: `gate` is a required check on main, so it must report on every PR
   push:
     branches: [development, main]
     paths: ['parity/**', 'spec/**', 'model/**', 'packages/**', '.github/workflows/golden-parity.yml']
