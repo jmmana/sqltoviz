@@ -7,6 +7,10 @@
 > [!NOTE]
 > Alfa: los SDK de Python, TypeScript y .NET están publicados como `0.1.0a2` / `0.1.0-alpha.2` con una vista previa determinista y modelos ONNX **experimentales** (candidatos sin validación humana). La galería ilustra datos sintéticos. [Probar el playground](https://jmmana.github.io/sqltoviz/#play) · [Documentación](https://jmmana.github.io/sqltoviz/docs/).
 
+![Demostración del playground de SqlToViz](docs/assets/demo-playground.gif)
+
+*El playground en el navegador: elige o pega una consulta, analiza y obtén el gráfico recomendado y por qué (grabación del sitio publicado; el plan es la vista previa por reglas, los modelos son experimentales).*
+
 ## ¿Por qué SqlToViz?
 
 Una aplicación de BI o Text-to-SQL ya conoce la consulta que ejecutó y sus resultados. Sin embargo, elegir una visualización adecuada requiere interpretar dimensiones, medidas, agregaciones, unidades y granularidad. Una gráfica atractiva puede ser matemáticamente incorrecta si mezcla promedios o duplica totales.
