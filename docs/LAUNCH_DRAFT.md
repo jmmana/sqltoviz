@@ -1,6 +1,6 @@
 # Launch announcement (DRAFT, not published)
 
-Status: draft for the owner to edit. Nothing here has been posted, and no package has been released from this draft. Replace every `<<...>>` marker before use and re-check each number against `docs/PERFORMANCE.md` and `research/kaggle/EXPERIMENTS.md` on the day of release. Do not add claims that are not in those two files.
+Status: draft for the owner to edit. Nothing here has been posted, and no package has been released from this draft. Replace every `[TODO: ...]` marker before use and re-check each number against `docs/PERFORMANCE.md` and `research/kaggle/EXPERIMENTS.md` on the day of release. Do not add claims that are not in those two files.
 
 Pre-publication checklist (all must be true):
 
@@ -17,7 +17,7 @@ SqlToViz (alpha): recommend a chart from the SQL query and the rows you already 
 
 ## Short version (about 280 characters)
 
-SqlToViz is an open-source alpha that suggests a chart for a SQL query plus its result rows, locally, in Python, TypeScript and .NET. If no chart is safe it falls back to a table. Bundled ONNX models are experimental and not human-validated. <<link>>
+SqlToViz is an open-source alpha that suggests a chart for a SQL query plus its result rows, locally, in Python, TypeScript and .NET. If no chart is safe it falls back to a table. Bundled ONNX models are experimental and not human-validated. [TODO: link]
 
 ## Post
 
@@ -40,7 +40,7 @@ What we do not know, and do not claim:
 - Against an always-`table` baseline (0.725 on the n = 131 consensus items), the constrained hybrid reached 0.908 accuracy and rules alone 0.885; the difference between systems is inside confidence intervals in the cross-validation, so we make no ranking claim and no claim of superiority over other tools.
 - The accompanying paper is a draft and has not been submitted.
 
-Try it / install: <<install commands once the three registries are verified>>. Docs: <<link>>. Source and issues (Apache-2.0): https://github.com/jmmana/sqltoviz
+Try it / install: [TODO: install commands once the three registries are verified]. Docs: [TODO: link]. Source and issues (Apache-2.0): https://github.com/jmmana/sqltoviz
 
 We would value feedback on queries where the recommendation is wrong, and help labelling cases for the human validation set.
 

@@ -3,34 +3,34 @@
 Copy to the GitHub release body and `CHANGELOG.md`, fill every field, delete unused lines. Nothing in this file is a release.
 
 ```markdown
-## SqlToViz <<version>> (<<YYYY-MM-DD, only after all three registries are verified>>)
+## SqlToViz [TODO: version] ([TODO: YYYY-MM-DD, only after all three registries are verified])
 
-Status: <<alpha | beta | stable>>. Models: <<experimental | validated (link to the validation report)>>.
+Status: [TODO: alpha | beta | stable]. Models: [TODO: experimental | validated (link to the validation report)].
 
 ### Packages
 | SDK | Package | Version | Verified install from registry (date, environment) |
 |---|---|---|---|
-| Python | sqltoviz | <<0.1.0aN>> | <<>> |
-| npm | @sqltoviz/core | <<0.1.0-alpha.N>> | <<>> |
-| NuGet | SqlToViz, SqlToViz.Onnx (and adapters if released) | <<>> | <<>> |
+| Python | sqltoviz | [TODO: 0.1.0aN] | [TODO: ] |
+| npm | @sqltoviz/core | [TODO: 0.1.0-alpha.N] | [TODO: ] |
+| NuGet | SqlToViz, SqlToViz.Onnx (and adapters if released) | [TODO: ] | [TODO: ] |
 
 ### Contract
-Feature/response contract: SqlVizSpec-<<vX.Y.Z>>, SHA-256 `<<...>>` (changed: yes/no; migration: <<>>).
+Feature/response contract: SqlVizSpec-[TODO: vX.Y.Z], SHA-256 `[TODO: ...]` (changed: yes/no; migration: [TODO: ]).
 
 ### Added / Changed / Fixed
-- <<>>
+- [TODO: ]
 
 ### Breaking changes
-- <<none | list and migration steps>>
+- [TODO: none | list and migration steps]
 
 ### Models
-Bundled model files with SHA-256 and status from `manifest.json`: <<>>. Training data provenance: <<synthetic | LLM | human>>. Validation: <<link to report, or "none: experimental">>.
+Bundled model files with SHA-256 and status from `manifest.json`: [TODO: ]. Training data provenance: [TODO: synthetic | LLM | human]. Validation: [TODO: link to report, or "none: experimental"].
 
 ### Evidence
-- Release-candidate CI run: <<URL>>. Parity: <<n golden cases, fuzz cases>>. Performance: link to `docs/PERFORMANCE.md` at this commit (hardware stated there).
+- Release-candidate CI run: [TODO: URL]. Parity: [TODO: n golden cases, fuzz cases]. Performance: link to `docs/PERFORMANCE.md` at this commit (hardware stated there).
 
 ### Known limitations
-- <<carry over every open limitation; never delete "no human validation" while it is true>>
+- [TODO: carry over every open limitation; never delete "no human validation" while it is true]
 
 ### Citation
 See `CITATION.cff`.
