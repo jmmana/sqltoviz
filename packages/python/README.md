@@ -43,3 +43,28 @@ insights numéricos. `Engine.recommend(sql, schema, rows)` recibe por separado e
 esquema y las filas posicionales. Devuelve la clase del gráfico, los roles de
 columna y el estado del modelo. Los modelos incluidos son experimentales. Ambas
 interfaces procesan las filas localmente y no ejecutan el SQL.
+
+## Chart adapters / Adaptadores de gráficos
+
+`to_echarts(plan, rows)` returns ECharts options, `to_vegalite(plan, rows)`
+returns a Vega-Lite specification, and `to_plotly(plan, rows)` returns a
+Plotly figure dictionary. Pass the same rows used for the deterministic
+`recommend` call. The three adapters support bar, horizontal bar and line.
+KPI and table plans raise `ValueError` so callers can render those directly.
+
+Los tres adaptadores generan configuraciones para sus bibliotecas de gráficos.
+Usa las mismas filas que entregaste a `recommend`. Admiten barras verticales,
+barras horizontales y líneas. Para KPI y tabla, renderiza el plan directamente.
+
+## Statistical diagnostics / Diagnósticos estadísticos
+
+The preview returns MAD insights for fully numeric columns. Select additional
+checks explicitly with `temporal_column`, `pareto_column` and
+`correlation_columns=("x", "y")`. These populate the optional `diagnostics`
+field. Order temporal rows in your SQL. Set `pareto_additive=True` only when
+the selected measure adds across disjoint categories.
+
+La vista previa devuelve resultados de MAD para las columnas numéricas.
+Selecciona columnas explícitamente para tendencias, Pareto y correlación.
+Los resultados aparecen en `diagnostics`. Ordena las filas temporales en SQL
+y activa `pareto_additive` solo para medidas aditivas en categorías disjuntas.

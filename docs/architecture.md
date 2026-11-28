@@ -15,7 +15,7 @@ validación completa de dialectos quedan fuera del alcance del producto.
 
 The deterministic preview is a small rules-based recommendation that remains
 available without an ONNX runtime. Experimental engines use the ordered
-[SqlVizSpec feature contract](../spec/sqlvizspec-v1-features.md) and its verified
+[SqlVizSpec feature contract](https://github.com/jmmana/sqltoviz/blob/main/spec/sqlvizspec-v1-features.md) and its verified
 model manifests. Keep package versions, preview result versions and mathematical
 contract versions independent. A model candidate is experimental until its
 evaluation establishes a stronger claim.

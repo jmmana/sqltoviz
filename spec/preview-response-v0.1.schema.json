@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SqlToViz deterministic preview response v0.1",
+  "type": "object",
+  "required": ["contract_version", "mode", "chartType", "encodings", "reason"],
+  "properties": {
+    "contract_version": { "const": "preview-v0.1" },
+    "mode": { "const": "deterministic-preview" },
+    "chartType": { "enum": ["kpi", "bar", "horizontal_bar", "line", "table"] },
+    "encodings": {
+      "type": "object",
+      "properties": {
+        "x": { "type": "string", "minLength": 1 },
+        "y": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": false
+    },
+    "reason": { "type": "string", "minLength": 1 },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "insights": { "type": "object" }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "chartType": { "const": "kpi" },
+        "encodings": { "required": ["y"], "maxProperties": 1 }
+      }
+    },
+    {
+      "properties": {
+        "chartType": { "enum": ["bar", "horizontal_bar", "line"] },
+        "encodings": { "required": ["x", "y"] }
+      }
+    },
+    {
+      "properties": {
+        "chartType": { "const": "table" },
+        "encodings": { "maxProperties": 0 }
+      }
+    }
+  ]
+}

@@ -35,9 +35,9 @@ documentado. Las comillas y comentarios de bloque sin cerrar generan
 
 The deterministic SDK preview uses a smaller input path. Treat it as a
 visualization heuristic for supplied results. The versioned mathematical
-requirements are in the [SqlVizSpec feature contract](../spec/sqlvizspec-v1-features.md).
+requirements are in the [SqlVizSpec feature contract](https://github.com/jmmana/sqltoviz/blob/main/spec/sqlvizspec-v1-features.md).
 
 La vista previa determinista de los SDK usa un procesamiento de entrada más
 simple. Es una heurística de visualización para los resultados que le entregas.
-El [contrato de características SqlVizSpec](../spec/sqlvizspec-v1-features.md)
+El [contrato de características SqlVizSpec](https://github.com/jmmana/sqltoviz/blob/main/spec/sqlvizspec-v1-features.md)
 define los requisitos matemáticos versionados.

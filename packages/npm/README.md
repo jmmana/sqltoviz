@@ -21,3 +21,17 @@ const rec = await engine.recommend("SELECT dept, SUM(sal) AS total FROM emp GROU
 rec.final_class; rec.model_status; rec.roles; rec.warnings;
 ```
 Browser (WASM): `import {createWebRunner} from "@sqltoviz/core/web"` (needs `onnxruntime-web`); `createWebRunner(url, sha256, "chart"|"role")` returns a runner you pass to `new Engine({chart, role, chartStatus})`. `extractFeatures(sql, schema, rows)` computes the 32 table and 28 column features of SqlVizSpec-v1.0.0 in plain TypeScript (no dependencies). The bundled models are **candidates** (chart: synthetic labels; role: 322 Vega-Lite columns), never scientifically validated; every result says `model_status: "experimental"`. Final models drop in by replacing the files/manifest (or passing your own paths + checksums) - the API and result shape do not change. SQL is never executed.
+
+## Renderer adapters / Adaptadores de gráficos
+
+For a deterministic preview plan and its original rows, `toEcharts(plan, rows)`
+returns options for ECharts and `toRecharts(plan, rows)` returns the chart name,
+layout, category/value keys and data. Use the category key on the category axis
+and the value key on the numeric axis. For a Recharts vertical layout, the
+numeric axis is X and the category axis is Y. Supported charts are bar,
+horizontal bar and line. Render KPI and table plans directly in the application.
+
+Usa el plan y sus filas originales. `toEcharts` devuelve opciones de ECharts y
+`toRecharts` devuelve el tipo, la orientación, las claves y los datos. En barras
+horizontales de Recharts, X es numérico e Y es categórico. Los adaptadores
+admiten barras y líneas. Para KPI y tabla, renderiza el plan en la aplicación.
