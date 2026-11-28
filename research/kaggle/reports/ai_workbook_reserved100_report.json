@@ -1,0 +1,31 @@
+{
+ "provenance": "llm_declared_ai_workbook",
+ "human": false,
+ "confirmatory": false,
+ "source_file": "returned by a third party; the workbook is self-declared AI-generated (instructions retitled 'AI-generated chart review', file name _IA); model unknown",
+ "label_counts": {
+  "bar": 5,
+  "table": 71,
+  "kpi": 21,
+  "horizontal_bar": 3
+ },
+ "post_hoc_agreement_kappa": {
+  "claude_reserved100": [
+   0.95,
+   0.886
+  ],
+  "pilot_claude": [
+   0.96,
+   0.91
+  ],
+  "pilot_codex": [
+   0.96,
+   0.916
+  ]
+ },
+ "caveats": [
+  "NOT human validation",
+  "annotator model unknown",
+  "returned file's instructions sheet was edited by the annotator"
+ ]
+}
