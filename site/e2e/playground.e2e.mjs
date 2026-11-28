@@ -23,6 +23,16 @@ try {
   page.on('request', (r) => { if (!r.url().startsWith(base) && !r.url().startsWith('data:') && !r.url().startsWith('blob:')) external.push(r.url()); });
   page.on('pageerror', (e) => errors.push(e.message));
   await page.goto(base);
+  await page.fill('#sql', 'SELECT 1 AS value');
+  await page.fill('#rows', '[{"value":1}]');
+  await page.click('#format-rows');
+  assert.equal(await page.inputValue('#rows'), JSON.stringify([{value: 1}], null, 2));
+  await page.locator('#rows').press('Control+Enter');
+  assert.equal(await page.innerText('#result'), 'kpi');
+  await page.fill('#rows', '[');
+  await page.click('#format-rows');
+  assert.equal(await page.inputValue('#rows'), '[');
+  assert.match(await page.innerText('#editor-status'), /Check its syntax/);
   await page.click('#load');
   await page.click('#run-model');
   await page.waitForFunction(() => /Model status/.test(document.getElementById('model-out').innerText), null, {timeout: 120000});
