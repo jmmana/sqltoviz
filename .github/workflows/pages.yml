@@ -2,7 +2,7 @@ name: Pages preview
 on:
   push:
     branches: [main]
-    paths: ['site/**', 'docs/assets/**', 'packages/npm/**', 'model/**', '.github/workflows/pages.yml']
+    paths: ['site/**', 'docs/**', 'packages/npm/**', 'model/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,10 +22,13 @@ jobs:
       - run: cd packages/npm && npm install --ignore-scripts && npm run build
       - run: node site/build-engine.mjs
       - run: node --test site/*.test.mjs
+      - run: npm ci --ignore-scripts && npm run build
+        working-directory: docs
       - run: |
           mkdir -p _site
           cp -R site/. _site/
           cp -R docs/assets _site/assets
+          cp -R docs/.vitepress/dist _site/docs
       - id: artifact
         run: echo "name=github-pages-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v4
