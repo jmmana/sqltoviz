@@ -1,0 +1,3 @@
+# SqlToViz.MudBlazor (alpha)
+
+Chart-model adapters for SqlToViz plans: `Adapters.ToMudBlazor` (typed `ChartSeries`/`ChartOptions`/labels for `<MudChart>`, KPI card model, table fallback) and `Adapters.ToApexConfig` (complete ApexCharts options tree). Supports bar, horizontal_bar, line and kpi; everything else falls back to a table. MudBlazor has no horizontal bar type, so horizontal_bar renders as a vertical Bar there (see `MudChartModel.HorizontalBar` and `Notes`); the ApexCharts config is truly horizontal. Models remain experimental; this package does not validate recommendations. See docs/BLAZOR.md.

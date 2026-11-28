@@ -24,6 +24,7 @@ jobs:
       - run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release
       - run: dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts
       - run: dotnet pack packages/nuget/SqlToViz.Onnx/SqlToViz.Onnx.csproj -c Release -o artifacts
+      - run: dotnet pack packages/nuget/SqlToViz.MudBlazor/SqlToViz.MudBlazor.csproj -c Release -o artifacts
       - run: |
           dotnet new console -o /tmp/sqltoviz-smoke -f net8.0
           dotnet add /tmp/sqltoviz-smoke package SqlToViz --version 0.1.0-alpha.1 --source "$PWD/artifacts"
