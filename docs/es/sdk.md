@@ -1,19 +1,19 @@
 # Guía rápida de los SDK
 
-Compila desde un clon del repositorio mientras los paquetes alfa esperan su
-publicación. Los ejemplos usan resultados SQL ya calculados. Cada SDK ofrece
-una vista previa determinista y documenta por separado cómo usar ONNX experimental.
+Instala los paquetes alfa desde los registros públicos (son versiones
+preliminares, por eso se necesitan las opciones indicadas). Los ejemplos usan
+resultados SQL ya calculados. Cada SDK ofrece una vista previa determinista y
+documenta por separado cómo usar ONNX experimental.
 
-| SDK | Entorno | Compilación desde la raíz del repositorio |
+| SDK | Entorno | Instalación |
 | --- | --- | --- |
-| [Python](https://github.com/jmmana/sqltoviz/tree/main/packages/python) | Python 3.10+ | `python -m pip install build && python -m build packages/python` |
-| [TypeScript](https://github.com/jmmana/sqltoviz/tree/main/packages/npm) | Node.js 20+ | `cd packages/npm && npm install --ignore-scripts && npm pack` |
-| [.NET](https://github.com/jmmana/sqltoviz/tree/main/packages/nuget) | .NET 8 o 10 | `dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts` |
+| [Python](https://pypi.org/project/sqltoviz/) | Python 3.10+ | `pip install --pre sqltoviz` (agrega `"sqltoviz[onnx]"` para los modelos experimentales) |
+| [TypeScript](https://www.npmjs.com/package/sqltoviz) | Node.js 20+ | `npm install sqltoviz@alpha` |
+| [.NET](https://www.nuget.org/packages/SqlToViz) | .NET 8 o 10 | `dotnet add package SqlToViz --prerelease` (y `SqlToViz.Onnx` para los modelos experimentales) |
 
-En Python, instala la rueda con pip en un entorno virtual. En TypeScript,
-instala el archivo .tgz generado desde el proyecto consumidor. En .NET,
-instala `SqlToViz` con `dotnet add package SqlToViz --prerelease --source /ruta/absoluta/a/artifacts`
-desde el proyecto consumidor.
+Para compilar desde un clon, usa `python -m build packages/python`,
+`cd packages/npm && npm install --ignore-scripts && npm pack` o
+`dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts`.
 
 ## Un resultado, tres SDK
 
