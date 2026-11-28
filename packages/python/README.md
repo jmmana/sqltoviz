@@ -43,3 +43,15 @@ insights numéricos. `Engine.recommend(sql, schema, rows)` recibe por separado e
 esquema y las filas posicionales. Devuelve la clase del gráfico, los roles de
 columna y el estado del modelo. Los modelos incluidos son experimentales. Ambas
 interfaces procesan las filas localmente y no ejecutan el SQL.
+
+## Chart adapters / Adaptadores de gráficos
+
+`to_echarts(plan, rows)` returns ECharts options, `to_vegalite(plan, rows)`
+returns a Vega-Lite specification, and `to_plotly(plan, rows)` returns a
+Plotly figure dictionary. Pass the same rows used for the deterministic
+`recommend` call. The three adapters support bar, horizontal bar and line.
+KPI and table plans raise `ValueError` so callers can render those directly.
+
+Los tres adaptadores generan configuraciones para sus bibliotecas de gráficos.
+Usa las mismas filas que entregaste a `recommend`. Admiten barras verticales,
+barras horizontales y líneas. Para KPI y tabla, renderiza el plan directamente.
