@@ -1,19 +1,19 @@
 # SDK quickstart
 
-Build from a checkout while the alpha packages await registry publication.
-These examples use precomputed SQL result rows. Each SDK has a deterministic
-preview, and the experimental ONNX paths are documented separately.
+Install the alpha packages from the public registries (versions are
+pre-releases, so the flags below are required). These examples use precomputed
+SQL result rows. Each SDK has a deterministic preview, and the experimental
+ONNX paths are documented separately.
 
-| SDK | Runtime | Build from the repository root |
+| SDK | Runtime | Install |
 | --- | --- | --- |
-| [Python](https://github.com/jmmana/sqltoviz/tree/main/packages/python) | Python 3.10+ | `python -m pip install build && python -m build packages/python` |
-| [TypeScript](https://github.com/jmmana/sqltoviz/tree/main/packages/npm) | Node.js 20+ | `cd packages/npm && npm install --ignore-scripts && npm pack` |
-| [.NET](https://github.com/jmmana/sqltoviz/tree/main/packages/nuget) | .NET 8 or 10 | `dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts` |
+| [Python](https://pypi.org/project/sqltoviz/) | Python 3.10+ | `pip install --pre sqltoviz` (add `"sqltoviz[onnx]"` for the experimental models) |
+| [TypeScript](https://www.npmjs.com/package/sqltoviz) | Node.js 20+ | `npm install sqltoviz@alpha` |
+| [.NET](https://www.nuget.org/packages/SqlToViz) | .NET 8 or 10 | `dotnet add package SqlToViz --prerelease` (and `SqlToViz.Onnx` for the experimental models) |
 
-For Python, install the wheel with pip in a virtual environment. For
-TypeScript, install the generated .tgz from the application directory. For
-.NET, install `SqlToViz` with `dotnet add package SqlToViz --prerelease --source /absolute/path/to/artifacts`
-in the consuming project.
+To build from a checkout instead, use `python -m build packages/python`,
+`cd packages/npm && npm install --ignore-scripts && npm pack`, or
+`dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts`.
 
 ## One result, three SDKs
 
