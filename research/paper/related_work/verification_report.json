@@ -190,6 +190,46 @@
    "title": "Draco 2: An Extensible Platform to Model Visualization Design",
    "first_author": "Junran Yang",
    "abstract": "Draco introduced a constraint-based framework to model visualization design in an extensible and testable form. It provides a way to abstract design guidelines from theoretical and empirical studies and applies the knowledge in automated design tools. However, Draco is challenging to use because there is limited tooling and documentation. In response, we present Draco 2, the successor with (1) a more flexible visualization specification format, (2) a comprehensive test suite and documentation, and (3) flexible and convenient APIs. We designed Draco 2 to be more extensible and easier to integrate into visualization systems. We demonstrate these advantages and believe that they make Draco 2 a platform for future research."
+  },
+  {
+   "key": "nguyen2024benchmarks",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2407.19726",
+   "year": 2024,
+   "title": "Do Text-to-Vis Benchmarks Test Real Use of Visualisations?",
+   "first_author": "Hy Nguyen",
+   "abstract": "Large language models are able to generate code for visualisations in response to simple user requests. This is a useful application and an appealing one for NLP research because plots of data provide grounding for language. However, there are relatively few benchmarks, and those that exist may not be representative of what users do in practice. This paper investigates whether benchmarks reflect real-world use through an empirical study comparing benchmark datasets with code from public repositories. Our findings reveal a substantial gap, with evaluations not testing the same distribution of chart types, attributes, and actions as real-world examples. One dataset is representative, but requires extensive modification to become a practical end-to-end benchmark. This shows that new benchmarks are needed to support the development of systems that truly address users' visualisation needs. These observations will guide future data creation, highlighting which features hold genuine significance for users."
+  },
+  {
+   "key": "li2024prompt4vis",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2402.07909",
+   "year": 2024,
+   "title": "Prompt4Vis: Prompting Large Language Models with Example Mining and Schema Filtering for Tabular Data Visualization",
+   "first_author": "Shuaimin Li",
+   "abstract": "Data visualization (DV) systems are increasingly recognized for their profound capability to uncover insights from vast datasets, gaining attention across both industry and academia. Crafting data queries is an essential process within certain declarative visualization languages (DVLs, e.g., Vega-Lite, EChart.). The evolution of natural language processing (NLP) technologies has streamlined the use of natural language interfaces to visualize tabular data, offering a more accessible and intuitive user experience. However, current methods for converting natural language questions into data visualization queries, such as Seq2Vis, ncNet, and RGVisNet, despite utilizing complex neural network architectures, still fall short of expectations and have great room for improvement. Large language models (LLMs) such as ChatGPT and GPT-4, have established new benchmarks in a variety of NLP tasks, fundamentally altering the landscape of the field. Inspired by these advancements, we introduce a novel framework, Prompt4Vis, leveraging LLMs and in-context learning to enhance the performance of generating data visualization from natural language. Prompt4Vis comprises two key components: (1) a multi-objective example mining module, designed to find out the truly effective examples that strengthen the LLM's in-context learning capabilities for text-to-vis; (2) a schema filtering module, which is proposed to simplify the schema of the database. Extensive experiments through 5-fold cross-validation on the NVBench dataset demonstrate the superiority of Prompt4Vis, which notably surpasses the state-of-the-art (SOTA) RGVisNet by approximately 35.9% and 71.3% on dev and test sets, respectively. To the best of our knowledge, Prompt4Vis is the first work that introduces in-context learning into the text-to-vis for generating data visualization queries."
+  },
+  {
+   "key": "chen2024viseval",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2407.00981",
+   "year": 2024,
+   "title": "VisEval: A Benchmark for Data Visualization in the Era of Large Language Models",
+   "first_author": "Nan Chen",
+   "abstract": "Translating natural language to visualization (NL2VIS) has shown great promise for visual data analysis, but it remains a challenging task that requires multiple low-level implementations, such as natural language processing and visualization design. Recent advancements in pre-trained large language models (LLMs) are opening new avenues for generating visualizations from natural language. However, the lack of a comprehensive and reliable benchmark hinders our understanding of LLMs' capabilities in visualization generation. In this paper, we address this gap by proposing a new NL2VIS benchmark called VisEval. Firstly, we introduce a high-quality and large-scale dataset. This dataset includes 2,524 representative queries covering 146 databases, paired with accurately labeled ground truths. Secondly, we advocate for a comprehensive automated evaluation methodology covering multiple dimensions, including validity, legality, and readability. By systematically scanning for potential issues with a number of heterogeneous checkers, VisEval provides reliable and trustworthy evaluation outcomes. We run VisEval on a series of state-of-the-art LLMs. Our evaluation reveals prevalent challenges and delivers essential insights for future advancements."
+  },
+  {
+   "key": "shen2022taskbased",
+   "verified": true,
+   "source": "arxiv",
+   "id": "2205.03183",
+   "year": 2022,
+   "title": "Visual Data Analysis with Task-based Recommendations",
+   "first_author": "Leixian Shen",
+   "abstract": "General visualization recommendation systems typically make design decisions for the dataset automatically. However, most of them can only prune meaningless visualizations but fail to recommend targeted results. This paper contributes TaskVis, a task-oriented visualization recommendation system that allows users to select their tasks precisely on the interface. We first summarize a task base with 18 classical analytic tasks by a survey both in academia and industry. On this basis, we maintain a rule base, which extends empirical wisdom with our targeted modeling of the analytic tasks. Then, our rule-based approach enumerates all the candidate visualizations through answer set programming. After that, the generated charts can be ranked by four ranking schemes. Furthermore, we introduce a task-based combination recommendation strategy, leveraging a set of visualizations to give a brief view of the dataset collaboratively. Finally, we evaluate TaskVis through a series of use cases and a user study."
   }
  ]
 }
