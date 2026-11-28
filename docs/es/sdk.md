@@ -25,7 +25,7 @@ assert plan["chartType"] == "kpi"
 ```
 
 ```js
-import { recommend } from '@sqltoviz/core';
+import { recommend } from 'sqltoviz';
 
 const plan = recommend('SELECT 42 AS total', [{ total: 42 }]);
 console.assert(plan.chartType === 'kpi');

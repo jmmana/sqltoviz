@@ -1,10 +1,10 @@
-// Runs golden fixtures through the INSTALLED @sqltoviz/core tarball. Usage: node run_node.mjs GOLDEN OUT (cwd = clean project dir)
+// Runs golden fixtures through the INSTALLED sqltoviz tarball. Usage: node run_node.mjs GOLDEN OUT (cwd = clean project dir)
 import {readFileSync, writeFileSync, readdirSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createRequire} from 'node:module';
 import {join} from 'node:path';
-const {BASE_CLASSES} = await import('@sqltoviz/core');
-const {loadDefaultEngine, bundledModelsDir} = await import('@sqltoviz/core/node');
+const {BASE_CLASSES} = await import('sqltoviz');
+const {loadDefaultEngine, bundledModelsDir} = await import('sqltoviz/node');
 const golden = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 const engine = await loadDefaultEngine();
 const dir = bundledModelsDir();

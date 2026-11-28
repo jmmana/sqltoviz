@@ -11,7 +11,7 @@ Status: [TODO: alpha | beta | stable]. Models: [TODO: experimental | validated (
 | SDK | Package | Version | Verified install from registry (date, environment) |
 |---|---|---|---|
 | Python | sqltoviz | [TODO: 0.1.0aN] | [TODO: ] |
-| npm | @sqltoviz/core | [TODO: 0.1.0-alpha.N] | [TODO: ] |
+| npm | sqltoviz | [TODO: 0.1.0-alpha.N] | [TODO: ] |
 | NuGet | SqlToViz, SqlToViz.Onnx (and adapters if released) | [TODO: ] | [TODO: ] |
 
 ### Contract
