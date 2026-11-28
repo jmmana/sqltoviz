@@ -12,3 +12,6 @@
 
 ## Claude single-pass labels for the reserved 100 (NOT human)
 `annotations/claude_labels_reserved100.jsonl` (+ `reports/claude_reserved100_report.json`) holds one blind LLM pass over the evaluator workbook, `label_source = llm_claude_reserved100`, `human = false`. It is kept apart from `human_labels.jsonl`, is not independent of the pilot Claude annotator, and does not replace human validation. See the report for caveats.
+
+## Declared design (2026-11-28): no human validation
+The project owner decided that no humans will label these 100 cases. The workbook, key and human ingest/confirmatory tools stay in the repository (they are tested and would work if human labels were ever collected) but **no human report exists and none is required**. The reserved-100 reference is the plurality of four non-independent LLM annotators (pilot Claude, pilot Codex, Claude single pass, AI workbook of unknown model): `tools/run_llm_reference.py` -> `reports/llm_reference_reserved100.json` (provenance `llm_reference`, `confirmatory: false`). `returned_AI_generated_workbook.xlsx` is an AI-filled workbook and is never treated as human.

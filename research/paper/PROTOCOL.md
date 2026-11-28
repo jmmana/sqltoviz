@@ -31,3 +31,10 @@ No outcome-dependent exclusion of items. Items rejected by the contract (out of 
 
 ## 8. Reproducibility
 Notebooks `research/kaggle/notebooks/01-03`, MANIFEST.json checksums, byte-reproducible ONNX export (fixed graph name, single-thread training; tested), contract and interpretation pins in every report.
+
+## 9. Deviations from protocol (recorded after `prereg-v1`)
+**D1 (owner decision, 2026-11-28): no human validation.** Sections 1 and 3 planned a confirmatory evaluation against at least two independent human annotators. The project owner decided that no human validation will be collected. The reference for the reserved 100 items is therefore the **agreement of LLM annotators**, declared as such: pilot Claude, pilot Codex (GPT family), a Claude single pass, and an AI-generated returned workbook of unknown model. They are not independent (two are the same model family, one has unknown identity) and none is human. Consequences, all applied in `tools/run_llm_reference.py`:
+- truth = plurality label over the four annotators (unique top label required; ties are listed and excluded, never guessed); per-annotator scores are also reported;
+- provenance `llm_reference`, `confirmatory: false` in every output; nothing from this tier is called human or confirmatory, and the `human` tier and `tools/run_confirmatory.py` remain available if human labels are ever collected;
+- the statistical procedure of Section 5 (macro-F1 over classes with >=5 items, 2000-resample paired cluster bootstrap over databases, all pairwise differences, always-`table` baseline) is unchanged;
+- hypotheses H1 and H4 are therefore tested only against LLM agreement; the paper states that they are not tested against human judgement.

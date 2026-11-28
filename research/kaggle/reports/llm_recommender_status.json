@@ -1,0 +1,13 @@
+{
+ "status": "not_run",
+ "reason": "no API key in the environment (ANTHROPIC_API_KEY); no numbers were produced",
+ "needs": [
+  "a provider API key exported as ANTHROPIC_API_KEY or OPENAI_API_KEY",
+  "network access to the provider",
+  "a model id passed with --model (recorded in the report)"
+ ],
+ "prompt_version": "llm-baseline-v1",
+ "prompt_sha256": "af9550b524c6a4d5603f76b996bb498ac066c3aec0231b34851f1a2e1a63135c",
+ "n_items": 100,
+ "note": "run once per model; temperature 0; responses are logged beside the report so the run can be re-scored with --replay"
+}

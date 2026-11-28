@@ -18,11 +18,13 @@ from . import experiment as E
 from . import rules as R
 
 SYNTHETIC, LLM, HUMAN, FAKE = "synthetic", "llm", "human", "FAKE_DRYRUN"
-TIERS = (SYNTHETIC, LLM, HUMAN, FAKE)
+LLM_REF = "llm_reference"   # declared design (2026-11-28): reference = agreement of LLM annotators; never human, never confirmatory
+TIERS = (SYNTHETIC, LLM, LLM_REF, HUMAN, FAKE)
 MIN_CLASS_SUPPORT = 5          # PROTOCOL.md section 3: classes with fewer human-labelled items are reported but excluded from macro-F1
 BOOTSTRAP_REPS = 2000          # PROTOCOL.md section 5
 BANNER = {SYNTHETIC: "exploratory: agreement with the synthetic generator's convention, not human preference",
           LLM: "exploratory: agreement with LLM annotators, not human validation",
+          LLM_REF: "exploratory: reference is the majority of LLM annotators (3 models + 1 AI workbook of unknown model, not independent); there is no human validation",
           HUMAN: "confirmatory per PROTOCOL.md",
           FAKE: "FAKE DRY-RUN: random stand-in labels; numbers are meaningless and must not appear in any result table"}
 

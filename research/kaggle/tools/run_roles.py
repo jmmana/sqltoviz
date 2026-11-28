@@ -30,7 +30,7 @@ def boot(pred, reps=500):
     for _ in range(reps):
         s = np.concatenate([idx[u] for u in rng.choice(ug, len(ug))]); v.append(f1_score(y[s], pred[s], labels=list(V.ROLES), average="macro", zero_division=0))
     return [float(np.percentile(v, 2.5)), float(np.percentile(v, 97.5))]
-rep = {"experiment": "role_feasibility_vega_lite", "measures": "agreement with Vega-Lite authors' channel assignment on held-out specs; small, SQL-agnostic",
+rep = {"experiment": "role_feasibility_vega_lite", "provenance": "vega_lite_expert_specs", "confirmatory": False, "banner": "exploratory: agreement with Vega-Lite authors' channel assignment; small, SQL-agnostic; not human validation of recommendations", "measures": "agreement with Vega-Lite authors' channel assignment on held-out specs; small, SQL-agnostic",
        "source": {"repo": "vega/vega-lite", "pinned_commit": PIN, "license": "BSD-3-Clause", "specs_total": n_specs, "extraction": stats},
        "n_specs": len(ex), "n_columns": int(len(y)), "role_counts": {r: int((y == r).sum()) for r in V.ROLES}, "systems": {},
        "meta": E.run_meta({"examples_sha256": P.sha256_file(f"{out}/vl_role_examples.json")})}
