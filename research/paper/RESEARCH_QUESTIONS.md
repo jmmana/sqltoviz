@@ -15,3 +15,6 @@ Status legend: **Exploratory-seen** = a preliminary run (synthetic or LLM-labell
 
 ## Non-goals and claims we will not make
 No claim of superiority over VizML/DeepEye/Table2Charts/Draco (no comparable data or code run); no claim about human preference until human labels exist; synthetic and LLM agreement is never reported as human validation.
+
+
+Declared design (2026-11-28, PROTOCOL.md D1): no human validation will be collected. Wherever a question above says "human labels", the evaluation uses the agreement of LLM annotators (`llm_reference`, exploratory, annotators not independent) and no claim about human preference is made.
