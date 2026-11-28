@@ -1,0 +1,27 @@
+name: Documentation CI
+on:
+  pull_request:
+    paths: ['docs/**', '.github/workflows/docs-ci.yml', '.github/workflows/pages.yml']
+  push:
+    branches: [development, main]
+    paths: ['docs/**', '.github/workflows/docs-ci.yml', '.github/workflows/pages.yml']
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+      - run: npm ci --ignore-scripts
+      - run: npm run build
+      - run: |
+          grep -q 'lang="en"' .vitepress/dist/index.html
+          grep -q 'lang="es"' .vitepress/dist/es/index.html
