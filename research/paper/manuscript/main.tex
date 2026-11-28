@@ -6,7 +6,8 @@
 \usetikzlibrary{arrows.meta,positioning}
 \hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
 \newcommand{\sql}[1]{\texttt{#1}}
-\newcommand{\todo}[1]{\textcolor{red}{[#1]}}
+% Explicit, compile-safe placeholder for results that do not exist yet. prepare_arxiv.py refuses to call the bundle READY while any remain.
+\newcommand{\pending}[1]{\textcolor{red}{[PENDING: #1]}}
 
 \title{SqlToViz: A Contract-Pinned, Portable Pipeline for Recommending Charts\\ from SQL Queries and Result Sets\\[2pt]\large Preliminary evaluation --- draft, not yet validated by human annotators}
 \author{SqlToViz project\thanks{Repository: \url{https://github.com/jmmana/sqltoviz}. Author list and affiliations to be completed before submission.}}
@@ -88,6 +89,19 @@ Hybrid + constraints & 0.908 & 0.644 & 0 & 0.695\\\bottomrule
 \caption{E2 against LLM-consensus labels (not human), $n=131$, majority baseline 0.725.}\label{tab:e2}
 \end{table}
 
+\subsection{Human validation of the reserved cases (pending)}\label{sec:human}
+The confirmatory evaluation of the protocol uses 100 reserved real queries that two or more independent human annotators label from a blind workbook; none of these items was used for training or for any LLM-label experiment. At the time of writing \textbf{no human labels exist}, so Table~\ref{tab:human} is a placeholder with no data. When labels arrive we will report inter-annotator agreement (Cohen's $\kappa$, percent agreement), macro-F1 over classes with at least five human-labelled items (smaller classes listed and excluded), paired cluster-bootstrap 95\% confidence intervals over databases for all pairwise system differences, and the always-\sql{table} baseline, exactly as fixed in the protocol. The analysis code has been exercised only on randomly generated stand-in labels marked as fake, whose output is never tabulated. Agreement between the two LLM annotators (Section~\ref{sec:data}) must not be read as a substitute.
+\begin{table}[h]\centering\small
+\begin{tabular}{lcc}\toprule
+System & macro-F1 (95\% CI) & accuracy\\\midrule
+Rules only & \pending{no human labels} & \pending{no human labels}\\
+Hybrid + hard constraints & \pending{no human labels} & \pending{no human labels}\\
+LLM baseline & \pending{no human labels} & \pending{no human labels}\\
+Always \sql{table} & \pending{no human labels} & \pending{no human labels}\\\bottomrule
+\end{tabular}
+\caption{Placeholder: confirmatory results on the 100 human-labelled reserved items. No values exist; none may be inferred from the synthetic or LLM tables.}\label{tab:human}
+\end{table}
+
 \subsection{Role supervision feasibility}
 No corpus used above carries role labels. From 634 Vega-Lite example specifications \cite{satyanarayan2017vegalite} (BSD-3-Clause, pinned commit), 136 have inline data and simple encodings, yielding 322 labelled columns. With grouped five-fold cross-validation by specification, a random forest on the 28 column features reaches macro-F1 0.50 (95\% cluster-bootstrap CI 0.44--0.56), versus 0.32 for a positional heuristic and 0.12 for the majority class. The set is small and imbalanced (10 examples for the size/secondary role) and not SQL-aware; this is feasibility evidence only.
 
@@ -112,14 +126,17 @@ The 32 table-level features cannot separate these pairs (Section E1), but the co
 \subsection{Statistical detectors}
 On synthetic Gaussian series with injected outliers, the MAD detector recovers all outliers with 10\% contamination and $6\sigma$ outliers at $n=100$ while a classical $z$-score detector recovers 5\%; with 2\% contamination at $4\sigma$ the $z$-score detector recalls more (0.99 versus 0.82). On clean series at $n=1000$, 38.8\% contain at least one flagged point, so results should be presented as candidates rather than alarms. Against exact rational and 120-digit decimal references on 1{,}500 random cases, the Python, TypeScript and .NET detectors agree in statuses, outlier sets and Pareto inclusion sets, with worst errors $5.3\times10^{-14}$ (MAD, relative), $\leq 6.7\times10^{-16}$ (Pearson, absolute), $2.2\times10^{-16}$ (temporal shifts) and $\leq 5.6\times10^{-16}$ (Pareto).
 
+\section{Software release status}\label{sec:release}
+Version 0.1.0-alpha.2 is published as an alpha pre-release in the three registries (verified against the registries on 2026-11-27): PyPI (\texttt{sqltoviz} 0.1.0a2), npm (\texttt{sqltoviz} 0.1.0-alpha.2, \texttt{alpha} tag) and NuGet (\texttt{SqlToViz} and \texttt{SqlToViz.Onnx} 0.1.0-alpha.2). The three packages carry the same frozen contract (SqlVizSpec-v1.0.0) and the same parity fixtures. The bundled ONNX chart model is an \emph{experimental candidate}: it is trained on synthetic labels, it has not been validated by human annotators, and its recommendations should not be taken as evidence of quality for any particular application. The release is a software milestone, not a result of this paper.
+
 \section{Limitations and threats to validity}
-(1) No human validation: all chart labels are synthetic or LLM-generated; the LLM pilot is dominated by \sql{table} and contains four classes only. (2) Synthetic labels encode our conventions; rules and generator share authors. (3) Table-level features cannot distinguish two class pairs; a deterministic resolver using column features fixes this only within the synthetic convention. (4) Role supervision is tiny and SQL-agnostic. (5) Real data come from Spider/BIRD gold queries, which are cleaner than production workloads. (6) Parity was verified on 308 golden and 3{,}000 fuzz cases generated by our own reference implementation (independent of numpy/scipy only for the detectors), not on external implementations; cost was measured on one machine, in Chromium only, and .NET 8 only in continuous integration. (7) The literature review is abstract-level. (8) The protocol was frozen after several exploratory analyses; Section~\ref{sec:protocol} lists them.
+(1) No human validation: all chart labels are synthetic or LLM-generated; the LLM pilot is dominated by \sql{table} and contains four classes only. (2) Synthetic labels encode our conventions; rules and generator share authors. (3) Table-level features cannot distinguish two class pairs; a deterministic resolver using column features fixes this only within the synthetic convention. (4) Role supervision is tiny and SQL-agnostic. (5) Real data come from Spider/BIRD gold queries, which are cleaner than production workloads. (6) Parity was verified on 308 golden and 3{,}000 fuzz cases generated by our own reference implementation (independent of numpy/scipy only for the detectors), not on external implementations; cost was measured on one machine, in Chromium only, and .NET 8 only in continuous integration. (7) The literature review is abstract-level. (8) The protocol was frozen after several exploratory analyses; Section~\ref{sec:protocol} lists them. (9) The released models are experimental candidates of an alpha release (Section~\ref{sec:release}); no recommendation-quality claim applies to them until the confirmatory evaluation exists. (10) An LLM-as-recommender baseline harness exists but the only LLM runs we report are the two blind annotation runs, which used annotation guidelines rather than the baseline prompt and are compared with each other, not with humans. (11) We make no novelty claim and no comparison with prior systems.
 
 \section{Reproducibility}
 Code, notebooks, manifests with SHA256 checksums, the contract and interpretation pins, byte-reproducible ONNX files, parity fixtures and all reports are in the repository; the Kaggle notebooks accept a pinned commit. Datasets derived from Spider/BIRD carry CC BY-SA 4.0 attribution and are kept separate from Apache-2.0 artifacts.
 
 \section{Conclusion (provisional)}
-The engineering contract, tooling and measurement apparatus are in place and the preliminary evidence is internally consistent, but the central scientific question --- how well the recommendations agree with human judgments --- is unanswered. \todo{Complete after human validation, TypeScript/.NET parity and the confirmatory evaluation; revise abstract and conclusion accordingly.}
+The engineering contract, tooling and measurement apparatus are in place and the preliminary evidence is internally consistent, but the central scientific question --- how well the recommendations agree with human judgments --- is unanswered. \pending{conclusion on agreement with humans, to be written after the confirmatory evaluation of Section~\ref{sec:human}; the abstract and this section must then be revised and the draft banner removed.}
 
 \bibliographystyle{plain}
 \bibliography{references}
