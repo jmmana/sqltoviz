@@ -58,6 +58,27 @@ async function check(name) {
     const download = await downloadPromise;
     assert.equal(download.suggestedFilename(), 'sqltoviz-tensors.json');
     assert.deepEqual(JSON.parse(readFileSync(await download.path(), 'utf8')), tensors);
+    // ECharts renderer + statistical insights (issue #75)
+    await page.selectOption('#example', 'bar'); await page.click('#load');
+    await page.fill('#rows', JSON.stringify([10, 11, 10, 12, 11, 500].map((value, i) => ({category: 'c' + i, value}))));
+    await page.click('#run');
+    assert.match(await page.innerText('#insights [data-insight=mad]'), /#6/, 'MAD flags the 500 outlier');
+    assert.match(await page.innerText('#insights [data-insight=pareto]'), /unknown_additivity/);
+    assert.match(await page.innerText('#insights [data-insight=corr]'), /fewer than two numeric columns/);
+    await page.selectOption('#renderer', 'echarts');
+    await page.waitForSelector('#echart[data-rendered=bar] svg', {timeout: 20000});
+    assert.equal(await page.locator('#chart').isHidden(), true);
+    assert.ok((await page.locator('#echart svg').first().boundingBox()).width > 100, 'ECharts SVG has a layout');
+    assert.ok(await page.locator('#echart svg path[fill="#f97316"]').count() >= 1, 'outlier bar highlighted');
+    await page.check('#insights input[type=checkbox]');
+    assert.match(await page.innerText('#insights [data-insight=pareto]'), /\d+\/6/);
+    await page.fill('#rows', '[{"value":1}]'); await page.click('#run');
+    assert.equal(await page.locator('#chart').isVisible(), true, 'kpi falls back to the built-in renderer');
+    assert.match(await page.innerText('#renderer-note'), /does not cover/);
+    await page.click('#lang');
+    assert.match(await page.innerText('#insights'), /Hallazgos estadísticos/);
+    await page.click('#lang');
+    await page.selectOption('#renderer', 'svg');
     assert.deepEqual(external, [], 'the playground must not contact external hosts');
     assert.deepEqual(errors, []);
     console.log(`playground e2e ok [${name}]:`, out.split('\n')[0]);

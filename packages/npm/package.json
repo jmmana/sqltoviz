@@ -42,10 +42,11 @@
     "prepack": "npm run build"
   },
   "devDependencies": {
-    "typescript": "5.8.3",
+    "@types/node": "22.15.0",
+    "echarts": "5.6.0",
     "onnxruntime-node": "1.31.1",
     "onnxruntime-web": "1.31.1",
-    "@types/node": "22.15.0"
+    "typescript": "5.8.3"
   },
   "repository": {
     "type": "git",

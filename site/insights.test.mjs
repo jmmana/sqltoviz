@@ -1,0 +1,32 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const here = fileURLToPath(new URL('.', import.meta.url));
+const skip = existsSync(here + 'sdk/index.js') ? false : 'run node site/build-engine.mjs first';
+const bar = {chartType: 'bar', encodings: {x: 'category', y: 'value'}};
+test('insights keep explicit detector statuses', {skip}, async () => {
+  const {computeInsights, describeInsights, outlierIndexes, statusText} = await import('./insights.mjs');
+  const rows = [10, 11, 10, 12, 11, 500].map((value, i) => ({category: 'c' + i, value}));
+  const ins = computeInsights(bar, rows);
+  assert.equal(ins.columns[0].mad.status, 'ok');
+  assert.deepEqual(outlierIndexes(ins, 'value'), [5]);
+  assert.equal(ins.pareto.status, 'unknown_additivity', 'Pareto must not assume additivity');
+  assert.equal(computeInsights(bar, rows, {additive: true}).pareto.status, 'ok');
+  assert.deepEqual(ins.correlations, []);
+  const d = describeInsights(ins, 'es');
+  assert.match(JSON.stringify(d), /aditividad desconocida/);
+  assert.match(statusText('zero_mad'), /zero MAD/);
+  const flat = computeInsights(bar, [1, 1, 1, 1].map((value, i) => ({category: 'c' + i, value})));
+  assert.equal(flat.columns[0].mad.status, 'zero_mad');
+  assert.equal(computeInsights(bar, [{category: 'a', value: 1}]).columns[0].mad.status, 'insufficient_samples');
+});
+test('line plans report temporal shifts and zero baselines; pairs get pearson', {skip}, async () => {
+  const {computeInsights, describeInsights} = await import('./insights.mjs');
+  const rows = [{m: '2026-01', a: 0, b: 1}, {m: '2026-02', a: 5, b: 2}, {m: '2026-03', a: 7, b: 3}, {m: '2026-04', a: 8, b: 4}];
+  const ins = computeInsights({chartType: 'line', encodings: {x: 'm', y: 'a'}}, rows);
+  assert.equal(ins.shifts.items[0].status, 'zero_baseline');
+  assert.equal(ins.correlations.length, 1);
+  assert.equal(ins.correlations[0].status, 'ok');
+  assert.match(JSON.stringify(describeInsights(ins)), /zero_baseline/);
+});

@@ -4,3 +4,5 @@
 body { color-scheme: dark; --series: #22d3ee; --secondary-series: #a5b4fc; }
 body.light { color-scheme: light; --series: #08768a; --secondary-series: #4338ca; }
 #theme:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+#echart{width:100%;height:320px}#insights h4,#insights h5{margin:.9rem 0 .3rem}#insights ul{margin:0;padding-left:1.2rem}#insights li{font-size:.9rem;overflow-wrap:anywhere}#insights p,.renderer label.additive,.additive{color:var(--muted);font-size:.85rem}.renderer select{max-width:100%}#renderer-note{color:var(--muted);font-size:.85rem}
