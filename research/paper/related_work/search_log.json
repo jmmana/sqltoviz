@@ -1,0 +1,142 @@
+{
+ "retrieved": "2026-11-27",
+ "source": "arXiv API (relevance sort, 8 per query)",
+ "queries": [
+  {
+   "query": "all:\"visualization recommendation\" AND all:SQL",
+   "results": []
+  },
+  {
+   "query": "all:\"chart type\" AND all:recommendation AND all:table",
+   "results": [
+    {
+     "id": "2008.11015",
+     "year": "2020",
+     "title": "Table2Charts: Recommending Charts by Learning Shared Table Representations",
+     "first_author": "Mengyu Zhou"
+    }
+   ]
+  },
+  {
+   "query": "ti:\"text-to-vis\" OR ti:\"natural language to visualization\" OR ti:\"NL2VIS\"",
+   "results": [
+    {
+     "id": "2208.10947",
+     "year": "2022",
+     "title": "Towards Natural Language-Based Visualization Authoring",
+     "first_author": "Yun Wang"
+    },
+    {
+     "id": "2601.11531",
+     "year": "2025",
+     "title": "NOVAID: Natural-language Observability Visualization Assistant for ITOps Dashboard Widget Generation",
+     "first_author": "Pratik Mishra"
+    },
+    {
+     "id": "1711.06032",
+     "year": "2017",
+     "title": "Natural Language Guided Visual Relationship Detection",
+     "first_author": "Wentong Liao"
+    },
+    {
+     "id": "2112.12926",
+     "year": "2021",
+     "title": "nvBench: A Large-Scale Synthesized Dataset for Cross-Domain Natural Language to Visualization Task",
+     "first_author": "Yuyu Luo"
+    },
+    {
+     "id": "2407.19726",
+     "year": "2024",
+     "title": "Do Text-to-Vis Benchmarks Test Real Use of Visualisations?",
+     "first_author": "Hy Nguyen"
+    },
+    {
+     "id": "1604.03249",
+     "year": "2016",
+     "title": "Attributes as Semantic Units between Natural Language and Visual Recognition",
+     "first_author": "Marcus Rohrbach"
+    },
+    {
+     "id": "2308.13795",
+     "year": "2023",
+     "title": "VIDES: Virtual Interior Design via Natural Language and Visual Guidance",
+     "first_author": "Minh-Hien Le"
+    },
+    {
+     "id": "1908.00277",
+     "year": "2019",
+     "title": "A Natural-language-based Visual Query Approach of Uncertain Human Trajectories",
+     "first_author": "Zhaosong Huang"
+    }
+   ]
+  },
+  {
+   "query": "all:\"visualization recommendation\" AND all:survey",
+   "results": [
+    {
+     "id": "2205.03183",
+     "year": "2022",
+     "title": "Visual Data Analysis with Task-based Recommendations",
+     "first_author": "Leixian Shen"
+    }
+   ]
+  },
+  {
+   "query": "ti:\"chart\" AND ti:\"recommendation\" AND all:\"machine learning\"",
+   "results": []
+  },
+  {
+   "query": "all:\"data visualization\" AND all:\"large language models\" AND all:benchmark",
+   "results": [
+    {
+     "id": "2402.07909",
+     "year": "2024",
+     "title": "Prompt4Vis: Prompting Large Language Models with Example Mining and Schema Filtering for Tabular Data Visualization",
+     "first_author": "Shuaimin Li"
+    },
+    {
+     "id": "2407.00981",
+     "year": "2024",
+     "title": "VisEval: A Benchmark for Data Visualization in the Era of Large Language Models",
+     "first_author": "Nan Chen"
+    },
+    {
+     "id": "2402.11453",
+     "year": "2024",
+     "title": "MatPlotAgent: Method and Evaluation for LLM-Based Agentic Scientific Data Visualization",
+     "first_author": "Zhiyu Yang"
+    },
+    {
+     "id": "2409.02617",
+     "year": "2024",
+     "title": "PUB: Plot Understanding Benchmark and Dataset for Evaluating Large Language Models on Synthetic Visual Data Interpretation",
+     "first_author": "Aneta Pawelec"
+    },
+    {
+     "id": "2405.05506",
+     "year": "2024",
+     "title": "Cross-Care: Assessing the Healthcare Implications of Pre-training Data on Language Model Bias",
+     "first_author": "Shan Chen"
+    },
+    {
+     "id": "2511.00010",
+     "year": "2025",
+     "title": "PlotCraft: Pushing the Limits of LLMs for Complex and Interactive Data Visualization",
+     "first_author": "Jiajun Zhang"
+    },
+    {
+     "id": "2507.11625",
+     "year": "2025",
+     "title": "MapIQ: Evaluating Multimodal Large Language Models for Map Question Answering",
+     "first_author": "Varun Srivastava"
+    },
+    {
+     "id": "2508.01700",
+     "year": "2025",
+     "title": "DeepVIS: Bridging Natural Language and Data Visualization Through Step-wise Reasoning",
+     "first_author": "Zhihao Shuai"
+    }
+   ]
+  }
+ ]
+}

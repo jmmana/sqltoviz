@@ -107,5 +107,29 @@
   "title": "Draco 2: An Extensible Platform to Model Visualization Design",
   "prefer": "arxiv",
   "author": "Yang"
+ },
+ {
+  "key": "nguyen2024benchmarks",
+  "title": "Do Text-to-Vis Benchmarks Test Real Use of Visualisations?",
+  "prefer": "arxiv",
+  "author": "Nguyen"
+ },
+ {
+  "key": "li2024prompt4vis",
+  "title": "Prompt4Vis: Prompting Large Language Models with Example Mining and Schema Filtering for Tabular Data Visualization",
+  "prefer": "arxiv",
+  "author": "Li"
+ },
+ {
+  "key": "chen2024viseval",
+  "title": "VisEval: A Benchmark for Data Visualization in the Era of Large Language Models",
+  "prefer": "arxiv",
+  "author": "Chen"
+ },
+ {
+  "key": "shen2022taskbased",
+  "title": "Visual Data Analysis with Task-based Recommendations",
+  "prefer": "arxiv",
+  "author": "Shen"
  }
 ]
