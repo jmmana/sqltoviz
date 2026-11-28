@@ -2,7 +2,7 @@
 
 Status: alpha. The bundled ONNX models are **experimental candidates** (chart: synthetic labels; role: 322 Vega-Lite columns). No human validation exists; every result reports `ModelStatus: "experimental"`. Nothing here claims recommendation quality; it only documents which hosting strategies run.
 
-Everything below was built and executed with the sample projects in [`samples/blazor`](../samples/blazor) (.NET SDK 10.0.5, Blazor templates for net10.0, headless Chromium via Playwright, macOS arm64, 2026-11-27). CI (`.github/workflows/blazor-ci.yml`) repeats the Server and WASM runs on Linux.
+Everything below was built and executed with the sample projects in `samples/blazor` (.NET SDK 10.0.5, Blazor templates for net10.0, headless Chromium via Playwright, macOS arm64, 2026-11-27). CI (`.github/workflows/blazor-ci.yml`) repeats the Server and WASM runs on Linux.
 
 ## What works (verified)
 
