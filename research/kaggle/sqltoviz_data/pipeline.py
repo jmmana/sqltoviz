@@ -81,9 +81,10 @@ def load_features(path) -> dict:
     z = np.load(path, allow_pickle=False)
     if str(z["contract_sha256"]) != F.CONTRACT_SHA256:
         raise F.FeatureError("feature file was built with a different contract")
-    offs = z["offsets"]
-    return {"table": z["table"], "columns": [z["columns"][offs[i]:offs[i + 1]] for i in range(len(offs) - 1)],
-            "item_ids": [str(x) for x in z["item_ids"]]}
+    # NpzFile re-reads and decompresses an array on EVERY access: read each array once (accessing z["columns"] inside the
+    # comprehension decompressed it once per item, ~20,000 times, exhausting memory and killing the notebook kernel).
+    offs, table, columns, ids = z["offsets"], z["table"], z["columns"], z["item_ids"]
+    return {"table": table, "columns": [columns[offs[i]:offs[i + 1]] for i in range(len(offs) - 1)], "item_ids": [str(x) for x in ids]}
 
 
 def write_manifest(out_dir, files: dict, extra: dict) -> dict:

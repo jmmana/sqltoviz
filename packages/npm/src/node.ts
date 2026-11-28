@@ -1,4 +1,4 @@
-// Node.js ONNX runtime entry: `import {loadDefaultEngine, createNodeRunner} from "@sqltoviz/core/node"` (needs `onnxruntime-node`).
+// Node.js ONNX runtime entry: `import {loadDefaultEngine, createNodeRunner} from "sqltoviz/node"` (needs `onnxruntime-node`).
 import {readFile} from "node:fs/promises";
 import {dirname, join, resolve} from "node:path";
 import {fileURLToPath} from "node:url";

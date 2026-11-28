@@ -1,0 +1,90 @@
+name: RC integration
+# #102: pack the wheel, npm tarball and .nupkg files, install ONLY those artifacts into clean environments
+# (outside the repo checkout's source trees) and run parity/golden_v1.json through each. Never publishes.
+on:
+  pull_request:
+    paths: ['packages/**', 'parity/**', 'spec/**', 'model/**', 'scripts/release/**', '.github/workflows/rc-integration.yml']
+  push:
+    branches: [development, main]
+    paths: ['packages/**', 'parity/**', 'spec/**', 'model/**', 'scripts/release/**', '.github/workflows/rc-integration.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: scripts/release/rc_integration.sh build "$RUNNER_TEMP/rc-artifacts"
+      - run: sha256sum "$RUNNER_TEMP"/rc-artifacts/* | tee rc-artifacts.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rc-artifacts
+          path: ${{ runner.temp }}/rc-artifacts/
+  python:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: rc-artifacts
+          path: ${{ runner.temp }}/rc-artifacts
+      - run: scripts/release/rc_integration.sh test "$RUNNER_TEMP/rc-artifacts" python
+  node:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['20', '22']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: rc-artifacts
+          path: ${{ runner.temp }}/rc-artifacts
+      - run: scripts/release/rc_integration.sh test "$RUNNER_TEMP/rc-artifacts" node
+  dotnet:
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tfm: [net8.0, net10.0]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - uses: actions/download-artifact@v4
+        with:
+          name: rc-artifacts
+          path: ${{ runner.temp }}/rc-artifacts
+      - run: TFM=${{ matrix.tfm }} scripts/release/rc_integration.sh test "$RUNNER_TEMP/rc-artifacts" dotnet

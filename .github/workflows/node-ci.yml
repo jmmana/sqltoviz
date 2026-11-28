@@ -34,7 +34,7 @@ jobs:
           cd /tmp/sqltoviz-smoke
           npm init -y
           npm install "./$archive"
-          node --input-type=module -e "import {recommend} from '@sqltoviz/core'; if(recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
-          node -e "if(require('@sqltoviz/core').recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
+          node --input-type=module -e "import {recommend} from 'sqltoviz'; if(recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
+          node -e "if(require('sqltoviz').recommend('SELECT 1',[{x:1}]).chartType!=='kpi')process.exit(1)"
           npm install onnxruntime-node@1.31.1 onnxruntime-web@1.31.1
-          node --input-type=module -e "import {loadDefaultEngine} from '@sqltoviz/core/node'; const r=await (await loadDefaultEngine()).recommend('SELECT SUM(x) AS s FROM t',['s'],[[3]]); if(r.final_class!=='kpi'||r.model_status!=='experimental')process.exit(1)"
+          node --input-type=module -e "import {loadDefaultEngine} from 'sqltoviz/node'; const r=await (await loadDefaultEngine()).recommend('SELECT SUM(x) AS s FROM t',['s'],[[3]]); if(r.final_class!=='kpi'||r.model_status!=='experimental')process.exit(1)"

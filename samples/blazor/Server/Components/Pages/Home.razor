@@ -1,0 +1,16 @@
+@page "/"
+@using BlazorProbe
+<h1>SqlToViz in Blazor Server</h1>
+<pre id="report">@string.Join("\n", lines)</pre>
+@code {
+    List<string> lines = new();
+    protected override void OnInitialized()
+    {
+        lines.AddRange(Probe.RunRulesOnly());
+        lines.AddRange(ProbeOnnx.Run());
+        var engine = SqlToViz.Onnx.OnnxEngine.LoadDefault();
+        foreach (var c in ProbeCases.All)
+            lines.Add("NATIVE " + ProbeCases.Summary(engine.Recommend(c.Sql, c.Cols, c.Rows)));
+        lines.Add("DONE");
+    }
+}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>SqlToViz.MudBlazor</PackageId>
+    <Version>0.1.0-alpha.1</Version>
+    <Description>MudBlazor and ApexCharts chart-model adapters for SqlToViz plans (alpha)</Description>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/jmmana/sqltoviz</RepositoryUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="/" />
+    <ProjectReference Include="../SqlToViz/SqlToViz.csproj" />
+    <PackageReference Include="MudBlazor" Version="8.15.0" />
+  </ItemGroup>
+</Project>

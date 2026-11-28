@@ -33,3 +33,7 @@ var rec = engine.Recommend("SELECT dept, SUM(sal) AS total FROM emp GROUP BY dep
 rec.FinalClass; rec.ModelStatus; rec.Roles; rec.Warnings;
 ```
 `FeatureExtractor.Extract` (package `SqlToViz`, no dependencies) computes the 32 table and 28 column features of SqlVizSpec-v1.0.0; `Engine` takes any `IModelRunner`, and `SqlToViz.Onnx` provides `OnnxRunner` (SHA256 + tensor-schema validated, single-thread CPU). The bundled models are **candidates** (chart: synthetic labels; role: 322 Vega-Lite columns) and every result says `ModelStatus: "experimental"`. Final models drop in with `OnnxEngine.LoadFromDirectory(dir)` (a `manifest.json` with file/sha256/status) - the API and result shape do not change. SQL is never executed.
+
+## MudBlazor / ApexCharts adapters (alpha)
+
+Package `SqlToViz.MudBlazor` (not yet published): `Adapters.ToMudBlazor(plan, rows)` returns typed `ChartSeries`, labels and `ChartOptions` for `<MudChart>` (bar, line; KPI card and table fallbacks), and `Adapters.ToApexConfig(plan, rows)` returns a complete ApexCharts options tree. `Adapters.PlanFrom(recommendation, columns, rows)` converts a model-backed `Recommendation` (roles) into a `Plan`. MudBlazor has no horizontal bar, so horizontal_bar is rendered as a vertical bar there and flagged in `Notes`.

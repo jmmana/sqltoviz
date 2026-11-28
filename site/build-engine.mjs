@@ -6,9 +6,13 @@ import {fileURLToPath} from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..'), npm = join(root, 'packages', 'npm'), site = join(root, 'site');
 const must = (p) => { if (!existsSync(p)) throw new Error(`missing ${p}: build packages/npm first`); return p; };
 for (const d of ['sdk', 'models', 'vendor']) rmSync(join(site, d), {recursive: true, force: true});
-mkdirSync(join(site, 'sdk'), {recursive: true}); mkdirSync(join(site, 'vendor', 'ort'), {recursive: true});
+mkdirSync(join(site, 'sdk'), {recursive: true}); mkdirSync(join(site, 'vendor', 'ort'), {recursive: true}); mkdirSync(join(site, 'vendor', 'echarts'), {recursive: true});
 for (const f of readdirSync(must(join(npm, 'dist', 'esm')))) if (f.endsWith('.js')) cpSync(join(npm, 'dist', 'esm', f), join(site, 'sdk', f));
 cpSync(must(join(npm, 'models')), join(site, 'models'), {recursive: true});
 const ort = must(join(npm, 'node_modules', 'onnxruntime-web', 'dist'));
 for (const f of ['ort.wasm.min.mjs', 'ort-wasm-simd-threaded.mjs', 'ort-wasm-simd-threaded.wasm']) cpSync(must(join(ort, f)), join(site, 'vendor', 'ort', f));
-console.log('site/sdk, site/models and site/vendor/ort ready');
+// ECharts (pinned exact in packages/npm devDependencies) is served from this origin, never from a CDN.
+const ec = must(join(npm, 'node_modules', 'echarts'));
+for (const f of ['LICENSE', 'NOTICE']) cpSync(must(join(ec, f)), join(site, 'vendor', 'echarts', f));
+cpSync(must(join(ec, 'dist', 'echarts.min.js')), join(site, 'vendor', 'echarts', 'echarts.min.js'));
+console.log('site/sdk, site/models, site/vendor/ort and site/vendor/echarts ready');
