@@ -32,7 +32,7 @@ case "$eco" in
     TFM="${TFM:-net8.0}"
     cat > app.csproj <<CSPROJ
 <Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>$TFM</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><RestoreSources>$ART;https://api.nuget.org/v3/index.json</RestoreSources></PropertyGroup>
-<ItemGroup><PackageReference Include="SqlToViz.Onnx" Version="0.1.0-alpha.1"/></ItemGroup></Project>
+<ItemGroup><PackageReference Include="SqlToViz.Onnx" Version="0.1.0-alpha.2"/></ItemGroup></Project>
 CSPROJ
     cp "$RC/dotnet/Program.cs" .
     dotnet run -c Release -- "$GOLDEN" "$OUT" ;;

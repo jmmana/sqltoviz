@@ -27,11 +27,11 @@ jobs:
       - run: dotnet pack packages/nuget/SqlToViz.MudBlazor/SqlToViz.MudBlazor.csproj -c Release -o artifacts
       - run: |
           dotnet new console -o /tmp/sqltoviz-smoke -f net8.0
-          dotnet add /tmp/sqltoviz-smoke package SqlToViz --version 0.1.0-alpha.1 --source "$PWD/artifacts"
+          dotnet add /tmp/sqltoviz-smoke package SqlToViz --version 0.1.0-alpha.2 --source "$PWD/artifacts"
           echo 'System.Console.WriteLine(typeof(SqlToViz.Preview).FullName);' > /tmp/sqltoviz-smoke/Program.cs
           dotnet run --project /tmp/sqltoviz-smoke
           echo "<configuration><packageSources><clear/><add key=\"local\" value=\"$PWD/artifacts\"/><add key=\"nuget\" value=\"https://api.nuget.org/v3/index.json\"/></packageSources></configuration>" > /tmp/sqltoviz-smoke/nuget.config
-          dotnet add /tmp/sqltoviz-smoke package SqlToViz.Onnx --version 0.1.0-alpha.1
+          dotnet add /tmp/sqltoviz-smoke package SqlToViz.Onnx --version 0.1.0-alpha.2
           cat > /tmp/sqltoviz-smoke/Program.cs <<'EOF'
           var r = SqlToViz.Onnx.OnnxEngine.LoadDefault().Recommend("SELECT SUM(x) AS s FROM t", new[] { new SqlToViz.ColumnSpec("s") }, new[] { (IReadOnlyList<object?>)new object?[] { 3L } });
           if (r.FinalClass != "kpi" || r.ModelStatus != "experimental") Environment.Exit(1);
