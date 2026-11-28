@@ -4,7 +4,7 @@ Workflow: `.github/workflows/security.yml` (PRs, pushes to development/main, wee
 
 ## Secret scanning
 - `scripts/security/scan_secrets.py`: regex scan of tracked files (private keys, AWS/GitHub/npm/PyPI/NuGet/Slack/Google tokens, quoted credential assignments). Mark reviewed false positives with `secret-scan: allow` on the line.
-- gitleaks v8.30.1 (pinned release, SHA-256 verified in the workflow) over the full git history, with redacted output.
+- gitleaks v8.30.1 (pinned release, SHA-256 verified in the workflow) over the full git history with redacted output; `.gitleaks.toml` extends the default rules with one reviewed allowlist (bibliography `key` fields in research/paper/related_work, flagged as generic-api-key).
 - Limits: pattern based, so unknown token formats and low-entropy or split secrets can be missed. GitHub's own secret scanning/push protection is a repository setting and is neither enabled nor verified by this change.
 
 ## Dependency audits (fail on high/critical)

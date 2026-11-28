@@ -36,6 +36,7 @@ jobs:
           python-version: '3.12'
       - run: |
           python -m venv /tmp/audit-env
+          /tmp/audit-env/bin/pip install -U pip
           /tmp/audit-env/bin/pip install "./packages/python[onnx]"
           python -m pip install pip-audit==2.9.0
           python scripts/security/audit.py pip --path /tmp/audit-env/lib/python3.12/site-packages
