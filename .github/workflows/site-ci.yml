@@ -21,6 +21,6 @@ jobs:
       - name: Real-browser test of the experimental WASM model
         run: |
           npm install --no-save playwright@1.65.1
-          npx playwright install --with-deps chromium
-          node site/e2e/playground.e2e.mjs
+          npx playwright install --with-deps chromium firefox webkit
+          BROWSERS=all node site/e2e/playground.e2e.mjs
       - run: node --check site/app.mjs

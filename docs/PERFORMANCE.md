@@ -64,3 +64,34 @@ Browser memory was not measured (page JS heap is not comparable with process RSS
 - Feature extraction dominates end-to-end time from about 1,000 rows (tens of ms at 10,000 rows in Python); ONNX inference stays around 0.1 ms or less (median 0.06-0.11 ms at 10,000 rows), so the model is not the bottleneck.
 - Node and .NET are several times faster than Python at 1,000-10,000 rows; at 10 rows all are well under a millisecond.
 - Reproduce: `python benchmarks/bench_python.py`, `node benchmarks/bench_node.mjs`, `dotnet run -c Release --project benchmarks/bench_dotnet`, `node benchmarks/bench_browser.mjs` (needs playwright + chromium and `node site/build-engine.mjs`), then `python benchmarks/report.py`.
+
+## Browser playground: bundle size and WASM cold start
+
+Reproduce: `node site/build-engine.mjs && BROWSERS=all node site/e2e/measure.mjs 5` (needs `npm i --no-save playwright@1.65.1 && npx playwright install chromium firefox webkit`). The functional check on the same three engines is `BROWSERS=all node site/e2e/playground.e2e.mjs` (same assertions on each: WASM inference, experimental label, tensor download, zero external requests). Measured 2026-11-27 on Apple M4 Pro / macOS (Darwin 25.5.0), Node 24.4.1, Playwright 1.65.1, single-threaded WASM, local static server (no network latency or CDN compression; the gzip/brotli columns are computed offline from the served files, they are not what a particular host sends).
+
+## Playground payload (served bytes)
+
+| Part | Files | Raw | gzip -9 | brotli q11 |
+|---|---|---|---|---|
+| onnxruntime-web WASM binary | 1 | 14500.8 KiB | 3703.6 KiB | 2391.8 KiB |
+| onnxruntime-web JS (2 files) | 2 | 76.6 KiB | 25.7 KiB | 23.0 KiB |
+| ONNX candidate models + manifest | 3 | 5936.5 KiB | 343.6 KiB | 242.1 KiB |
+| SDK modules (site/sdk) | 8 | 45.8 KiB | 15.0 KiB | 13.2 KiB |
+| Playground code (html/css/mjs, excl. generated) | 11 | 23.6 KiB | 10.6 KiB | 8.9 KiB |
+| Engine total (rows 1-4, loaded only on "Run experimental model") | | 20.08 MiB | 3.99 MiB | 2.61 MiB |
+
+## Cold start of the WASM engine (5 fresh contexts per browser; median / min / max ms)
+
+| Browser | version | Playground ready (load event) | Cold: click -> result | Warm: click -> result | Bytes fetched on cold click |
+|---|---|---|---|---|---|
+| chromium | 159.0.8154.6 | 40 / 34 / 78 | 588 / 560 / 592 | 61 / 54 / 66 | 19.72 MiB |
+| firefox | 159.0 | 32 / 31 / 150 | 405 / 383 / 537 | 30 / 29 / 30 | 5.88 MiB |
+| webkit | 27.2 | 30 / 28 / 63 | 412 / 384 / 438 | 21 / 16 / 25 | 19.72 MiB |
+
+Reading the numbers:
+
+- The engine (onnxruntime-web WASM + two candidate models + SDK) is only fetched when the user presses "Run experimental model"; the rule-based preview loads about 24 KiB of own code and no WASM.
+- Cold start is dominated by fetching and compiling the 14.5 MiB WASM binary and creating two ONNX sessions; after that, a recommendation takes tens of milliseconds end to end including DOM rendering (warm column).
+- The Firefox "bytes fetched" figure is not comparable: Playwright does not expose that engine's WASM response body, so the counter undercounts there (5.88 MiB vs the 19.72 MiB the other two report). The static payload table is the authoritative size.
+- Times are medians of 5 fresh contexts on one machine and one browser build each; they say nothing about slower CPUs, mobile browsers or real networks (at 20 MiB raw / about 4 MiB gzip the download will dominate there).
+- Safari proper was not tested: Playwright WebKit is the engine, not the Safari application.
