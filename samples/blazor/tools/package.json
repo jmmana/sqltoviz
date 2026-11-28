@@ -1,0 +1,1 @@
+{"name":"blazor-ort-web-sample","private":true,"version":"0.0.0","dependencies":{"onnxruntime-web":"1.22.0"},"devDependencies":{"playwright":"^1.49.1"}}

@@ -1,0 +1,37 @@
+name: Blazor hosts CI
+on:
+  pull_request:
+    paths: ['samples/blazor/**', 'packages/nuget/**', '.github/workflows/blazor-ci.yml']
+  push:
+    branches: [development, main]
+    paths: ['samples/blazor/**', 'packages/nuget/**', '.github/workflows/blazor-ci.yml']
+permissions:
+  contents: read
+jobs:
+  blazor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prepare onnxruntime-web assets and models, install Chromium
+        working-directory: samples/blazor/tools
+        run: |
+          ./prepare.sh
+          npx playwright install --with-deps chromium
+      - name: Publish Blazor Server and run (native ONNX Runtime)
+        run: |
+          dotnet publish samples/blazor/Server -c Release -o samples/blazor/out/server
+          node samples/blazor/tools/check.mjs server samples/blazor/out/server
+      - name: Publish Blazor WASM (rules-only Engine + onnxruntime-web) and run in Chromium
+        run: |
+          dotnet publish samples/blazor/Wasm -c Release -o samples/blazor/out/wasm
+          node samples/blazor/tools/check.mjs wasm samples/blazor/out/wasm/wwwroot ort
+      - name: Report WASM payload (uncompressed bytes)
+        run: |
+          find samples/blazor/out/wasm/wwwroot -type f ! -name '*.gz' ! -name '*.br' -printf '%s\n' | awk '{s+=$1} END {print "wasm wwwroot raw bytes:", s}'
+          find samples/blazor/out/wasm/wwwroot -type f -name '*.br' -printf '%s\n' | awk '{s+=$1} END {print "wasm wwwroot brotli bytes:", s}'
