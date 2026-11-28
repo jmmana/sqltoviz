@@ -17,5 +17,6 @@ keywords:
 authors:
   - family-names: "Castillo Pinto"
     given-names: "Juan Manuel"
-    # OWNER TODO: confirm the author list and order, add `orcid:` and `affiliation:`.
+    orcid: "https://orcid.org/0009-0002-5751-0709"
+    # OWNER TODO: confirm the author list and order and add `affiliation:`.
     # Only the sole git committer was added automatically; add co-authors by hand (annotators/LLMs are not authors).
