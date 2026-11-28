@@ -7,6 +7,10 @@
 > [!NOTE]
 > Alpha: the Python, TypeScript and .NET SDKs are published as `0.1.0a2` / `0.1.0-alpha.2` with a deterministic preview and **experimental** ONNX models (candidates, no human validation). The gallery is illustrated from synthetic fixtures. [Try the playground](https://jmmana.github.io/sqltoviz/#play) · [Documentation](https://jmmana.github.io/sqltoviz/docs/).
 
+![SqlToViz playground demo](docs/assets/demo-playground.gif)
+
+*The playground running in the browser: pick or paste a query, analyze, get the recommended chart and why (live recording of the published site; the plan is rule-based preview, models are experimental).*
+
 ## Why SqlToViz?
 
 A BI or Text-to-SQL application already knows the executed query and its result rows. Yet selecting an appropriate visualization requires understanding dimensions, measures, aggregation, units and grain. A polished chart can be mathematically wrong when it stacks unrelated averages or double-counts totals.
