@@ -26,3 +26,4 @@ export async function loadWebEngine(manifest: ModelManifest, baseUrl: string, o:
   const role = manifest.role ? await createWebRunner(u(manifest.role.file), manifest.role.sha256, "role", o) : undefined;
   return new Engine({chart, role, chartStatus: manifest.chart?.status});
 }
+export {specializeOutputs, resolveColumns, normalizeOutput, type OutputsResult} from "./outputs.js";

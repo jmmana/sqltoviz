@@ -18,6 +18,10 @@ jobs:
           python-version: '3.12'
       - name: Generated bindings match the frozen spec
         run: python spec/generate_bindings.py --check
+      - name: Contract hashes (base + additive outputs extension)
+        run: python spec/verify_contract.py
+      - name: Outputs fixtures are current (expected values from the Python reference)
+        run: python parity/tools/gen_outputs.py --check
       - name: Golden file is pinned to the frozen contract
         run: |
           python - <<'EOF'
@@ -51,6 +55,8 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install numpy onnxruntime
       - run: cd packages/python && SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" python -m unittest discover -s tests
+      - name: Outputs v1 parity (parity/outputs_v1.json, SqlVizSpec-Outputs-v1.0.0)
+        run: cd packages/python && python -m unittest tests.test_outputs -v
   node:
     needs: generate
     runs-on: ubuntu-latest
@@ -63,6 +69,8 @@ jobs:
         with:
           node-version: '22'
       - run: cd packages/npm && npm install --ignore-scripts && SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" npm test
+      - name: Outputs v1 parity (parity/outputs_v1.json, SqlVizSpec-Outputs-v1.0.0)
+        run: cd packages/npm && node --test tests/golden-outputs.test.mjs
   dotnet:
     needs: generate
     runs-on: ubuntu-latest
@@ -80,6 +88,8 @@ jobs:
             8.0.x
             10.0.x
       - run: SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release -f ${{ matrix.tfm }}
+      - name: Outputs v1 parity (parity/outputs_v1.json, SqlVizSpec-Outputs-v1.0.0)
+        run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release -f ${{ matrix.tfm }} --filter FullyQualifiedName~OutputsParity
   gate:
     needs: [python, node, dotnet]
     runs-on: ubuntu-latest
