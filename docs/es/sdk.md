@@ -44,4 +44,4 @@ El [protocolo de investigación](https://github.com/jmmana/sqltoviz/blob/main/re
 describe la evaluación con datos reservados. Las [fichas de los modelos](https://github.com/jmmana/sqltoviz/tree/main/model/candidate)
 indican las fuentes de entrenamiento, el contrato de características y las
 limitaciones. Los modelos ONNX incluidos siguen en fase experimental. La
-[hoja de ruta](../roadmap.md) recoge los criterios de lanzamiento e investigación.
+[hoja de ruta](/roadmap) recoge los criterios de lanzamiento e investigación.
