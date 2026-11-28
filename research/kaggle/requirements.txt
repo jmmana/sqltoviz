@@ -1,5 +1,5 @@
 numpy>=2.0
-pandas>=2.2
+pandas>=3.1.1
 scikit-learn>=1.5
 sqlglot>=30
 pyyaml>=6
