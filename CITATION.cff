@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use SqlToViz, please cite it as below. The software is pre-release alpha and its models are experimental and not human-validated."
+title: "SqlToViz: chart recommendation from a SQL query and its result set"
+type: software
+version: "0.1.0-alpha.1"
+# date-released: set when the first release is verified on all three registries (see docs/alpha-release.md)
+license: Apache-2.0
+repository-code: "https://github.com/jmmana/sqltoviz"
+url: "https://jmmana.github.io/sqltoviz/"
+abstract: "SqlToViz recommends one of ten base chart classes (a table as fallback) from a SQL query and the rows it returned, with a frozen feature contract (SqlVizSpec-v1.0.0), deterministic semantic constraints and SDKs for Python, TypeScript and .NET. Bundled ONNX models are experimental candidates trained on synthetic and LLM-derived labels; no human validation exists yet."
+keywords:
+  - sql
+  - data visualization
+  - chart recommendation
+  - onnx
+  - text-to-sql
+authors:
+  - family-names: "Castillo Pinto"
+    given-names: "Juan Manuel"
+    # OWNER TODO: confirm the author list and order, add `orcid:` and `affiliation:`.
+    # Only the sole git committer was added automatically; add co-authors by hand (annotators/LLMs are not authors).
