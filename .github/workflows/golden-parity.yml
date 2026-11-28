@@ -88,7 +88,8 @@ jobs:
             8.0.x
             10.0.x
       - run: SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release -f ${{ matrix.tfm }}
-      # TODO phase 2 (#40/#44/#108): replay parity/outputs_v1.json against the .NET port (generated constants: packages/nuget/SqlToViz/OutputsContract.cs)
+      - name: Outputs v1 parity (parity/outputs_v1.json, SqlVizSpec-Outputs-v1.0.0)
+        run: dotnet test packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj -c Release -f ${{ matrix.tfm }} --filter FullyQualifiedName~OutputsParity
   gate:
     needs: [python, node, dotnet]
     runs-on: ubuntu-latest

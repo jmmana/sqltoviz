@@ -191,9 +191,9 @@ public static class FeatureExtractor {
     }
     return null;
   }
-  static bool IsNumericType(object v) => v is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal;
-  static double ToDouble(object v) => v is decimal dm ? (double)dm : Convert.ToDouble(v, CultureInfo.InvariantCulture);
-  static bool IsMissing(object? v) => v is null || v is string { Length: 0 } || (v is double d && !double.IsFinite(d)) || (v is float f && !float.IsFinite(f));
+  internal static bool IsNumericType(object v) => v is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal;
+  internal static double ToDouble(object v) => v is decimal dm ? (double)dm : Convert.ToDouble(v, CultureInfo.InvariantCulture);
+  internal static bool IsMissing(object? v) => v is null || v is string { Length: 0 } || (v is double d && !double.IsFinite(d)) || (v is float f && !float.IsFinite(f));
   static bool IsInt(object? v) => v is byte or sbyte or short or ushort or int or uint or long or ulong
     || (v is double d && double.IsFinite(d) && Math.Floor(d) == d) || (v is float f && float.IsFinite(f) && Math.Floor(f) == f) || (v is decimal m && decimal.Truncate(m) == m);
   static void CheckCell(object? v) {
@@ -208,9 +208,9 @@ public static class FeatureExtractor {
     throw new FeatureException(v is System.Collections.IEnumerable ? "nested values rejected" : $"unsupported cell type {v.GetType().Name}");
   }
   static string AsciiLower(string s) { var sb = new StringBuilder(s.Length); foreach (var ch in s) sb.Append(ch >= 'A' && ch <= 'Z' ? (char)(ch + 32) : ch); return sb.ToString(); }
-  static bool IsNum(object? v) => v is not null && v is not bool && IsNumericType(v);
+  internal static bool IsNum(object? v) => v is not null && v is not bool && IsNumericType(v);
 
-  static string ResolveType(string name, List<object?> values, string? explicitType) {
+  internal static string ResolveType(string name, List<object?> values, string? explicitType) {
     var nm = values.Where(v => !IsMissing(v)).ToList();
     if (explicitType is not null) {
       if (Array.IndexOf(Contract.Types, explicitType) < 0) throw new FeatureException($"unknown explicit type '{explicitType}'");

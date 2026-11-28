@@ -38,9 +38,16 @@ var plan = SqlToViz.Preview.Recommend(
 Console.WriteLine(plan.ChartType); // kpi
 ```
 
-## Concrete outputs (additive, TypeScript so far)
+## Concrete outputs (additive, TypeScript and .NET)
 
-`specializeOutputs(columns, rows, metadata, baseScores, roles, baseEligibility)` (`sqltoviz`, `sqltoviz/web`, `sqltoviz/node`) refines a base class into one of the 21 outputs of `SqlVizSpec-Outputs-v1.0.0` (`spec/OUTPUTS_V1.md`) using deterministic preconditions, and returns `{output, encodings, params, rejected, fallback_chain}`. It mirrors the Python `specialize_outputs`; the .NET port is pending. The thresholds (category caps, minimum sample sizes, bin rule, whisker factor) are design choices, not validated values. The 120 fixtures in `parity/outputs_v1.json` prove that the runtimes agree with each other, not that the rules pick the right chart.
+`specializeOutputs(columns, rows, metadata, baseScores, roles, baseEligibility)` (`sqltoviz`, `sqltoviz/web`, `sqltoviz/node`) refines a base class into one of the 21 outputs of `SqlVizSpec-Outputs-v1.0.0` (`spec/OUTPUTS_V1.md`) using deterministic preconditions, and returns `{output, encodings, params, rejected, fallback_chain}`. It mirrors the Python `specialize_outputs`; the .NET port is `SqlToViz.Outputs.SpecializeOutputs` (below).. The thresholds (category caps, minimum sample sizes, bin rule, whisker factor) are design choices, not validated values. The 120 fixtures in `parity/outputs_v1.json` prove that the runtimes agree with each other, not that the rules pick the right chart.
+
+```csharp
+var cols = new[] { new ColumnSpec("region"), new ColumnSpec("revenue") };
+var rows = new List<IReadOnlyList<object?>> { new object?[] { "N", 10.0 }, new object?[] { "S", 7.0 } };
+var r = SqlToViz.Outputs.SpecializeOutputs(cols, rows, baseEligibility: new Dictionary<string, bool> { ["bar"] = true, ["table"] = true });
+Console.WriteLine(r.Output); // bar (rejected candidates and reason codes are in r.Rejected)
+```
 
 ## Research and model status
 
