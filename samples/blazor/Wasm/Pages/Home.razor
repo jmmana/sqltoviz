@@ -1,0 +1,31 @@
+@page "/"
+@using BlazorProbe
+@inject Microsoft.JSInterop.IJSRuntime Js
+@inject HttpClient Http
+<h1>SqlToViz in Blazor WebAssembly</h1>
+<pre id="report">@string.Join("\n", lines)</pre>
+@code {
+    List<string> lines = new() { "running" };
+    protected override async Task OnInitializedAsync()
+    {
+        lines = Probe.RunRulesOnly();
+#if WITH_ONNX
+        lines.AddRange(ProbeOnnx.Run());
+#endif
+        try
+        {
+            var sw = System.Diagnostics.Stopwatch.StartNew();
+            var eng = new OrtWebEngine(Js, Http);
+            await eng.InitAsync();
+            lines.Add($"ORTWEB init_ms={sw.Elapsed.TotalMilliseconds:F0}");
+            foreach (var c in ProbeCases.All)
+            {
+                sw.Restart();
+                var r = await eng.RecommendAsync(c.Sql, c.Cols, c.Rows);
+                lines.Add($"ORTWEB {ProbeCases.Summary(r)} ms={sw.Elapsed.TotalMilliseconds:F1}");
+            }
+        }
+        catch (Exception e) { lines.Add($"ORTWEB FAILED {e.GetType().Name}: {e.Message}"); }
+        lines.Add("DONE");
+    }
+}
