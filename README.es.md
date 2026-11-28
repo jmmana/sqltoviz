@@ -161,7 +161,7 @@ plan = analyze_query(sql=sql, rows=rows)
 ```
 
 ```typescript
-import { analyzeQuery } from '@sqltoviz/core';
+import { analyzeQuery } from 'sqltoviz';
 const plan = await analyzeQuery({ sql, rows });
 ```
 

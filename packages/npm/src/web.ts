@@ -1,4 +1,4 @@
-// Browser WASM entry: `import {createWebRunner} from "@sqltoviz/core/web"` (needs `onnxruntime-web`; also works in Node for tests).
+// Browser WASM entry: `import {createWebRunner} from "sqltoviz/web"` (needs `onnxruntime-web`; also works in Node for tests).
 import {Engine, type ModelManifest} from "./engine.js";
 import {verifiedSession, type ModelKind} from "./onnx-common.js";
 export {ModelError} from "./onnx-common.js";

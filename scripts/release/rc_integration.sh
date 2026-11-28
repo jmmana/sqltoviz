@@ -25,7 +25,7 @@ case "$eco" in
     (cd "$WORK" && "$WORK/venv/bin/python" -I "$RC/run_python.py" "$GOLDEN" "$OUT") ;;
   node)
     mkdir "$WORK/app" && cd "$WORK/app" && npm init -y >/dev/null
-    npm install --ignore-scripts "$ART"/sqltoviz-core-*.tgz onnxruntime-node@1.31.1 >/dev/null
+    npm install --ignore-scripts "$ART"/sqltoviz-[0-9]*.tgz onnxruntime-node@1.31.1 >/dev/null
     cp "$RC/run_node.mjs" . && node run_node.mjs "$GOLDEN" "$OUT" ;;   # script lives beside node_modules so only the installed tarball resolves
   dotnet)
     mkdir "$WORK/app" && cd "$WORK/app"
