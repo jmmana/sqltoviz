@@ -1,0 +1,61 @@
+name: Security
+# #83: secret scanning (pattern script + gitleaks over full history) and dependency audits that fail on high/critical.
+on:
+  pull_request:
+  push:
+    branches: [development, main]
+  schedule:
+    - cron: '17 5 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/security/scan_secrets.py
+      - name: gitleaks (pinned release, checksum-verified, full git history)
+        run: |
+          V=8.30.1
+          curl -sSL -o gl.tgz "https://github.com/gitleaks/gitleaks/releases/download/v${V}/gitleaks_${V}_linux_x64.tar.gz"
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gl.tgz" | sha256sum -c -
+          mkdir gl && tar -xzf gl.tgz -C gl
+          ./gl/gitleaks git --redact --no-banner --exit-code 1 .
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: |
+          python -m venv /tmp/audit-env
+          /tmp/audit-env/bin/pip install "./packages/python[onnx]"
+          python -m pip install pip-audit==2.9.0
+          python scripts/security/audit.py pip --path /tmp/audit-env/lib/python3.12/site-packages
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 scripts/security/audit.py npm packages/npm
+      - run: python3 scripts/security/audit.py npm docs
+  dotnet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: dotnet restore packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj
+      - run: python3 scripts/security/audit.py dotnet packages/nuget/SqlToViz.Tests/SqlToViz.Tests.csproj
