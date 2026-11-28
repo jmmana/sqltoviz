@@ -69,7 +69,8 @@ jobs:
         with:
           node-version: '22'
       - run: cd packages/npm && npm install --ignore-scripts && SQLTOVIZ_FUZZ="$GITHUB_WORKSPACE/fuzz.json" SQLTOVIZ_FAITH="$GITHUB_WORKSPACE/faith.json" npm test
-      # TODO phase 2 (#40/#44/#108): replay parity/outputs_v1.json against the TypeScript port (generated constants: packages/npm/src/outputs-contract.ts)
+      - name: Outputs v1 parity (parity/outputs_v1.json, SqlVizSpec-Outputs-v1.0.0)
+        run: cd packages/npm && node --test tests/golden-outputs.test.mjs
   dotnet:
     needs: generate
     runs-on: ubuntu-latest
