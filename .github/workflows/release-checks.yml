@@ -1,0 +1,26 @@
+name: Release checks
+on:
+  pull_request:
+    paths: ['model/**', 'packages/*/models/**', 'packages/python/sqltoviz/models/**', 'packages/nuget/SqlToViz.Onnx/models/**', 'scripts/release/**', 'spec/**', '.github/workflows/release-checks.yml']
+  push:
+    branches: [development, main]
+    paths: ['model/**', 'packages/**', 'scripts/release/**', 'spec/**', '.github/workflows/release-checks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  model-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/release/verify_model_metadata.py
+  registry-names:
+    # informational snapshot only (404 != ownership); never gates a PR
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/release/check_registry_names.py
