@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use SqlToViz, please cite it as below. The software is pre-release alpha and its models are experimental and not human-validated."
 title: "SqlToViz: chart recommendation from a SQL query and its result set"
 type: software
-version: "0.1.0-alpha.1"
+version: "0.1.0-alpha.2"
 # date-released: set when the first release is verified on all three registries (see docs/alpha-release.md)
 license: Apache-2.0
 repository-code: "https://github.com/jmmana/sqltoviz"
