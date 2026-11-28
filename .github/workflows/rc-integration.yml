@@ -28,7 +28,7 @@ jobs:
             10.0.x
       - run: scripts/release/rc_integration.sh build "$RUNNER_TEMP/rc-artifacts"
       - run: sha256sum "$RUNNER_TEMP"/rc-artifacts/* | tee rc-artifacts.sha256
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: rc-artifacts
           path: ${{ runner.temp }}/rc-artifacts/

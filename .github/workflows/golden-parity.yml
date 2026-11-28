@@ -33,7 +33,7 @@ jobs:
         run: python parity/tools/gen_fuzz.py fuzz.json 3000
       - name: Generate numerical-faithfulness cases (exact rational/decimal references)
         run: python parity/tools/gen_faithfulness.py faith.json 1500
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: parity-fuzz
           path: |
