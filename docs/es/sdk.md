@@ -1,19 +1,18 @@
 # Guía rápida de los SDK
 
-Compila desde un clon del repositorio mientras los paquetes alfa esperan su
-publicación. Los ejemplos usan resultados SQL ya calculados. Cada SDK ofrece
+Los paquetes alfa están publicados en PyPI, npm y NuGet. Los ejemplos usan resultados SQL ya calculados. Cada SDK ofrece
 una vista previa determinista y documenta por separado cómo usar ONNX experimental.
 
-| SDK | Entorno | Compilación desde la raíz del repositorio |
+| SDK | Entorno | Instalación (0.1.0 alfa 2) |
 | --- | --- | --- |
-| [Python](https://github.com/jmmana/sqltoviz/tree/main/packages/python) | Python 3.10+ | `python -m pip install build && python -m build packages/python` |
-| [TypeScript](https://github.com/jmmana/sqltoviz/tree/main/packages/npm) | Node.js 20+ | `cd packages/npm && npm install --ignore-scripts && npm pack` |
-| [.NET](https://github.com/jmmana/sqltoviz/tree/main/packages/nuget) | .NET 8 o 10 | `dotnet pack packages/nuget/SqlToViz/SqlToViz.csproj -c Release -o artifacts` |
+| [Python](https://pypi.org/project/sqltoviz/) | Python 3.10+ | `python -m pip install --pre sqltoviz` |
+| [TypeScript](https://www.npmjs.com/package/sqltoviz) | Node.js 20+ | `npm install sqltoviz@0.1.0-alpha.2` |
+| [.NET](https://www.nuget.org/packages/SqlToViz) | .NET 8 o 10 | `dotnet add package SqlToViz --prerelease` |
 
-En Python, instala la rueda con pip en un entorno virtual. En TypeScript,
-instala el archivo .tgz generado desde el proyecto consumidor. En .NET,
-instala `SqlToViz` con `dotnet add package SqlToViz --prerelease --source /ruta/absoluta/a/artifacts`
-desde el proyecto consumidor.
+Instala en un entorno virtual (Python) o en un proyecto nuevo. `SqlToViz.Onnx`
+es un paquete NuGet aparte con los modelos ONNX experimentales (candidatos sin
+validación humana). Para compilar desde el código fuente, consulta el
+[README](https://github.com/jmmana/sqltoviz#readme).
 
 ## Un resultado, tres SDK
 
@@ -44,4 +43,4 @@ El [protocolo de investigación](https://github.com/jmmana/sqltoviz/blob/main/re
 describe la evaluación con datos reservados. Las [fichas de los modelos](https://github.com/jmmana/sqltoviz/tree/main/model/candidate)
 indican las fuentes de entrenamiento, el contrato de características y las
 limitaciones. Los modelos ONNX incluidos siguen en fase experimental. La
-[hoja de ruta](../roadmap.md) recoge los criterios de lanzamiento e investigación.
+[hoja de ruta](/roadmap) recoge los criterios de lanzamiento e investigación.

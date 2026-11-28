@@ -6,6 +6,6 @@ vista previa determinista y recomendaciones experimentales con ONNX.
 
 - [Guía rápida de los SDK](./sdk.md)
 - [Probar la demostración](https://jmmana.github.io/sqltoviz/#play)
-- [Decisiones de arquitectura](../architecture.md)
-- [Sintaxis SQL admitida](../sql-input-scope.md)
-- [Hoja de ruta](../roadmap.md)
+- [Decisiones de arquitectura](/architecture)
+- [Sintaxis SQL admitida](/sql-input-scope)
+- [Hoja de ruta](/roadmap)
